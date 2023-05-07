@@ -5,7 +5,6 @@ import * as logger from "loglevel";
 
 // Exceptions should be reported with code references to the original source
 import "source-map-support/register";
-import figlet from "figlet";
 
 
 
@@ -27,7 +26,7 @@ import { ensureFolderForFile } from "./fileUtil";
     try {
         if (process.argv.length < 3) {
             logger.setDefaultLevel("info");
-            logger.info(figlet.textSync("AI Writer - AI Assisted Text Writer"));
+            logger.info("AI Writer - AI Assisted Text Writer");
             showRecipes();
         } else {
             const recipe = process.argv[2];
