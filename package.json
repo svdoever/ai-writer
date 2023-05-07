@@ -1,13 +1,13 @@
 {
   "name": "ai-writer",
-  "version": "1.0.26",
+  "version": "1.0.2",
   "description": "AI-assisted text writing with configurable recipes. Uses OpenAI's API.",
   "main": "./dist/index.js",
   "bin": {
     "ai-writer": "./dist/index.js"
   },
   "scripts": {
-    "publish": "npm version patch && npm publish",
+    "publish-next": "npm version patch && npm publish",
     "prepare": "npm run build && chmod +x ./dist/index.js",
     "build": "tsc",
     "watch": "tsc --watch",
