@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "AI-assisted text writing with configurable recipes. Uses OpenAI's API.",
   "main": "./dist/index.js",
   "bin": {
