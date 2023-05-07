@@ -7,6 +7,7 @@
     "ai-writer": "./dist/index.js"
   },
   "scripts": {
+    "publish": "npm version patch && npm publish",
     "prepare": "npm run build && chmod +x ./dist/index.js",
     "build": "tsc",
     "watch": "tsc --watch",
