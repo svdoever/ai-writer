@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
 import fs from "fs";
+import path from "path";
 import * as logger from "loglevel";
 
 // Exceptions should be reported with code references to the original source
 import "source-map-support/register";
 
-
-
 // read .env file
 import dotenv from "dotenv";
 dotenv.config();
 
+const packageJson = require(path.join(__dirname, "../package.json"));
+
 import { showRecipes, validateRecipe } from "./recipes";
-import path from "path";
 import { readParameters } from "./parameters";
 import { createProgram } from "./commanderUtils";
 import { getSettings, setSettings } from "./settings";
@@ -27,6 +27,7 @@ import { ensureFolderForFile } from "./fileUtil";
         if (process.argv.length < 3) {
             logger.setDefaultLevel("info");
             logger.info("AI Writer - AI Assisted Text Writer");
+            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author}, license: ${packageJson.license}\n`);
             showRecipes();
         } else {
             const recipe = process.argv[2];
