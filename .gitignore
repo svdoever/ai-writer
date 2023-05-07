@@ -2,4 +2,4 @@ node_modules
 dist
 generated-texts
 .env
-# recipes/_*
+recipes/_*
