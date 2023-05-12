@@ -13,14 +13,17 @@ dotenv.config();
 
 const packageJson = require(path.join(__dirname, "../package.json"));
 
-import { showRecipes, validateRecipe } from "./recipes";
+import { existsRecipe, showRecipes, validateRecipe } from "./recipes";
 import { readParameters } from "./parameters";
-import { createProgram } from "./commanderUtils";
+import { createProgram, createRecipeProgram } from "./commanderUtils";
 import { getSettings, setSettings } from "./settings";
 import { aiGenerator } from "./aiGenerator";
 import { wordWrapAndTrim } from "./wordWrapAndTrim";
 import { getPromptForRecipe } from "./prompt";
 import { ensureFolderForFile } from "./fileUtil";
+import { exists } from "fs-extra";
+import { create } from "domain";
+import { Command } from "commander";
 
 (async () => {
     try {
@@ -31,48 +34,53 @@ import { ensureFolderForFile } from "./fileUtil";
             showRecipes();
         } else {
             const recipe = process.argv[2];
-            validateRecipe(recipe);
-            const parameters = readParameters(recipe);
-            const program = createProgram(parameters, async (options) => {
-                setSettings(options); // read global settings from environment variables and command line options
-                const settings = getSettings();
-                if (settings.verbose || settings.dryRun) {
-                    logger.setDefaultLevel("info");
-                }
-                logger.info(`recipe: ${recipe}`);
-                logger.info(`options: ${JSON.stringify(options, null, 2)}`);
+            let program: Command;
+            if (existsRecipe(recipe)) {
                 validateRecipe(recipe);
-                const prompt = await getPromptForRecipe(recipe, options);
-                logger.info(`prompt:\n-------------------\n${prompt}\n-------------------\n`);
-                if (settings.dryRun) {
-                    logger.info("Dry run, not sending prompt to OpenAI");
-                } else {
-                    logger.info("Sending prompt to OpenAI");
-                    const generatedText = await aiGenerator(recipe, prompt);
-                    const generatedtextWrapped = wordWrapAndTrim(generatedText, 80);
-                    if (settings.showOutput || settings.verbose) {
-                        logger.info(`Resulting text:\n-------------------\n${generatedtextWrapped}\n-------------------\n`);
+                const parameters = readParameters(recipe);
+                program = createRecipeProgram(recipe, parameters, async (options) => {
+                    setSettings(options); // read global settings from environment variables and command line options
+                    const settings = getSettings();
+                    if (settings.verbose || settings.dryRun) {
+                        logger.setDefaultLevel("info");
                     }
-
-                    const outputFile = options.output;
-                    if (!outputFile) {
-                        throw new Error("No output file specified");
+                    logger.info(`recipe: ${recipe}`);
+                    logger.info(`options: ${JSON.stringify(options, null, 2)}`);
+                    validateRecipe(recipe);
+                    const prompt = await getPromptForRecipe(recipe, options);
+                    logger.info(`prompt:\n-------------------\n${prompt}\n-------------------\n`);
+                    if (settings.dryRun) {
+                        logger.info("Dry run, not sending prompt to OpenAI");
                     } else {
-                        const outputPath = path.join(settings.textsOutputFolder, outputFile + ".txt");
-                        ensureFolderForFile(outputPath);
-                        const wrappedOutputPath = path.join(settings.textsOutputFolder, outputFile + ".wrapped.txt");
-                        ensureFolderForFile(wrappedOutputPath);
-                        logger.info(`Writing output to ${outputPath}`);
-                        if (settings.dryRun) {
-                            logger.info("Dry run, not writing output");
+                        logger.info("Sending prompt to OpenAI");
+                        const generatedText = await aiGenerator(recipe, prompt);
+                        const generatedtextWrapped = wordWrapAndTrim(generatedText, 80);
+                        if (settings.showOutput || settings.verbose) {
+                            logger.info(`Resulting text:\n-------------------\n${generatedtextWrapped}\n-------------------\n`);
                         }
-                        else {
-                            fs.writeFileSync(outputPath, generatedText);
-                            fs.writeFileSync(wrappedOutputPath, generatedtextWrapped);
+
+                        const outputFile = options.output;
+                        if (!outputFile) {
+                            throw new Error("No output file specified");
+                        } else {
+                            const outputPath = path.join(settings.textsOutputFolder, outputFile + ".txt");
+                            ensureFolderForFile(outputPath);
+                            const wrappedOutputPath = path.join(settings.textsOutputFolder, outputFile + ".wrapped.txt");
+                            ensureFolderForFile(wrappedOutputPath);
+                            logger.info(`Writing output to ${outputPath}`);
+                            if (settings.dryRun) {
+                                logger.info("Dry run, not writing output");
+                            }
+                            else {
+                                fs.writeFileSync(outputPath, generatedText);
+                                fs.writeFileSync(wrappedOutputPath, generatedtextWrapped);
+                            }
                         }
                     }
-                }
-            });
+                });
+            } else {
+                program = createProgram();
+            }
             program.parse(process.argv);
         }
     } catch (error) {

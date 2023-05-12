@@ -1,19 +1,16 @@
 import ejs from 'ejs';
 import fs from 'fs';
 import path from 'path';
-import { exec } from 'child_process';
 import * as logger from "loglevel";
-//import { loadModuleResolvedFrom } from 'load-module';
 import { getSettings } from './settings';
 import {
     requireFromString,
     importFromString,
     importFromStringSync
 } from 'module-from-string'
+import { Packages, installPackages } from './npm';
 
-type Packages= {
-    [key: string]: string
-}
+
 
 export function getRawPrompt(recipe: string): string {
     const recipesFolder = getSettings().recipesFolder;
@@ -94,23 +91,3 @@ function getPackages(recipe: string): Packages {
     return packages;
 }
 
-async function installPackages(packages: Packages): Promise<void> {
-    Object.keys(packages).map(async (packageName) => {
-        logger.info(`Installing package ${packageName}`);
-        const version = packages[packageName];
-        await installPackage(packageName, version);
-    });
-}
-
-async function installPackage(packageName: string, version: string): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-        // Install the package
-        exec(`npm install ${packageName}@${version}`, async (err: Error | null) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
-    });
-}
