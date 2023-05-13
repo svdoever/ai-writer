@@ -1,0 +1,17 @@
+{
+    "name": "ai-writer-samples",
+    "version": "1.0.0",
+    "description": "AI Writer project",
+    "keywords": [
+        "ai-writer"
+    ],
+    "author": "",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "ai-writer": "ai-writer"
+    },
+    "dependencies": {
+        "ai-writer": "^1.0.2"
+    }
+}

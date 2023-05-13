@@ -1,0 +1,11 @@
+{
+    "type": "completion",
+    "completion": {
+      "model": "text-davinci-003",
+      "max_tokens": 100,
+      "temperature": 0.9,
+      "top_p": 1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+}
