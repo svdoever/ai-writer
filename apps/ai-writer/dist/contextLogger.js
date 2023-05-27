@@ -35,24 +35,25 @@ function logRecipe(recipe) {
 exports.logRecipe = logRecipe;
 function logOptions(options) {
     const optionsString = JSON.stringify(options, null, 2);
-    console.info(`\n${chalk_1.default.bold.blue('Options:')}\n${chalk_1.default.blue(optionsString)}\n`);
+    logger.info(`${chalk_1.default.bold.blue('Options:')}\n${chalk_1.default.blue(optionsString)}\n`);
 }
 exports.logOptions = logOptions;
 function logPromptData(promptData) {
     const promptDataString = JSON.stringify(promptData, null, 2);
-    console.info(`\n${chalk_1.default.bold.blue('Prompt data:')}\n${chalk_1.default.blue(promptDataString)}\n`);
+    logger.info(`${chalk_1.default.bold.blue('Prompt data:')}\n${chalk_1.default.blue(promptDataString)}\n`);
 }
 exports.logPromptData = logPromptData;
 function logPromptTemplate(prompt) {
-    logger.info(`\n${chalk_1.default.bold.gray('Prompt template:')}\n-------------------\n${chalk_1.default.gray(prompt)}\n-------------------\n`);
+    logger.info(`${chalk_1.default.bold.gray('Prompt template:')}\n-------------------\n${chalk_1.default.gray(prompt.trim())}\n-------------------\n`);
 }
 exports.logPromptTemplate = logPromptTemplate;
 function logConstructedPrompt(prompt) {
-    logger.info(`${chalk_1.default.bold.yellow('Prompt:')}\n-------------------\n${chalk_1.default.yellow(prompt)}\n-------------------\n`);
+    logger.info(`${chalk_1.default.bold.hex("#FFA500")('Prompt:')}\n-------------------\n${chalk_1.default.hex("#FFA500")(prompt.trim())}\n-------------------\n`);
 }
 exports.logConstructedPrompt = logConstructedPrompt;
-function logCompletion(completion) {
-    logger.info(`${chalk_1.default.bold.green('Completion:')}\n-------------------\n${chalk_1.default.green(completion)}\n-------------------\n`);
+function logCompletion(completion, showForce) {
+    const logFunc = showForce ? console.log : logger.info;
+    logFunc(`${chalk_1.default.bold.green('Completion:')}\n-------------------\n${chalk_1.default.green(completion)}\n-------------------\n`);
 }
 exports.logCompletion = logCompletion;
 //# sourceMappingURL=contextLogger.js.map

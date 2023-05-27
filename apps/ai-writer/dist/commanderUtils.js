@@ -21,7 +21,7 @@ function createRecipeProgram(recipe, parameters, func) {
     recipeCommand.description(parameters.description);
     recipeCommand.requiredOption("--output <output>", "output file");
     recipeCommand.option("--output-format <output-format>", "overwrite the default output format 'txt', use an output format as defined in the 'output-formats.json' file");
-    recipeCommand.option("--model-overwrite <model>", "onverwrite the recipe default model settings with settings from a model defined in the 'models.json' file");
+    recipeCommand.option("--model-override <model>", "override the recipe default model settings with settings from a model defined in the 'models.json' file");
     recipeCommand.option("--verbose", "verbose output");
     recipeCommand.option("--debug", "debug output");
     recipeCommand.option("--dry-run", "dry run");

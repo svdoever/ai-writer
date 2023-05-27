@@ -1,5 +1,5 @@
 {
-  "description": "Explain like I'm 5, what does this mean?",
+  "description": "Explain like I'm 5, what does this topic mean?",
   "options": [
     {
       "option": "--topic <topic>",

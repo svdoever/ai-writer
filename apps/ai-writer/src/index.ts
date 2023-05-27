@@ -15,10 +15,11 @@ import { createProgram, createRecipeProgram } from "./commanderUtils";
 import { getSettings, setSettings } from "./settings";
 import { aiGenerator } from "./aiGenerator";
 import { wordWrapAndTrim } from "./wordWrapAndTrim";
-import { getPromptForRecipe } from "./prompt";
+import { getPromptForRecipe, getPromptTemplate } from "./prompt";
 import { ensureFolderForFile } from "./fileUtil";
 import { findEnvFile, findProjectRoot, loadPackageJson, validateNodeVersion } from "./packageJson";
-import { logCompletion, logConstructedPrompt, logOptions, logRecipe } from "./contextLogger";
+import { logCompletion, logConstructedPrompt, logOptions, logPromptTemplate, logRecipe } from "./contextLogger";
+import { log } from "console";
 
 (async () => {
     validateNodeVersion();
@@ -58,12 +59,14 @@ import { logCompletion, logConstructedPrompt, logOptions, logRecipe } from "./co
                     logRecipe(recipe);
                     logOptions(options);
                     validateRecipe(recipe);
+                    const promptTemplate = getPromptTemplate(recipe);
+                    logPromptTemplate(promptTemplate);
                     const prompt = await getPromptForRecipe(recipe, options);
                     logConstructedPrompt(prompt);
                     let generatedOutput: string;
 
                     if (settings.dryRun) {
-                        logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'");
+                        logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'\n");
                         generatedOutput = `Dry-run completion on prompt: ${prompt}`;
                     } else {
                         logger.debug("Sending the prompt to the language model");
@@ -143,5 +146,5 @@ function displayOutput(output: string, outputFormat?: string): void {
             outputToDisplay = output;
             break;
     }
-    logCompletion(outputToDisplay);
+    logCompletion(outputToDisplay, true);
 }

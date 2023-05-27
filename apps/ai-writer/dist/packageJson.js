@@ -31,20 +31,20 @@ const fs = __importStar(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 const semver = __importStar(require("semver"));
 const logger = __importStar(require("loglevel"));
+;
 function getPackageJsonFilePath(rootFolder) {
     let packageJsonPath;
-    if (!rootFolder) {
-        packageJsonPath = path_1.default.resolve(path_1.default.join(__dirname, '../package.json'));
+    if (rootFolder == null) {
+        packageJsonPath = path_1.default.resolve(path_1.default.join(__dirname, "../package.json"));
     }
     else {
-        packageJsonPath = path_1.default.resolve(path_1.default.join(rootFolder, 'package.json'));
+        packageJsonPath = path_1.default.resolve(path_1.default.join(rootFolder, "package.json"));
     }
     return packageJsonPath;
 }
 function loadPackageJson(rootFolder) {
     const packageJsonPath = getPackageJsonFilePath(rootFolder);
     const packageJson = fs.readJsonSync(packageJsonPath);
-    packageJson.name = path_1.default.basename(process.cwd());
     return packageJson;
 }
 exports.loadPackageJson = loadPackageJson;
@@ -70,11 +70,11 @@ function findEnvFile(startPath) {
     let currentPath = startPath;
     while (true) {
         // Check if .env exists in the current directory
-        if (fs.existsSync(path_1.default.join(currentPath, '.env'))) {
-            return path_1.default.join(currentPath, '.env');
+        if (fs.existsSync(path_1.default.join(currentPath, ".env"))) {
+            return path_1.default.join(currentPath, ".env");
         }
         // Check if package.json exists in the current directory
-        if (fs.existsSync(path_1.default.join(currentPath, 'package.json'))) {
+        if (fs.existsSync(path_1.default.join(currentPath, "package.json"))) {
             return null;
         }
         // Go up to the parent directory
@@ -91,7 +91,7 @@ function findProjectRoot(startPath) {
     let currentPath = startPath;
     while (true) {
         // Check if package.json exists in the current directory
-        if (fs.existsSync(path_1.default.join(currentPath, 'package.json'))) {
+        if (fs.existsSync(path_1.default.join(currentPath, "package.json"))) {
             return currentPath;
         }
         // Go up to the parent directory
@@ -105,9 +105,10 @@ function findProjectRoot(startPath) {
 }
 exports.findProjectRoot = findProjectRoot;
 function validateNodeVersion(rootFolder) {
+    var _a;
     const packageJson = loadPackageJson(rootFolder);
     // Check if engines field exists and if node is defined
-    if (packageJson.engines && packageJson.engines.node) {
+    if (((_a = packageJson.engines) === null || _a === void 0 ? void 0 : _a.node).length > 0) {
         const requiredVersion = packageJson.engines.node;
         const currentVersion = process.version;
         // Use semver to check version
@@ -120,7 +121,7 @@ function validateNodeVersion(rootFolder) {
         }
     }
     else {
-        logger.error('No node version specified in package.json');
+        logger.error("No node version specified in package.json");
     }
 }
 exports.validateNodeVersion = validateNodeVersion;

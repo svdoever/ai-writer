@@ -89,11 +89,13 @@ const contextLogger_1 = require("./contextLogger");
                     (0, contextLogger_1.logRecipe)(recipe);
                     (0, contextLogger_1.logOptions)(options);
                     (0, recipes_1.validateRecipe)(recipe);
+                    const promptTemplate = (0, prompt_1.getPromptTemplate)(recipe);
+                    (0, contextLogger_1.logPromptTemplate)(promptTemplate);
                     const prompt = yield (0, prompt_1.getPromptForRecipe)(recipe, options);
                     (0, contextLogger_1.logConstructedPrompt)(prompt);
                     let generatedOutput;
                     if (settings.dryRun) {
-                        logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'");
+                        logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'\n");
                         generatedOutput = `Dry-run completion on prompt: ${prompt}`;
                     }
                     else {
@@ -164,6 +166,6 @@ function displayOutput(output, outputFormat) {
             outputToDisplay = output;
             break;
     }
-    (0, contextLogger_1.logCompletion)(outputToDisplay);
+    (0, contextLogger_1.logCompletion)(outputToDisplay, true);
 }
 //# sourceMappingURL=index.js.map

@@ -1,9 +1,0 @@
-Dry-run completion on prompt: Write a nice and professional marketing text of
-500 words about the car Citroen C6 
-which is Diesel and has a range of 950 KM.
-
-Also write a section on the history of the car, 
-when it was first produced, and when production stopped.
-
-Mention ##blaat## - Serge van den Oever as the author of the article, and the
-article date 5/14/2023, in a seperate section.

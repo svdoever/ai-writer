@@ -47,9 +47,9 @@ export function setSettings(optionsForSettings: OptionsForSettings): void {
     if (!recipesFolder) {
         throw new Error("No RECIPES_FOLDER environment variable found");
     }
-    const textsOutputFolder = process.env.TEXTS_OUTPUT_FOLDER;
+    const textsOutputFolder = process.env.STORAGE_FOLDER;
     if (!textsOutputFolder) {
-        throw new Error("No TEXTS_OUTPUT_FOLDER environment variable found");
+        throw new Error("No STORAGE_FOLDER environment variable found");
     }
 
     const dryRun: boolean = !!optionsForSettings.dryRun;
