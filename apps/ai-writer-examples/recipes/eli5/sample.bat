@@ -1,1 +1,0 @@
-npm run ai-writer -- eli5 --topic divorce --language English --output "eli5/divorce"  --verbose

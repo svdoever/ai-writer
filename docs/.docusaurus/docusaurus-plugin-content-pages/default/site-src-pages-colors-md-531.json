@@ -1,7 +1,0 @@
-{
-  "type": "mdx",
-  "permalink": "/colors",
-  "source": "@site/src/pages/colors.md",
-  "description": "To explain AI Writer we will use colors, both in the diagrams and texts in the documentation, as in the output of AI Writer. The colors are used to make it easier to understand the different parts of AI Writer. The colors are not part of AI Writer, they are just used to make it easier to understand.",
-  "frontMatter": {}
-}
