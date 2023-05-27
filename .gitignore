@@ -1,5 +1,1 @@
 node_modules
-dist
-generated-texts
-.env
-recipes/_*
