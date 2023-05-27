@@ -1,0 +1,27 @@
+{
+  "unversionedId": "tutorial-eli5/aiconfig-file",
+  "id": "tutorial-eli5/aiconfig-file",
+  "title": "AI config file",
+  "description": "The AI config file contains the configuration for the AI model. The AI model is used to generate the completion text, given a prompt.",
+  "source": "@site/docs/tutorial-eli5/04-aiconfig-file.md",
+  "sourceDirName": "tutorial-eli5",
+  "slug": "/tutorial-eli5/aiconfig-file",
+  "permalink": "/ai-writer/docs/tutorial-eli5/aiconfig-file",
+  "draft": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/04-aiconfig-file.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "docSidebar",
+  "previous": {
+    "title": "Prompt template file",
+    "permalink": "/ai-writer/docs/tutorial-eli5/prompt-template-file"
+  },
+  "next": {
+    "title": "Executing the recipe",
+    "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe"
+  }
+}

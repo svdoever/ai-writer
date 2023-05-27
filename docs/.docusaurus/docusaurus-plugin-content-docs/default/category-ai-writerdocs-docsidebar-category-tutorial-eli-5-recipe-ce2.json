@@ -1,0 +1,16 @@
+{
+  "title": "Tutorial - eli5 recipe",
+  "description": "5 minutes to build a recipe that explains a topic to a 5 years old in any language.",
+  "slug": "/category/tutorial---eli5-recipe",
+  "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe",
+  "navigation": {
+    "previous": {
+      "title": "Colors",
+      "permalink": "/ai-writer/docs/colors"
+    },
+    "next": {
+      "title": "Create a recipe",
+      "permalink": "/ai-writer/docs/tutorial-eli5/create-a-recipe"
+    }
+  }
+}

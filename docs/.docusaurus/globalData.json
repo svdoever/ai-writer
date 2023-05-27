@@ -1,0 +1,83 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/ai-writer/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/ai-writer/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "colors",
+              "path": "/ai-writer/docs/colors",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "concepts",
+              "path": "/ai-writer/docs/concepts",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "contributing",
+              "path": "/ai-writer/docs/contributing",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/ai-writer/docs/intro",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/aiconfig-file",
+              "path": "/ai-writer/docs/tutorial-eli5/aiconfig-file",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/congratulations",
+              "path": "/ai-writer/docs/tutorial-eli5/congratulations",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/create-a-recipe",
+              "path": "/ai-writer/docs/tutorial-eli5/create-a-recipe",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/executing-the-recipe",
+              "path": "/ai-writer/docs/tutorial-eli5/executing-the-recipe",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/parameters-file",
+              "path": "/ai-writer/docs/tutorial-eli5/parameters-file",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "tutorial-eli5/prompt-template-file",
+              "path": "/ai-writer/docs/tutorial-eli5/prompt-template-file",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "/category/tutorial---eli5-recipe",
+              "path": "/ai-writer/docs/category/tutorial---eli5-recipe",
+              "sidebar": "docSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docSidebar": {
+              "link": {
+                "path": "/ai-writer/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
