@@ -1,0 +1,22 @@
+{
+  "description": "Explain like I'm 5, what does this topic mean?",
+  "options": [
+    {
+      "option": "--topic <topic>",
+      "description": "The topic to explain",
+      "required": true
+    },
+    {
+      "option": "--language <language>",
+      "description": "The language to explain it in",
+      "required": false,
+      "default": "English"
+    },
+    {
+      "option": "--words <words>",
+      "description": "The number of words to use in the explanation",
+      "required": false,
+      "default": 25
+    }
+  ]
+}

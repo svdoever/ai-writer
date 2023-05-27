@@ -1,0 +1,2 @@
+# Make sure that keys are not checked into source control
+.env

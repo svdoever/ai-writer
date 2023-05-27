@@ -1,0 +1,25 @@
+{
+    "name": "ai-writer-samples",
+    "version": "1.0.0",
+    "description": "AI Writer project",
+    "keywords": [
+        "ai-writer"
+    ],
+    "author": "",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "ai-writer": "ai-writer"
+    },
+    "dependencies": {
+        "ai-writer": "^1.0.2",
+        "axios": "^1.4.0",
+        "commander": "^10.0.1",
+        "dotenv": "^16.0.3",
+        "fs-extra": "^11.1.1",
+        "loglevel": "^1.8.1",
+        "node-fetch": "^3.3.1",
+        "shelljs": "^0.8.5",
+        "tsx": "^3.12.7"
+    }
+}
