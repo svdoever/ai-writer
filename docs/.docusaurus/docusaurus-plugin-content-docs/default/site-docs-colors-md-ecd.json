@@ -1,0 +1,27 @@
+{
+  "unversionedId": "colors",
+  "id": "colors",
+  "title": "Colors",
+  "description": "Utilizing Colors for Enhanced Clarity",
+  "source": "@site/docs/colors.md",
+  "sourceDirName": ".",
+  "slug": "/colors",
+  "permalink": "/ai-writer/docs/colors",
+  "draft": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/colors.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "sidebar_position": 30
+  },
+  "sidebar": "docSidebar",
+  "previous": {
+    "title": "Concepts",
+    "permalink": "/ai-writer/docs/concepts"
+  },
+  "next": {
+    "title": "Tutorial - eli5 recipe",
+    "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
+  }
+}
