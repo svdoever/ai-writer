@@ -11,9 +11,45 @@
     "docSidebar": [
       {
         "type": "link",
-        "label": "AI Writer",
+        "label": "Welcome to AI Writer",
         "href": "/ai-writer/docs/intro",
         "docId": "intro"
+      },
+      {
+        "type": "link",
+        "label": "Installation",
+        "href": "/ai-writer/docs/installation",
+        "docId": "installation"
+      },
+      {
+        "type": "link",
+        "label": "Create a project",
+        "href": "/ai-writer/docs/create-a-project",
+        "docId": "create-a-project"
+      },
+      {
+        "type": "link",
+        "label": "The project folder",
+        "href": "/ai-writer/docs/the-project-folder",
+        "docId": "the-project-folder"
+      },
+      {
+        "type": "link",
+        "label": "models.json",
+        "href": "/ai-writer/docs/models.json",
+        "docId": "models.json"
+      },
+      {
+        "type": "link",
+        "label": "output-formats.json",
+        "href": "/ai-writer/docs/output-formats.json",
+        "docId": "output-formats.json"
+      },
+      {
+        "type": "link",
+        "label": "How does AI Writer work?",
+        "href": "/ai-writer/docs/how-does-aiwriter-work",
+        "docId": "how-does-aiwriter-work"
       },
       {
         "type": "link",
@@ -26,6 +62,57 @@
         "label": "Colors",
         "href": "/ai-writer/docs/colors",
         "docId": "colors"
+      },
+      {
+        "type": "link",
+        "label": "Recipes",
+        "href": "/ai-writer/docs/recipes",
+        "docId": "recipes"
+      },
+      {
+        "type": "category",
+        "label": "Recipe ingredients",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "parameters.json",
+            "href": "/ai-writer/docs/recipe-ingredients/parameters.json",
+            "docId": "recipe-ingredients/parameters.json"
+          },
+          {
+            "type": "link",
+            "label": "prompt.ejs",
+            "href": "/ai-writer/docs/recipe-ingredients/prompt.ejs",
+            "docId": "recipe-ingredients/prompt.ejs"
+          },
+          {
+            "type": "link",
+            "label": "aiconfig.json",
+            "href": "/ai-writer/docs/recipe-ingredients/aiconfig.json",
+            "docId": "recipe-ingredients/aiconfig.json"
+          },
+          {
+            "type": "link",
+            "label": "functions.js",
+            "href": "/ai-writer/docs/recipe-ingredients/functions.json",
+            "docId": "recipe-ingredients/functions.json"
+          },
+          {
+            "type": "link",
+            "label": "dependencies.json",
+            "href": "/ai-writer/docs/recipe-ingredients/dependencies.json",
+            "docId": "recipe-ingredients/dependencies.json"
+          },
+          {
+            "type": "link",
+            "label": "getData.js",
+            "href": "/ai-writer/docs/recipe-ingredients/getData.js",
+            "docId": "recipe-ingredients/getData.js"
+          }
+        ],
+        "href": "/ai-writer/docs/category/recipe-ingredients"
       },
       {
         "type": "category",
@@ -74,6 +161,18 @@
       },
       {
         "type": "link",
+        "label": "AI Writer and source control",
+        "href": "/ai-writer/docs/aiwriter-and-sourcecontrol",
+        "docId": "aiwriter-and-sourcecontrol"
+      },
+      {
+        "type": "link",
+        "label": "The terminal window",
+        "href": "/ai-writer/docs/terminal-window",
+        "docId": "terminal-window"
+      },
+      {
+        "type": "link",
         "label": "Contributing",
         "href": "/ai-writer/docs/contributing",
         "docId": "contributing"
@@ -81,6 +180,12 @@
     ]
   },
   "docs": {
+    "aiwriter-and-sourcecontrol": {
+      "id": "aiwriter-and-sourcecontrol",
+      "title": "AI Writer and source control",
+      "description": "When a new project is created with AI Writer, it is best to store the project in a source control system like Git. This allows you to track changes to your project and to collaborate with others.",
+      "sidebar": "docSidebar"
+    },
     "colors": {
       "id": "colors",
       "title": "Colors",
@@ -99,10 +204,94 @@
       "description": "Any contribution to AI Writer is welcome. This document describes how to contribute to AI Writer.",
       "sidebar": "docSidebar"
     },
+    "create-a-project": {
+      "id": "create-a-project",
+      "title": "Create a project",
+      "description": "When working with AI Writer, you will need to create a project. A project is a folder that contains the recipes that you want to use. You can create a project by executing the following command in a terminal window:",
+      "sidebar": "docSidebar"
+    },
+    "how-does-aiwriter-work": {
+      "id": "how-does-aiwriter-work",
+      "title": "How does AI Writer work?",
+      "description": "The following diagram shows the different parts of AI Writer and how they work together.",
+      "sidebar": "docSidebar"
+    },
+    "installation": {
+      "id": "installation",
+      "title": "Installation",
+      "description": "Supported environments",
+      "sidebar": "docSidebar"
+    },
     "intro": {
       "id": "intro",
-      "title": "AI Writer",
+      "title": "Welcome to AI Writer",
       "description": "Introduction",
+      "sidebar": "docSidebar"
+    },
+    "models.json": {
+      "id": "models.json",
+      "title": "models.json",
+      "description": "The models.json file lives in the root of the project folder. This file contains OpenAI model configurations that can override fields of the default model configuration as defined in theaiconfig.json file in the recipe folder.",
+      "sidebar": "docSidebar"
+    },
+    "output-formats.json": {
+      "id": "output-formats.json",
+      "title": "output-formats.json",
+      "description": "The output-format.json file lives in the root of the project folder. This file contains definitions of output formats that can be used by the ai-writer command.",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/aiconfig.json": {
+      "id": "recipe-ingredients/aiconfig.json",
+      "title": "aiconfig.json",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/dependencies.json": {
+      "id": "recipe-ingredients/dependencies.json",
+      "title": "dependencies.json",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/functions.json": {
+      "id": "recipe-ingredients/functions.json",
+      "title": "functions.js",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/getData.js": {
+      "id": "recipe-ingredients/getData.js",
+      "title": "getData.js",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/parameters.json": {
+      "id": "recipe-ingredients/parameters.json",
+      "title": "parameters.json",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipe-ingredients/prompt.ejs": {
+      "id": "recipe-ingredients/prompt.ejs",
+      "title": "prompt.ejs",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "recipes": {
+      "id": "recipes",
+      "title": "Recipes",
+      "description": "",
+      "sidebar": "docSidebar"
+    },
+    "terminal-window": {
+      "id": "terminal-window",
+      "title": "The terminal window",
+      "description": "All recipes and scripts in AI Writer are executed in a terminal window.",
+      "sidebar": "docSidebar"
+    },
+    "the-project-folder": {
+      "id": "the-project-folder",
+      "title": "The project folder",
+      "description": "The project folder is where you execute the recipes and store the output of the recipes.",
       "sidebar": "docSidebar"
     },
     "tutorial-eli5/aiconfig-file": {

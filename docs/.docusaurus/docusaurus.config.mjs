@@ -103,7 +103,7 @@ export default {
           ]
         }
       ],
-      "copyright": "Copyright © 2023 Serge van den Oever. Built with Docusaurus."
+      "copyright": "Copyright © 2023 Serge van den Oever. Documentation built with Docusaurus."
     },
     "prism": {
       "theme": {

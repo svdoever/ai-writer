@@ -11,14 +11,41 @@
           "className": "docs-version-current",
           "path": "/ai-writer/docs",
           "tagsPath": "/ai-writer/docs/tags",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs",
-          "editUrlLocalized": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
+          "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs",
+          "editUrlLocalized": "https://github.com/svdoever/ai-writer/tree/main/docs/i18n/en/docusaurus-plugin-content-docs/current",
           "isLast": true,
           "routePriority": -1,
           "sidebarFilePath": "/home/svdoever/p/ai-writer/docs/sidebars.js",
           "contentPath": "/home/svdoever/p/ai-writer/docs/docs",
           "contentPathLocalized": "/home/svdoever/p/ai-writer/docs/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
+            {
+              "unversionedId": "aiwriter-and-sourcecontrol",
+              "id": "aiwriter-and-sourcecontrol",
+              "title": "AI Writer and source control",
+              "description": "When a new project is created with AI Writer, it is best to store the project in a source control system like Git. This allows you to track changes to your project and to collaborate with others.",
+              "source": "@site/docs/aiwriter-and-sourcecontrol.md",
+              "sourceDirName": ".",
+              "slug": "/aiwriter-and-sourcecontrol",
+              "permalink": "/ai-writer/docs/aiwriter-and-sourcecontrol",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/aiwriter-and-sourcecontrol.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 200,
+              "frontMatter": {
+                "sidebar_position": 200
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "Congratulations!",
+                "permalink": "/ai-writer/docs/tutorial-eli5/congratulations"
+              },
+              "next": {
+                "title": "The terminal window",
+                "permalink": "/ai-writer/docs/terminal-window"
+              }
+            },
             {
               "unversionedId": "colors",
               "id": "colors",
@@ -29,7 +56,7 @@
               "slug": "/colors",
               "permalink": "/ai-writer/docs/colors",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/colors.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/colors.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 30,
@@ -42,8 +69,8 @@
                 "permalink": "/ai-writer/docs/concepts"
               },
               "next": {
-                "title": "Tutorial - eli5 recipe",
-                "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
+                "title": "Recipes",
+                "permalink": "/ai-writer/docs/recipes"
               }
             },
             {
@@ -56,7 +83,7 @@
               "slug": "/concepts",
               "permalink": "/ai-writer/docs/concepts",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/concepts.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/concepts.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 20,
@@ -65,8 +92,8 @@
               },
               "sidebar": "docSidebar",
               "previous": {
-                "title": "AI Writer",
-                "permalink": "/ai-writer/docs/intro"
+                "title": "How does AI Writer work?",
+                "permalink": "/ai-writer/docs/how-does-aiwriter-work"
               },
               "next": {
                 "title": "Colors",
@@ -83,7 +110,7 @@
               "slug": "/contributing",
               "permalink": "/ai-writer/docs/contributing",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/contributing.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/contributing.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 9999,
@@ -92,21 +119,21 @@
               },
               "sidebar": "docSidebar",
               "previous": {
-                "title": "Congratulations!",
-                "permalink": "/ai-writer/docs/tutorial-eli5/congratulations"
+                "title": "The terminal window",
+                "permalink": "/ai-writer/docs/terminal-window"
               }
             },
             {
-              "unversionedId": "intro",
-              "id": "intro",
-              "title": "AI Writer",
-              "description": "Introduction",
-              "source": "@site/docs/intro.md",
+              "unversionedId": "create-a-project",
+              "id": "create-a-project",
+              "title": "Create a project",
+              "description": "When working with AI Writer, you will need to create a project. A project is a folder that contains the recipes that you want to use. You can create a project by executing the following command in a terminal window:",
+              "source": "@site/docs/create-a-project.md",
               "sourceDirName": ".",
-              "slug": "/intro",
-              "permalink": "/ai-writer/docs/intro",
+              "slug": "/create-a-project",
+              "permalink": "/ai-writer/docs/create-a-project",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/intro.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/create-a-project.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 10,
@@ -114,9 +141,387 @@
                 "sidebar_position": 10
               },
               "sidebar": "docSidebar",
+              "previous": {
+                "title": "Installation",
+                "permalink": "/ai-writer/docs/installation"
+              },
+              "next": {
+                "title": "The project folder",
+                "permalink": "/ai-writer/docs/the-project-folder"
+              }
+            },
+            {
+              "unversionedId": "how-does-aiwriter-work",
+              "id": "how-does-aiwriter-work",
+              "title": "How does AI Writer work?",
+              "description": "The following diagram shows the different parts of AI Writer and how they work together.",
+              "source": "@site/docs/how-does-aiwriter-work.md",
+              "sourceDirName": ".",
+              "slug": "/how-does-aiwriter-work",
+              "permalink": "/ai-writer/docs/how-does-aiwriter-work",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/how-does-aiwriter-work.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 15,
+              "frontMatter": {
+                "sidebar_position": 15
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "output-formats.json",
+                "permalink": "/ai-writer/docs/output-formats.json"
+              },
               "next": {
                 "title": "Concepts",
                 "permalink": "/ai-writer/docs/concepts"
+              }
+            },
+            {
+              "unversionedId": "installation",
+              "id": "installation",
+              "title": "Installation",
+              "description": "Supported environments",
+              "source": "@site/docs/installation.md",
+              "sourceDirName": ".",
+              "slug": "/installation",
+              "permalink": "/ai-writer/docs/installation",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/installation.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "Welcome to AI Writer",
+                "permalink": "/ai-writer/docs/intro"
+              },
+              "next": {
+                "title": "Create a project",
+                "permalink": "/ai-writer/docs/create-a-project"
+              }
+            },
+            {
+              "unversionedId": "intro",
+              "id": "intro",
+              "title": "Welcome to AI Writer",
+              "description": "Introduction",
+              "source": "@site/docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/ai-writer/docs/intro",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/intro.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "docSidebar",
+              "next": {
+                "title": "Installation",
+                "permalink": "/ai-writer/docs/installation"
+              }
+            },
+            {
+              "unversionedId": "models.json",
+              "id": "models.json",
+              "title": "models.json",
+              "description": "The models.json file lives in the root of the project folder. This file contains OpenAI model configurations that can override fields of the default model configuration as defined in theaiconfig.json file in the recipe folder.",
+              "source": "@site/docs/models.json.md",
+              "sourceDirName": ".",
+              "slug": "/models.json",
+              "permalink": "/ai-writer/docs/models.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/models.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 12,
+              "frontMatter": {
+                "sidebar_position": 12
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "The project folder",
+                "permalink": "/ai-writer/docs/the-project-folder"
+              },
+              "next": {
+                "title": "output-formats.json",
+                "permalink": "/ai-writer/docs/output-formats.json"
+              }
+            },
+            {
+              "unversionedId": "output-formats.json",
+              "id": "output-formats.json",
+              "title": "output-formats.json",
+              "description": "The output-format.json file lives in the root of the project folder. This file contains definitions of output formats that can be used by the ai-writer command.",
+              "source": "@site/docs/output-formats.json.md",
+              "sourceDirName": ".",
+              "slug": "/output-formats.json",
+              "permalink": "/ai-writer/docs/output-formats.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/output-formats.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 13,
+              "frontMatter": {
+                "sidebar_position": 13
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "models.json",
+                "permalink": "/ai-writer/docs/models.json"
+              },
+              "next": {
+                "title": "How does AI Writer work?",
+                "permalink": "/ai-writer/docs/how-does-aiwriter-work"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/aiconfig.json",
+              "id": "recipe-ingredients/aiconfig.json",
+              "title": "aiconfig.json",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/aiconfig.json.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/aiconfig.json",
+              "permalink": "/ai-writer/docs/recipe-ingredients/aiconfig.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/aiconfig.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "prompt.ejs",
+                "permalink": "/ai-writer/docs/recipe-ingredients/prompt.ejs"
+              },
+              "next": {
+                "title": "functions.js",
+                "permalink": "/ai-writer/docs/recipe-ingredients/functions.json"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/dependencies.json",
+              "id": "recipe-ingredients/dependencies.json",
+              "title": "dependencies.json",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/dependencies.json.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/dependencies.json",
+              "permalink": "/ai-writer/docs/recipe-ingredients/dependencies.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/dependencies.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "functions.js",
+                "permalink": "/ai-writer/docs/recipe-ingredients/functions.json"
+              },
+              "next": {
+                "title": "getData.js",
+                "permalink": "/ai-writer/docs/recipe-ingredients/getData.js"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/functions.json",
+              "id": "recipe-ingredients/functions.json",
+              "title": "functions.js",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/functions.json.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/functions.json",
+              "permalink": "/ai-writer/docs/recipe-ingredients/functions.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/functions.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "aiconfig.json",
+                "permalink": "/ai-writer/docs/recipe-ingredients/aiconfig.json"
+              },
+              "next": {
+                "title": "dependencies.json",
+                "permalink": "/ai-writer/docs/recipe-ingredients/dependencies.json"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/getData.js",
+              "id": "recipe-ingredients/getData.js",
+              "title": "getData.js",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/getData.js.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/getData.js",
+              "permalink": "/ai-writer/docs/recipe-ingredients/getData.js",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/getData.js.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "sidebar_position": 6
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "dependencies.json",
+                "permalink": "/ai-writer/docs/recipe-ingredients/dependencies.json"
+              },
+              "next": {
+                "title": "Tutorial - eli5 recipe",
+                "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/parameters.json",
+              "id": "recipe-ingredients/parameters.json",
+              "title": "parameters.json",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/parameters.json.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/parameters.json",
+              "permalink": "/ai-writer/docs/recipe-ingredients/parameters.json",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/parameters.json.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "Recipe ingredients",
+                "permalink": "/ai-writer/docs/category/recipe-ingredients"
+              },
+              "next": {
+                "title": "prompt.ejs",
+                "permalink": "/ai-writer/docs/recipe-ingredients/prompt.ejs"
+              }
+            },
+            {
+              "unversionedId": "recipe-ingredients/prompt.ejs",
+              "id": "recipe-ingredients/prompt.ejs",
+              "title": "prompt.ejs",
+              "description": "",
+              "source": "@site/docs/recipe-ingredients/prompt.ejs.md",
+              "sourceDirName": "recipe-ingredients",
+              "slug": "/recipe-ingredients/prompt.ejs",
+              "permalink": "/ai-writer/docs/recipe-ingredients/prompt.ejs",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipe-ingredients/prompt.ejs.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "parameters.json",
+                "permalink": "/ai-writer/docs/recipe-ingredients/parameters.json"
+              },
+              "next": {
+                "title": "aiconfig.json",
+                "permalink": "/ai-writer/docs/recipe-ingredients/aiconfig.json"
+              }
+            },
+            {
+              "unversionedId": "recipes",
+              "id": "recipes",
+              "title": "Recipes",
+              "description": "",
+              "source": "@site/docs/recipes.md",
+              "sourceDirName": ".",
+              "slug": "/recipes",
+              "permalink": "/ai-writer/docs/recipes",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/recipes.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 50,
+              "frontMatter": {
+                "sidebar_position": 50
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "Colors",
+                "permalink": "/ai-writer/docs/colors"
+              },
+              "next": {
+                "title": "Recipe ingredients",
+                "permalink": "/ai-writer/docs/category/recipe-ingredients"
+              }
+            },
+            {
+              "unversionedId": "terminal-window",
+              "id": "terminal-window",
+              "title": "The terminal window",
+              "description": "All recipes and scripts in AI Writer are executed in a terminal window.",
+              "source": "@site/docs/terminal-window.md",
+              "sourceDirName": ".",
+              "slug": "/terminal-window",
+              "permalink": "/ai-writer/docs/terminal-window",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/terminal-window.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 201,
+              "frontMatter": {
+                "sidebar_position": 201
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "AI Writer and source control",
+                "permalink": "/ai-writer/docs/aiwriter-and-sourcecontrol"
+              },
+              "next": {
+                "title": "Contributing",
+                "permalink": "/ai-writer/docs/contributing"
+              }
+            },
+            {
+              "unversionedId": "the-project-folder",
+              "id": "the-project-folder",
+              "title": "The project folder",
+              "description": "The project folder is where you execute the recipes and store the output of the recipes.",
+              "source": "@site/docs/the-project-folder.md",
+              "sourceDirName": ".",
+              "slug": "/the-project-folder",
+              "permalink": "/ai-writer/docs/the-project-folder",
+              "draft": false,
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/the-project-folder.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 11,
+              "frontMatter": {
+                "sidebar_position": 11
+              },
+              "sidebar": "docSidebar",
+              "previous": {
+                "title": "Create a project",
+                "permalink": "/ai-writer/docs/create-a-project"
+              },
+              "next": {
+                "title": "models.json",
+                "permalink": "/ai-writer/docs/models.json"
               }
             },
             {
@@ -129,7 +534,7 @@
               "slug": "/tutorial-eli5/aiconfig-file",
               "permalink": "/ai-writer/docs/tutorial-eli5/aiconfig-file",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/04-aiconfig-file.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/04-aiconfig-file.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
@@ -156,7 +561,7 @@
               "slug": "/tutorial-eli5/congratulations",
               "permalink": "/ai-writer/docs/tutorial-eli5/congratulations",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/06-congratulations.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/06-congratulations.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 99,
@@ -169,8 +574,8 @@
                 "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe"
               },
               "next": {
-                "title": "Contributing",
-                "permalink": "/ai-writer/docs/contributing"
+                "title": "AI Writer and source control",
+                "permalink": "/ai-writer/docs/aiwriter-and-sourcecontrol"
               }
             },
             {
@@ -183,7 +588,7 @@
               "slug": "/tutorial-eli5/create-a-recipe",
               "permalink": "/ai-writer/docs/tutorial-eli5/create-a-recipe",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/01-create-a-recipe.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/01-create-a-recipe.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -210,7 +615,7 @@
               "slug": "/tutorial-eli5/executing-the-recipe",
               "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/05-executing-the-recipe.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/05-executing-the-recipe.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 5,
@@ -237,7 +642,7 @@
               "slug": "/tutorial-eli5/parameters-file",
               "permalink": "/ai-writer/docs/tutorial-eli5/parameters-file",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/02-parameters-file.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/02-parameters-file.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -264,7 +669,7 @@
               "slug": "/tutorial-eli5/prompt-template-file",
               "permalink": "/ai-writer/docs/tutorial-eli5/prompt-template-file",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/03-prompt-template-file.md",
+              "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/tutorial-eli5/03-prompt-template-file.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -291,11 +696,77 @@
               },
               {
                 "type": "doc",
+                "id": "installation"
+              },
+              {
+                "type": "doc",
+                "id": "create-a-project"
+              },
+              {
+                "type": "doc",
+                "id": "the-project-folder"
+              },
+              {
+                "type": "doc",
+                "id": "models.json"
+              },
+              {
+                "type": "doc",
+                "id": "output-formats.json"
+              },
+              {
+                "type": "doc",
+                "id": "how-does-aiwriter-work"
+              },
+              {
+                "type": "doc",
                 "id": "concepts"
               },
               {
                 "type": "doc",
                 "id": "colors"
+              },
+              {
+                "type": "doc",
+                "id": "recipes"
+              },
+              {
+                "type": "category",
+                "label": "Recipe ingredients",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/parameters.json"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/prompt.ejs"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/aiconfig.json"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/functions.json"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/dependencies.json"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "recipe-ingredients/getData.js"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "description": "The ingredients of a recipe.",
+                  "slug": "/category/recipe-ingredients",
+                  "permalink": "/ai-writer/docs/category/recipe-ingredients"
+                }
               },
               {
                 "type": "category",
@@ -337,6 +808,14 @@
               },
               {
                 "type": "doc",
+                "id": "aiwriter-and-sourcecontrol"
+              },
+              {
+                "type": "doc",
+                "id": "terminal-window"
+              },
+              {
+                "type": "doc",
                 "id": "contributing"
               }
             ]
@@ -353,7 +832,7 @@
           "id": "welcome",
           "metadata": {
             "permalink": "/ai-writer/blog/welcome",
-            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-26-welcome/index.md",
+            "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/blog/2021-08-26-welcome/index.md",
             "source": "@site/blog/2021-08-26-welcome/index.md",
             "title": "Welcome",
             "description": "Docusaurus blogging features are powered by the blog plugin.",
@@ -415,7 +894,7 @@
           "id": "mdx-blog-post",
           "metadata": {
             "permalink": "/ai-writer/blog/mdx-blog-post",
-            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-01-mdx-blog-post.mdx",
+            "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/blog/2021-08-01-mdx-blog-post.mdx",
             "source": "@site/blog/2021-08-01-mdx-blog-post.mdx",
             "title": "MDX Blog Post",
             "description": "Blog posts support Docusaurus Markdown features, such as MDX.",
@@ -463,7 +942,7 @@
           "id": "long-blog-post",
           "metadata": {
             "permalink": "/ai-writer/blog/long-blog-post",
-            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-29-long-blog-post.md",
+            "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/blog/2019-05-29-long-blog-post.md",
             "source": "@site/blog/2019-05-29-long-blog-post.md",
             "title": "Long Blog Post",
             "description": "This is the summary of a very long blog post,",
@@ -514,7 +993,7 @@
           "id": "first-blog-post",
           "metadata": {
             "permalink": "/ai-writer/blog/first-blog-post",
-            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-28-first-blog-post.md",
+            "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/blog/2019-05-28-first-blog-post.md",
             "source": "@site/blog/2019-05-28-first-blog-post.md",
             "title": "First Blog Post",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
