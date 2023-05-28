@@ -1,5 +1,6 @@
-import { createProjectBasedOnTemplateInMonoRepo } from './createProjectBasedOnTemplateInMonoRepo';
+#!/usr/bin/env node
 
+import { createProjectBasedOnTemplateInMonoRepo } from './createProjectBasedOnTemplateInMonoRepo';
 
 async function createProject(): Promise<void> {
   // Get the project folder from the command line argument
