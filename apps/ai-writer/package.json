@@ -1,19 +1,23 @@
 {
   "name": "ai-writer",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
     "ChatGPT",
     "OpenAI"
   ],
-  "author": "Serge van den Oever",
-  "license": "MIT",
-  "homepage": "https://svdoever.github.io/ai-writer/#/",
+  "homepage": "https://svdoever.github.io/ai-writer/",
+  "author": {
+    "name": "Serge van den Oever",
+    "email": "svdoever@gmail.com",
+    "url": "https://www.sergevandenoever.nl"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/svdoever/ai-writer.git"
   },
+  "license": "MIT",
   "main": "./dist/index.js",
   "bin": {
     "ai-writer": "./dist/index.js"
@@ -41,6 +45,7 @@
     "module-from-string": "^3.3.0",
     "node-fetch": "^3.3.1",
     "openai": "^3.2.1",
+    "semver": "^7.5.1",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {

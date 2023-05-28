@@ -1,14 +1,15 @@
-import * as shell from 'shelljs';
-import * as path from 'path';
+import shell from 'shelljs';
+import path from 'path';
 import fs from 'fs-extra';
 import validatePackageName from 'validate-npm-package-name';
 import followRedirects from 'follow-redirects';
-import * as unzipper from 'unzipper';
+import unzipper from 'unzipper';
+import http from 'http';
 
 async function downloadFileFromUrl(url: string, outputPath: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
         const writeStream = fs.createWriteStream(outputPath);
-        followRedirects.https.get(url, (response) => {
+        followRedirects.https.get(url, (response: http.IncomingMessage) => {
             response.pipe(writeStream);
             writeStream.on('finish', () => {
                 writeStream.close();
@@ -16,7 +17,7 @@ async function downloadFileFromUrl(url: string, outputPath: string): Promise<boo
                 resolve(true);
             });
         })
-        .on('error', (err) => {
+        .on('error', (err: Error) => {
             fs.unlinkSync(outputPath); // Delete the file synchronously
             console.log("Error: " + err.message);
             reject(false);

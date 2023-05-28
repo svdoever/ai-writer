@@ -39,7 +39,7 @@ import { log } from "console";
             logger.setDefaultLevel("info");
 
             logger.info(packageJson.description);
-            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author}, license: ${packageJson.license}\n`);
+            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}\n`);
             showRecipes();
         } else {
             const recipe = process.argv[2];
@@ -88,7 +88,7 @@ import { log } from "console";
             }
         }
     } catch (error) {
-        console.log(`error: ${error}`);
+        console.log(`${error}`);
     }
 })();
 
