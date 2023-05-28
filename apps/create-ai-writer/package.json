@@ -2,11 +2,27 @@
   "name": "create-ai-writer",
   "version": "1.0.0",
   "description": "Create a project for AI Writer",
-  "main": "index.js",
+  "bin": {
+    "create-ai-writer": "tsx ./create.ts"
+  },
   "scripts": {
+    "create-ai-writer": "tsx ./create.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "follow-redirects": "^1.15.2",
+    "fs-extra": "^11.1.1",
+    "shelljs": "^0.8.5",
+    "tsx": "^3.12.7",
+    "unzipper": "^0.10.14",
+    "validate-npm-package-name": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/unzipper": "^0.10.6",
+    "@types/validate-npm-package-name": "^4.0.0"
+  }
 }

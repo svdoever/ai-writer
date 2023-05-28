@@ -29,11 +29,11 @@ export default {
       {
         "docs": {
           "sidebarPath": "/home/svdoever/p/ai-writer/docs/sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs"
         },
         "theme": {
           "customCss": "/home/svdoever/p/ai-writer/docs/src/css/custom.css"

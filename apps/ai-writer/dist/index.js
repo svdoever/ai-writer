@@ -108,11 +108,12 @@ const contextLogger_1 = require("./contextLogger");
                     }
                     generateOutput(generatedOutput, path_1.default.join(settings.textsOutputFolder, options.output), outputFormat);
                 }));
+                program.parse(process.argv);
             }
             else {
-                program = (0, commanderUtils_1.createProgram)();
+                logger.error(`Recipe '${recipe}' does not exist`);
+                (0, recipes_1.showRecipes)();
             }
-            program.parse(process.argv);
         }
     }
     catch (error) {

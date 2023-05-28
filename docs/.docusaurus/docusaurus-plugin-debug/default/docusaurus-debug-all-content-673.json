@@ -9,41 +9,41 @@
           "badge": false,
           "noIndex": false,
           "className": "docs-version-current",
-          "path": "/docs",
-          "tagsPath": "/docs/tags",
+          "path": "/ai-writer/docs",
+          "tagsPath": "/ai-writer/docs/tags",
           "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs",
           "editUrlLocalized": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
           "isLast": true,
           "routePriority": -1,
-          "sidebarFilePath": "/home/svdoever/p/ai-writer/ai-writer-docs/sidebars.js",
-          "contentPath": "/home/svdoever/p/ai-writer/ai-writer-docs/docs",
-          "contentPathLocalized": "/home/svdoever/p/ai-writer/ai-writer-docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "sidebarFilePath": "/home/svdoever/p/ai-writer/docs/sidebars.js",
+          "contentPath": "/home/svdoever/p/ai-writer/docs/docs",
+          "contentPathLocalized": "/home/svdoever/p/ai-writer/docs/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
             {
               "unversionedId": "colors",
               "id": "colors",
               "title": "Colors",
               "description": "Utilizing Colors for Enhanced Clarity",
-              "source": "@site/docs/30-colors.md",
+              "source": "@site/docs/colors.md",
               "sourceDirName": ".",
               "slug": "/colors",
-              "permalink": "/docs/colors",
+              "permalink": "/ai-writer/docs/colors",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/30-colors.md",
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/colors.md",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 3,
+              "sidebarPosition": 30,
               "frontMatter": {
-                "sidebar_position": 3
+                "sidebar_position": 30
               },
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Concepts",
-                "permalink": "/docs/concepts"
+                "permalink": "/ai-writer/docs/concepts"
               },
               "next": {
-                "title": "AI Writer",
-                "permalink": "/docs/intro"
+                "title": "Tutorial - eli5 recipe",
+                "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
               }
             },
             {
@@ -51,22 +51,26 @@
               "id": "concepts",
               "title": "Concepts",
               "description": "AI Writer uses the following concepts:",
-              "source": "@site/docs/20-concepts.md",
+              "source": "@site/docs/concepts.md",
               "sourceDirName": ".",
               "slug": "/concepts",
-              "permalink": "/docs/concepts",
+              "permalink": "/ai-writer/docs/concepts",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/20-concepts.md",
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/concepts.md",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 2,
+              "sidebarPosition": 20,
               "frontMatter": {
-                "sidebar_position": 2
+                "sidebar_position": 20
               },
               "sidebar": "docSidebar",
+              "previous": {
+                "title": "AI Writer",
+                "permalink": "/ai-writer/docs/intro"
+              },
               "next": {
                 "title": "Colors",
-                "permalink": "/docs/colors"
+                "permalink": "/ai-writer/docs/colors"
               }
             },
             {
@@ -74,12 +78,12 @@
               "id": "contributing",
               "title": "Contributing",
               "description": "Any contribution to AI Writer is welcome. This document describes how to contribute to AI Writer.",
-              "source": "@site/docs/9999-contributing.md",
+              "source": "@site/docs/contributing.md",
               "sourceDirName": ".",
               "slug": "/contributing",
-              "permalink": "/docs/contributing",
+              "permalink": "/ai-writer/docs/contributing",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/9999-contributing.md",
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/contributing.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 9999,
@@ -89,7 +93,7 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Congratulations!",
-                "permalink": "/docs/tutorial-eli5/congratulations"
+                "permalink": "/ai-writer/docs/tutorial-eli5/congratulations"
               }
             },
             {
@@ -97,12 +101,12 @@
               "id": "intro",
               "title": "AI Writer",
               "description": "Introduction",
-              "source": "@site/docs/10-intro.md",
+              "source": "@site/docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
-              "permalink": "/docs/intro",
+              "permalink": "/ai-writer/docs/intro",
               "draft": false,
-              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/10-intro.md",
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/intro.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 10,
@@ -110,13 +114,9 @@
                 "sidebar_position": 10
               },
               "sidebar": "docSidebar",
-              "previous": {
-                "title": "Colors",
-                "permalink": "/docs/colors"
-              },
               "next": {
-                "title": "Tutorial - eli5 recipe",
-                "permalink": "/docs/category/tutorial---eli5-recipe"
+                "title": "Concepts",
+                "permalink": "/ai-writer/docs/concepts"
               }
             },
             {
@@ -127,7 +127,7 @@
               "source": "@site/docs/tutorial-eli5/04-aiconfig-file.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/aiconfig-file",
-              "permalink": "/docs/tutorial-eli5/aiconfig-file",
+              "permalink": "/ai-writer/docs/tutorial-eli5/aiconfig-file",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/04-aiconfig-file.md",
               "tags": [],
@@ -139,11 +139,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Prompt template file",
-                "permalink": "/docs/tutorial-eli5/prompt-template-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/prompt-template-file"
               },
               "next": {
                 "title": "Executing the recipe",
-                "permalink": "/docs/tutorial-eli5/executing-the-recipe"
+                "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe"
               }
             },
             {
@@ -154,7 +154,7 @@
               "source": "@site/docs/tutorial-eli5/06-congratulations.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/congratulations",
-              "permalink": "/docs/tutorial-eli5/congratulations",
+              "permalink": "/ai-writer/docs/tutorial-eli5/congratulations",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/06-congratulations.md",
               "tags": [],
@@ -166,11 +166,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Executing the recipe",
-                "permalink": "/docs/tutorial-eli5/executing-the-recipe"
+                "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe"
               },
               "next": {
                 "title": "Contributing",
-                "permalink": "/docs/contributing"
+                "permalink": "/ai-writer/docs/contributing"
               }
             },
             {
@@ -181,7 +181,7 @@
               "source": "@site/docs/tutorial-eli5/01-create-a-recipe.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/create-a-recipe",
-              "permalink": "/docs/tutorial-eli5/create-a-recipe",
+              "permalink": "/ai-writer/docs/tutorial-eli5/create-a-recipe",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/01-create-a-recipe.md",
               "tags": [],
@@ -193,11 +193,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Tutorial - eli5 recipe",
-                "permalink": "/docs/category/tutorial---eli5-recipe"
+                "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
               },
               "next": {
                 "title": "Parameters file",
-                "permalink": "/docs/tutorial-eli5/parameters-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/parameters-file"
               }
             },
             {
@@ -208,7 +208,7 @@
               "source": "@site/docs/tutorial-eli5/05-executing-the-recipe.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/executing-the-recipe",
-              "permalink": "/docs/tutorial-eli5/executing-the-recipe",
+              "permalink": "/ai-writer/docs/tutorial-eli5/executing-the-recipe",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/05-executing-the-recipe.md",
               "tags": [],
@@ -220,11 +220,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "AI config file",
-                "permalink": "/docs/tutorial-eli5/aiconfig-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/aiconfig-file"
               },
               "next": {
                 "title": "Congratulations!",
-                "permalink": "/docs/tutorial-eli5/congratulations"
+                "permalink": "/ai-writer/docs/tutorial-eli5/congratulations"
               }
             },
             {
@@ -235,7 +235,7 @@
               "source": "@site/docs/tutorial-eli5/02-parameters-file.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/parameters-file",
-              "permalink": "/docs/tutorial-eli5/parameters-file",
+              "permalink": "/ai-writer/docs/tutorial-eli5/parameters-file",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/02-parameters-file.md",
               "tags": [],
@@ -247,11 +247,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Create a recipe",
-                "permalink": "/docs/tutorial-eli5/create-a-recipe"
+                "permalink": "/ai-writer/docs/tutorial-eli5/create-a-recipe"
               },
               "next": {
                 "title": "Prompt template file",
-                "permalink": "/docs/tutorial-eli5/prompt-template-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/prompt-template-file"
               }
             },
             {
@@ -262,7 +262,7 @@
               "source": "@site/docs/tutorial-eli5/03-prompt-template-file.md",
               "sourceDirName": "tutorial-eli5",
               "slug": "/tutorial-eli5/prompt-template-file",
-              "permalink": "/docs/tutorial-eli5/prompt-template-file",
+              "permalink": "/ai-writer/docs/tutorial-eli5/prompt-template-file",
               "draft": false,
               "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorial-eli5/03-prompt-template-file.md",
               "tags": [],
@@ -274,11 +274,11 @@
               "sidebar": "docSidebar",
               "previous": {
                 "title": "Parameters file",
-                "permalink": "/docs/tutorial-eli5/parameters-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/parameters-file"
               },
               "next": {
                 "title": "AI config file",
-                "permalink": "/docs/tutorial-eli5/aiconfig-file"
+                "permalink": "/ai-writer/docs/tutorial-eli5/aiconfig-file"
               }
             }
           ],
@@ -287,15 +287,15 @@
             "docSidebar": [
               {
                 "type": "doc",
+                "id": "intro"
+              },
+              {
+                "type": "doc",
                 "id": "concepts"
               },
               {
                 "type": "doc",
                 "id": "colors"
-              },
-              {
-                "type": "doc",
-                "id": "intro"
               },
               {
                 "type": "category",
@@ -332,7 +332,7 @@
                   "type": "generated-index",
                   "description": "5 minutes to build a recipe that explains a topic to a 5 years old in any language.",
                   "slug": "/category/tutorial---eli5-recipe",
-                  "permalink": "/docs/category/tutorial---eli5-recipe"
+                  "permalink": "/ai-writer/docs/category/tutorial---eli5-recipe"
                 }
               },
               {
@@ -352,7 +352,7 @@
         {
           "id": "welcome",
           "metadata": {
-            "permalink": "/blog/welcome",
+            "permalink": "/ai-writer/blog/welcome",
             "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-26-welcome/index.md",
             "source": "@site/blog/2021-08-26-welcome/index.md",
             "title": "Welcome",
@@ -362,15 +362,15 @@
             "tags": [
               {
                 "label": "facebook",
-                "permalink": "/blog/tags/facebook"
+                "permalink": "/ai-writer/blog/tags/facebook"
               },
               {
                 "label": "hello",
-                "permalink": "/blog/tags/hello"
+                "permalink": "/ai-writer/blog/tags/hello"
               },
               {
                 "label": "docusaurus",
-                "permalink": "/blog/tags/docusaurus"
+                "permalink": "/ai-writer/blog/tags/docusaurus"
               }
             ],
             "readingTime": 0.405,
@@ -406,7 +406,7 @@
             },
             "nextItem": {
               "title": "MDX Blog Post",
-              "permalink": "/blog/mdx-blog-post"
+              "permalink": "/ai-writer/blog/mdx-blog-post"
             }
           },
           "content": "[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).\n\nSimply add Markdown files (or folders) to the `blog` directory.\n\nRegular blog authors can be added to `authors.yml`.\n\nThe blog post date can be extracted from filenames, such as:\n\n- `2019-05-30-welcome.md`\n- `2019-05-30-welcome/index.md`\n\nA blog post folder can be convenient to co-locate blog post images:\n\n![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)\n\nThe blog supports tags as well!\n\n**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config."
@@ -414,7 +414,7 @@
         {
           "id": "mdx-blog-post",
           "metadata": {
-            "permalink": "/blog/mdx-blog-post",
+            "permalink": "/ai-writer/blog/mdx-blog-post",
             "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-01-mdx-blog-post.mdx",
             "source": "@site/blog/2021-08-01-mdx-blog-post.mdx",
             "title": "MDX Blog Post",
@@ -424,7 +424,7 @@
             "tags": [
               {
                 "label": "docusaurus",
-                "permalink": "/blog/tags/docusaurus"
+                "permalink": "/ai-writer/blog/tags/docusaurus"
               }
             ],
             "readingTime": 0.175,
@@ -450,11 +450,11 @@
             },
             "prevItem": {
               "title": "Welcome",
-              "permalink": "/blog/welcome"
+              "permalink": "/ai-writer/blog/welcome"
             },
             "nextItem": {
               "title": "Long Blog Post",
-              "permalink": "/blog/long-blog-post"
+              "permalink": "/ai-writer/blog/long-blog-post"
             }
           },
           "content": "Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).\n\n:::tip\n\nUse the power of React to create interactive blog posts.\n\n```js\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n```\n\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n\n:::"
@@ -462,7 +462,7 @@
         {
           "id": "long-blog-post",
           "metadata": {
-            "permalink": "/blog/long-blog-post",
+            "permalink": "/ai-writer/blog/long-blog-post",
             "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-29-long-blog-post.md",
             "source": "@site/blog/2019-05-29-long-blog-post.md",
             "title": "Long Blog Post",
@@ -472,11 +472,11 @@
             "tags": [
               {
                 "label": "hello",
-                "permalink": "/blog/tags/hello"
+                "permalink": "/ai-writer/blog/tags/hello"
               },
               {
                 "label": "docusaurus",
-                "permalink": "/blog/tags/docusaurus"
+                "permalink": "/ai-writer/blog/tags/docusaurus"
               }
             ],
             "readingTime": 2.05,
@@ -501,11 +501,11 @@
             },
             "prevItem": {
               "title": "MDX Blog Post",
-              "permalink": "/blog/mdx-blog-post"
+              "permalink": "/ai-writer/blog/mdx-blog-post"
             },
             "nextItem": {
               "title": "First Blog Post",
-              "permalink": "/blog/first-blog-post"
+              "permalink": "/ai-writer/blog/first-blog-post"
             }
           },
           "content": "This is the summary of a very long blog post,\n\nUse a `<!--` `truncate` `-->` comment to limit blog post size in the list view.\n\n<!--truncate-->\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
@@ -513,7 +513,7 @@
         {
           "id": "first-blog-post",
           "metadata": {
-            "permalink": "/blog/first-blog-post",
+            "permalink": "/ai-writer/blog/first-blog-post",
             "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-28-first-blog-post.md",
             "source": "@site/blog/2019-05-28-first-blog-post.md",
             "title": "First Blog Post",
@@ -523,11 +523,11 @@
             "tags": [
               {
                 "label": "hola",
-                "permalink": "/blog/tags/hola"
+                "permalink": "/ai-writer/blog/tags/hola"
               },
               {
                 "label": "docusaurus",
-                "permalink": "/blog/tags/docusaurus"
+                "permalink": "/ai-writer/blog/tags/docusaurus"
               }
             ],
             "readingTime": 0.12,
@@ -558,7 +558,7 @@
             },
             "prevItem": {
               "title": "Long Blog Post",
-              "permalink": "/blog/long-blog-post"
+              "permalink": "/ai-writer/blog/long-blog-post"
             }
           },
           "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
@@ -573,7 +573,7 @@
             "first-blog-post"
           ],
           "metadata": {
-            "permalink": "/blog",
+            "permalink": "/ai-writer/blog",
             "page": 1,
             "postsPerPage": 10,
             "totalPages": 1,
@@ -584,19 +584,19 @@
         }
       ],
       "blogTags": {
-        "/blog/tags/facebook": {
+        "/ai-writer/blog/tags/facebook": {
           "label": "facebook",
           "items": [
             "welcome"
           ],
-          "permalink": "/blog/tags/facebook",
+          "permalink": "/ai-writer/blog/tags/facebook",
           "pages": [
             {
               "items": [
                 "welcome"
               ],
               "metadata": {
-                "permalink": "/blog/tags/facebook",
+                "permalink": "/ai-writer/blog/tags/facebook",
                 "page": 1,
                 "postsPerPage": 10,
                 "totalPages": 1,
@@ -607,13 +607,13 @@
             }
           ]
         },
-        "/blog/tags/hello": {
+        "/ai-writer/blog/tags/hello": {
           "label": "hello",
           "items": [
             "welcome",
             "long-blog-post"
           ],
-          "permalink": "/blog/tags/hello",
+          "permalink": "/ai-writer/blog/tags/hello",
           "pages": [
             {
               "items": [
@@ -621,7 +621,7 @@
                 "long-blog-post"
               ],
               "metadata": {
-                "permalink": "/blog/tags/hello",
+                "permalink": "/ai-writer/blog/tags/hello",
                 "page": 1,
                 "postsPerPage": 10,
                 "totalPages": 1,
@@ -632,7 +632,7 @@
             }
           ]
         },
-        "/blog/tags/docusaurus": {
+        "/ai-writer/blog/tags/docusaurus": {
           "label": "docusaurus",
           "items": [
             "welcome",
@@ -640,7 +640,7 @@
             "long-blog-post",
             "first-blog-post"
           ],
-          "permalink": "/blog/tags/docusaurus",
+          "permalink": "/ai-writer/blog/tags/docusaurus",
           "pages": [
             {
               "items": [
@@ -650,7 +650,7 @@
                 "first-blog-post"
               ],
               "metadata": {
-                "permalink": "/blog/tags/docusaurus",
+                "permalink": "/ai-writer/blog/tags/docusaurus",
                 "page": 1,
                 "postsPerPage": 10,
                 "totalPages": 1,
@@ -661,19 +661,19 @@
             }
           ]
         },
-        "/blog/tags/hola": {
+        "/ai-writer/blog/tags/hola": {
           "label": "hola",
           "items": [
             "first-blog-post"
           ],
-          "permalink": "/blog/tags/hola",
+          "permalink": "/ai-writer/blog/tags/hola",
           "pages": [
             {
               "items": [
                 "first-blog-post"
               ],
               "metadata": {
-                "permalink": "/blog/tags/hola",
+                "permalink": "/ai-writer/blog/tags/hola",
                 "page": 1,
                 "postsPerPage": 10,
                 "totalPages": 1,
@@ -685,19 +685,19 @@
           ]
         }
       },
-      "blogTagsListPath": "/blog/tags"
+      "blogTagsListPath": "/ai-writer/blog/tags"
     }
   },
   "docusaurus-plugin-content-pages": {
     "default": [
       {
         "type": "jsx",
-        "permalink": "/",
+        "permalink": "/ai-writer/",
         "source": "@site/src/pages/index.tsx"
       },
       {
         "type": "mdx",
-        "permalink": "/markdown-page",
+        "permalink": "/ai-writer/markdown-page",
         "source": "@site/src/pages/markdown-page.md",
         "title": "Markdown page example",
         "description": "You don't need React to write simple standalone pages.",

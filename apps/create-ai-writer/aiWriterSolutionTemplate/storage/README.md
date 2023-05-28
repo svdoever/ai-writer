@@ -1,1 +1,0 @@
-All output will end up in this storage folder

@@ -1,8 +1,6 @@
 import { Parameters, ParameterOption } from "./parameters";
 import { Command } from "commander";
-import { scaffoldAiWriterSolution } from "./scaffoldAiWriterSolution";
-import path from "path";
-import { isValidNpmFolderName, loadPackageJson } from "./packageJson";
+import { loadPackageJson } from "./packageJson";
 
 export function createRecipeProgram(recipe: string, parameters: Parameters, func: (options: any) => void): Command {
     const packageJson = loadPackageJson();
@@ -30,22 +28,4 @@ export function createRecipeProgram(recipe: string, parameters: Parameters, func
     recipeCommand.action(func);
 
     return program;
-}
-
-export function createProgram(): Command {
-    const packageJson = loadPackageJson();
-
-    const program = new Command();
-    program.version(packageJson.version);
-
-    const createCommand = program.command("create");
-    createCommand.requiredOption("--folder <lowercase-folder-name>", "folder where to create an ai-writer solution");
-    createCommand.action((options) => {
-        if (!isValidNpmFolderName(options.folder)) {
-            throw new Error(`Invalid folder name '${options.folder}', use only lowercase letters, numbers, underscores and hyphens, and start with a letter`);
-        }
-        scaffoldAiWriterSolution(options);
-    });
-    return program;
-
 }
