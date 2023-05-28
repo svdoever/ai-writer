@@ -1,7 +1,7 @@
 {
   "unversionedId": "intro",
   "id": "intro",
-  "title": "AI Writer",
+  "title": "Welcome to AI Writer",
   "description": "Introduction",
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
@@ -11,13 +11,13 @@
   "editUrl": "https://github.com/svdoever/ai-writer/tree/main/docs/docs/intro.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 10,
+  "sidebarPosition": 1,
   "frontMatter": {
-    "sidebar_position": 10
+    "sidebar_position": 1
   },
   "sidebar": "docSidebar",
   "next": {
-    "title": "Concepts",
-    "permalink": "/ai-writer/docs/concepts"
+    "title": "Installation",
+    "permalink": "/ai-writer/docs/installation"
   }
 }

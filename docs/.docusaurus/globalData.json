@@ -11,6 +11,11 @@
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "aiwriter-and-sourcecontrol",
+              "path": "/ai-writer/docs/aiwriter-and-sourcecontrol",
+              "sidebar": "docSidebar"
+            },
+            {
               "id": "colors",
               "path": "/ai-writer/docs/colors",
               "sidebar": "docSidebar"
@@ -26,8 +31,78 @@
               "sidebar": "docSidebar"
             },
             {
+              "id": "create-a-project",
+              "path": "/ai-writer/docs/create-a-project",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "how-does-aiwriter-work",
+              "path": "/ai-writer/docs/how-does-aiwriter-work",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "installation",
+              "path": "/ai-writer/docs/installation",
+              "sidebar": "docSidebar"
+            },
+            {
               "id": "intro",
               "path": "/ai-writer/docs/intro",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "models.json",
+              "path": "/ai-writer/docs/models.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "output-formats.json",
+              "path": "/ai-writer/docs/output-formats.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/aiconfig.json",
+              "path": "/ai-writer/docs/recipe-ingredients/aiconfig.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/dependencies.json",
+              "path": "/ai-writer/docs/recipe-ingredients/dependencies.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/functions.json",
+              "path": "/ai-writer/docs/recipe-ingredients/functions.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/getData.js",
+              "path": "/ai-writer/docs/recipe-ingredients/getData.js",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/parameters.json",
+              "path": "/ai-writer/docs/recipe-ingredients/parameters.json",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipe-ingredients/prompt.ejs",
+              "path": "/ai-writer/docs/recipe-ingredients/prompt.ejs",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "recipes",
+              "path": "/ai-writer/docs/recipes",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "terminal-window",
+              "path": "/ai-writer/docs/terminal-window",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "the-project-folder",
+              "path": "/ai-writer/docs/the-project-folder",
               "sidebar": "docSidebar"
             },
             {
@@ -58,6 +133,11 @@
             {
               "id": "tutorial-eli5/prompt-template-file",
               "path": "/ai-writer/docs/tutorial-eli5/prompt-template-file",
+              "sidebar": "docSidebar"
+            },
+            {
+              "id": "/category/recipe-ingredients",
+              "path": "/ai-writer/docs/category/recipe-ingredients",
               "sidebar": "docSidebar"
             },
             {

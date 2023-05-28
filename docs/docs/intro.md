@@ -1,17 +1,44 @@
 ---
-sidebar_position: 10
+sidebar_position: 1
 ---
 
-# AI Writer
+# Welcome to AI Writer
 
 ## Introduction
 
-AI Writer is a tool that can be used to generate content using AI. It is a command line tool that can be used to generate content based on a recipe. A recipe is a set of instructions or guidelines that describe how to prepare or make something, typically a dish of prepared food, but in our case: content. It serves as a roadmap, providing detailed steps that need to be followed to achieve the desired result.
+AI Writer is designed to generate content through the power of artificial intelligence, 
+much like utilizing ChatGTP for content creation. The quality of the content created by 
+AI relies heavily on the clarity and specificity of the questions you present. This question is 
+also called the "prompt". With AI Writer you have the tool to build powerful prompts.
 
-## How does it work?
+## The AI Writer CLI
 
-The following diagram shows the different parts of AI Writer and how they work together.
+AI Writer is a command line tool (a CLI) that can be used to generate powerful prompts based on a **recipe**. 
+A recipe is a set of instructions or guidelines that describe how to prepare or make something, 
+typically a dish of prepared food, but in our case: the prompt. This prompt is sent to OpenAI and
+the result (the "completion") is written to a file.
 
-![AI Writer](./diagrams/AI%20Writer%20recipe%20execution.excalidraw.png)
+## Recipe
 
-The concepts used in AI Writer are explained in the [Concepts](./concepts.md) section.
+A recipe has a name and a set of options. These options are passed to the recipe when we
+execute the recipe. For example, the recipe `eli5`, explain like I'm five, has options for 
+the `topic` to explain, the amount of `words` to use for the explanation, and the `language` 
+to explain the topic in.
+
+The `eli5` recipe can be executed as follows:
+
+```bash
+npx ai-writer eli5 --topic elephant --words 100 --language English --output eli5/elephant
+```
+
+This will execute the `eli5` recipe with the options `topic=elephant`, `words=100`, and `language=English`.
+The result will be written to the file `eli5/elephant.txt`, and look something like:
+
+> **An elephant is a big, grey animal with a long trunk. Elephants have big ears and four long legs. 
+> They use their trunk to pick up food and to drink water. Elephants live in Africa and Asia and 
+> they eat leaves, fruit, and grass. They are very strong and can carry heavy things. 
+> Elephants are very smart and they like to play.**
+
+Note that this command must always be executed from a folder within the project.
+
+

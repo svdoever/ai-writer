@@ -131,7 +131,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Serge van den Oever. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Serge van den Oever. Documentation built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -1,0 +1,8 @@
+{
+  "label": "Recipe ingredients",
+  "position": 55,
+  "link": {
+    "type": "generated-index",
+    "description": "The ingredients of a recipe."
+  }
+}
