@@ -12,7 +12,7 @@
         "ai-writer": "ai-writer"
     },
     "dependencies": {
-        "ai-writer": "^1.0.2",
+        "ai-writer": "^1.0.0",
         "axios": "^1.4.0",
         "commander": "^10.0.1",
         "dotenv": "^16.0.3",
