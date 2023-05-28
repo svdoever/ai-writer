@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.2",
+  "version": "1.0.31",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -27,10 +27,8 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "jest",
-    "publish-next": "npm version patch && npm publish",
-    "docsify:serve": "docsify serve docs --port 3300",
-    "ai-writer": "node ./dist/index.js",
-    "debug": "cd recipes/car-description && ai-writer car-description --name \"Citroen C6\" --type \"Diesel\" --range \"950\" --output \"Citroen C6 test\"  --verbose --dry-run"
+    "publish-next": "npm run build && npm version patch && npm publish",
+    "ai-writer": "node ./dist/index.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",
