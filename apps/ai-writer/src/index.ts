@@ -11,7 +11,7 @@ import "source-map-support/register";
 
 import { existsRecipe, showRecipes, validateRecipe } from "./recipes";
 import { readParameters } from "./parameters";
-import { createProgram, createRecipeProgram } from "./commanderUtils";
+import { createRecipeProgram } from "./commanderUtils";
 import { getSettings, setSettings } from "./settings";
 import { aiGenerator } from "./aiGenerator";
 import { wordWrapAndTrim } from "./wordWrapAndTrim";
@@ -81,10 +81,11 @@ import { log } from "console";
 
                     generateOutput(generatedOutput, path.join(settings.textsOutputFolder, options.output), outputFormat);
                 });
+                program.parse(process.argv);
             } else {
-                program = createProgram();
+                logger.error(`Recipe '${recipe}' does not exist`);
+                showRecipes();
             }
-            program.parse(process.argv);
         }
     } catch (error) {
         console.log(`error: ${error}`);
