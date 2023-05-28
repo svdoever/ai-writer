@@ -1,6 +1,6 @@
 {
   "name": "create-ai-writer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create a project for AI Writer. AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -18,12 +18,12 @@
     "url": "https://github.com/svdoever/ai-writer.git"
   },
   "license": "MIT",
-  "main": "./dist/index.js",
+  "main": "./dist/create.js",
   "bin": {
     "create-ai-writer": "./dist/create.js"
   },
   "scripts": {
-    "prepare": "npm run build && chmod +x ./dist/index.js",
+    "prepare": "npm run build && chmod +x ./dist/create.js",
     "build": "tsc",
     "watch": "tsc --watch",
     "create-ai-writer": "./dist/create.js",
