@@ -1,29 +1,48 @@
 {
   "name": "create-ai-writer",
-  "version": "1.0.0",
-  "description": "Create a project for AI Writer",
+  "version": "1.0.2",
+  "description": "Create a project for AI Writer. AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
+  "keywords": [
+    "AI",
+    "ChatGPT",
+    "OpenAI"
+  ],
+  "homepage": "https://svdoever.github.io/ai-writer/",
+  "author": {
+    "name": "Serge van den Oever",
+    "email": "svdoever@gmail.com",
+    "url": "https://www.sergevandenoever.nl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svdoever/ai-writer.git"
+  },
+  "license": "MIT",
+  "main": "./dist/index.js",
   "bin": {
-    "create-ai-writer": "tsx ./create.ts"
+    "create-ai-writer": "./dist/create.js"
   },
   "scripts": {
-    "create-ai-writer": "tsx ./create.ts",
+    "prepare": "npm run build && chmod +x ./dist/index.js",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "create-ai-writer": "./dist/create.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish-next": "npm version patch && npm publish"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "follow-redirects": "^1.15.2",
     "fs-extra": "^11.1.1",
     "shelljs": "^0.8.5",
-    "tsx": "^3.12.7",
     "unzipper": "^0.10.14",
     "validate-npm-package-name": "^5.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "@types/unzipper": "^0.10.6",
-    "@types/validate-npm-package-name": "^4.0.0"
+    "@types/validate-npm-package-name": "^4.0.0",
+    "@types/node": "^18.15.12",
+    "@types/shelljs": "^0.8.11",
+    "typescript": "^5.0.4"
   }
 }

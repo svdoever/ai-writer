@@ -10,7 +10,11 @@ export interface PackageJson {
     main: string;
     scripts: Record<string, string>;
     keywords: string[];
-    author: string;
+    author: {
+        name: string;
+        email: string;
+        url: string;
+    };
     license: string;
     engines: {
         node: string;

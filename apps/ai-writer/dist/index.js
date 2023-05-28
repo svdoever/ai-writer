@@ -68,7 +68,7 @@ const contextLogger_1 = require("./contextLogger");
             const packageJson = (0, packageJson_1.loadPackageJson)();
             logger.setDefaultLevel("info");
             logger.info(packageJson.description);
-            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author}, license: ${packageJson.license}\n`);
+            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}\n`);
             (0, recipes_1.showRecipes)();
         }
         else {
@@ -117,7 +117,7 @@ const contextLogger_1 = require("./contextLogger");
         }
     }
     catch (error) {
-        console.log(`error: ${error}`);
+        console.log(`${error}`);
     }
 }))();
 function generateOutput(output, outputPath, outputFormat) {

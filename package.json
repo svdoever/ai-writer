@@ -8,9 +8,10 @@
         "ai-writer-docs"
     ],
     "scripts": {
-        "dev": "concurrently 'npm:dev:docs' 'npm:dev:ai-writer'",
+        "dev": "concurrently 'npm:dev:docs' 'npm:dev:ai-writer' 'npm:dev:create-ai-writer'",
         "dev:docs": "npm run start --workspace=ai-writer-docs -- --port 3400",
-        "dev:ai-writer": "npm run watch --workspace=apps/ai-writer"
+        "dev:ai-writer": "npm run watch --workspace=apps/ai-writer",
+        "dev:create-ai-writer": "npm run watch --workspace=apps/create-ai-writer"
     },
     "devDependencies": {
         "concurrently": "^8.0.1"
