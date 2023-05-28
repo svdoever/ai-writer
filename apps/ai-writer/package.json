@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.32",
+  "version": "1.0.34",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -32,7 +32,7 @@
     "watch": "tsc --watch",
     "test": "jest",
     "publish-next": "npm run build && npm version patch && npm publish",
-    "ai-writer": "node ./dist/index.js"
+    "ai-writer": "./dist/index.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",
