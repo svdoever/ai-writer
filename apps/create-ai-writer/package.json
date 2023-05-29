@@ -1,6 +1,6 @@
 {
   "name": "create-ai-writer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create a project for AI Writer. AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -20,13 +20,13 @@
   "license": "MIT",
   "main": "./dist/create.js",
   "bin": {
-    "create-ai-writer": "./dist/create.js"
+    "create-ai-writer": "node ./dist/create.js"
   },
   "scripts": {
-    "prepare": "npm run build && chmod +x ./dist/create.js",
+    "_prepare": "npm run build && chmod +x ./dist/create.js",
     "build": "tsc",
     "watch": "tsc --watch",
-    "create-ai-writer": "./dist/create.js",
+    "create-ai-writer": "node ./dist/create.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish-next": "npm version patch && npm publish"
   },

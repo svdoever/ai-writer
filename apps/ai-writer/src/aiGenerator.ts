@@ -79,7 +79,7 @@ export async function aiGeneratorChatCompletion(openai: OpenAIApi, completionCon
     }
 }
 export function getAiConfiguration(recipe: string): any {
-    const recipesFolder = process.env.RECIPES_FOLDER!;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER!;
     const recipeFolder = path.join(recipesFolder, recipe);
     const aiConfigurationFile = path.join(recipeFolder, "aiconfig.json");
     const aiConfigurationJSON = fs.readFileSync(aiConfigurationFile, "utf8");

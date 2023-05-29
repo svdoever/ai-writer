@@ -43,13 +43,13 @@ export function setSettings(optionsForSettings: OptionsForSettings): void {
     if (!openAiApiKey) {
         throw new Error("No OPENAI_API_KEY environment variable found");
     }
-    const recipesFolder = process.env.RECIPES_FOLDER;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
     if (!recipesFolder) {
-        throw new Error("No RECIPES_FOLDER environment variable found");
+        throw new Error("No AIWRITER_RECIPES_FOLDER environment variable found");
     }
-    const textsOutputFolder = process.env.STORAGE_FOLDER;
+    const textsOutputFolder = process.env.AIWRITER_STORAGE_FOLDER;
     if (!textsOutputFolder) {
-        throw new Error("No STORAGE_FOLDER environment variable found");
+        throw new Error("No AIWRITER_STORAGE_FOLDER environment variable found");
     }
 
     const dryRun: boolean = !!optionsForSettings.dryRun;

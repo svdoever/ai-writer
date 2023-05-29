@@ -98,7 +98,7 @@ function aiGeneratorChatCompletion(openai, completionConfiguration, prompt) {
 }
 exports.aiGeneratorChatCompletion = aiGeneratorChatCompletion;
 function getAiConfiguration(recipe) {
-    const recipesFolder = process.env.RECIPES_FOLDER;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
     const recipeFolder = path_1.default.join(recipesFolder, recipe);
     const aiConfigurationFile = path_1.default.join(recipeFolder, "aiconfig.json");
     const aiConfigurationJSON = fs_1.default.readFileSync(aiConfigurationFile, "utf8");

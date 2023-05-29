@@ -22,7 +22,7 @@ the result (the "completion") is written to a file.
 
 A recipe has a name and a set of options. These options are passed to the recipe when we
 execute the recipe. For example, the recipe `eli5`, explain like I'm five, has options for 
-the `topic` to explain, the amount of `words` to use for the explanation, and the `language` 
+the `topic` to explain, the number of `words` to use for the explanation, and the `language` 
 to explain the topic in.
 
 The `eli5` recipe can be executed as follows:
@@ -32,7 +32,7 @@ npx ai-writer eli5 --topic elephant --words 100 --language English --output eli5
 ```
 
 This will execute the `eli5` recipe with the options `topic=elephant`, `words=100`, and `language=English`.
-The result will be written to the file `eli5/elephant.txt`, and look something like:
+The result will be written to the file `eli5/elephant.txt`, and look something like this:
 
 > **An elephant is a big, grey animal with a long trunk. Elephants have big ears and four long legs. 
 > They use their trunk to pick up food and to drink water. Elephants live in Africa and Asia and 

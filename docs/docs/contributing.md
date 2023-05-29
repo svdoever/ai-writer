@@ -1,18 +1,19 @@
 ---
-sidebar_position: 9999
+sidebar_position: 1000
 ---
 
 # Contributing
 
-Any contribution to AI Writer is welcome. This document describes how to contribute to AI Writer.
+AI Writer is an open-source project under the simple and permissive MIT license. Any contribution to AI Writer is welcome. This can be contributions for the documentation, contributions for the code, or contributions to the set of examples.
+
+# Contributions to documentation
+
+Documentation is really important in an open-source project. It helps users understand the available tooling and how to use it. Any contribution to the documentation of AI Writer is immensely appreciated and is easy to do through the features provided by GitHub to propose a change request. Every documentation page has an "Edit this page" link at the bottom of the text. Clicking this link will take you to the GitHub repository where you can propose a change to the documentation. The change will be reviewed and merged into the main branch if the changes are approved.
+
 
 # Contributions to code
 
 AI Writer is an open-source project. The source code is available on GitHub. Any contribution to the code is welcome. The easiest way to contribute to the code is to create a pull request with the changes. The pull request will be reviewed and merged into the main branch if the changes are approved.
-
-# Contributions to documentation
-
-Documentation is really important in an open-source project. It helps users understand the available tooling and how to use it. Any contribution to the documentation of AI Writer is immensely appreciated and is easy to do through the features provided by GitHub to propose a change request.
 
 ## "Running" the documentation
 
@@ -40,7 +41,7 @@ Note that to work from a VSCode started from WSL, you need to install it to WSL 
 
 ## Excalidraw
 
-Excalidraw is a great tool to create sketches. In combination with VSCode you can create an empty file `myimage.excalidraw.png`, and double-click it to open it within an embedded version of Excalidraw within Visual Studio Code. The image data will be saved as metadata within the `myimage.excalidraw.png` image, and the resulting image will be the png file. The Excalidraw extension can be installed in the Windows version of Visual Studio Code and does not have to be installed within WSL.
+Excalidraw is a great tool to create sketches. In combination with VSCode, you can create an empty file `myimage.excalidraw.png`, and double-click it to open it within an embedded version of Excalidraw within Visual Studio Code. The image data will be saved as metadata within the `myimage.excalidraw.png` image, and the resulting image will be the png file. The Excalidraw extension can be installed in the Windows version of Visual Studio Code and does not have to be installed within WSL.
 
 ## Paste Image
 

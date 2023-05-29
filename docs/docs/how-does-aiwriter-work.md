@@ -4,7 +4,7 @@ sidebar_position: 15
 
 # How does AI Writer work?
 
-The following diagram shows the different parts of AI Writer and how they work together.
+The diagram provided below illustrates the process of executing a recipe that is configured through options:
 
 ![AI Writer](./diagrams/AI%20Writer%20recipe%20execution.excalidraw.png)
 
