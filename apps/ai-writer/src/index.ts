@@ -19,8 +19,21 @@ import { getPromptForRecipe, getPromptTemplate } from "./prompt";
 import { ensureFolderForFile } from "./fileUtil";
 import { findEnvFile, findProjectRoot, loadPackageJson, validateNodeVersion } from "./packageJson";
 import { logCompletion, logConstructedPrompt, logOptions, logPromptTemplate, logRecipe } from "./contextLogger";
-import { log } from "console";
+import { getLatestPackageVersion } from "./getLatestPackageVersion";
 
+async function showAIWriterInfo() { 
+    const packageJson = loadPackageJson();
+    logger.info(`AI Writer version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}`);
+    logger.info(packageJson.description + "\n");
+    try {
+        const latestPublishedVersion = await getLatestPackageVersion(packageJson.name);
+        if (latestPublishedVersion !== packageJson.version) {
+            logger.warn(`A newer version of AI Writer is available: ${latestPublishedVersion}`);
+        }
+    } catch (error) {
+        logger.warn(`Failed to check for a newer version of AI Writer: ${(error as Error).message}`);
+    }   
+}
 (async () => {
     validateNodeVersion();
 
@@ -35,11 +48,8 @@ import { log } from "console";
 
     try {
         if (process.argv.length < 3) {
-            const packageJson = loadPackageJson();
             logger.setDefaultLevel("info");
-
-            logger.info(packageJson.description);
-            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}\n`);
+            showAIWriterInfo();
             showRecipes();
         } else {
             const recipe = process.argv[2];
@@ -56,6 +66,7 @@ import { log } from "console";
                     if (settings.debug) {
                         logger.setDefaultLevel("debug");
                     }
+                    showAIWriterInfo();
                     logRecipe(recipe);
                     logOptions(options);
                     validateRecipe(recipe);

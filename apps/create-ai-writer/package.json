@@ -1,6 +1,6 @@
 {
   "name": "create-ai-writer",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Create a project for AI Writer. AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",

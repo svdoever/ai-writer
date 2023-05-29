@@ -52,6 +52,23 @@ const prompt_1 = require("./prompt");
 const fileUtil_1 = require("./fileUtil");
 const packageJson_1 = require("./packageJson");
 const contextLogger_1 = require("./contextLogger");
+const getLatestPackageVersion_1 = require("./getLatestPackageVersion");
+function showAIWriterInfo() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const packageJson = (0, packageJson_1.loadPackageJson)();
+        logger.info(`AI Writer version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}`);
+        logger.info(packageJson.description + "\n");
+        try {
+            const latestPublishedVersion = yield (0, getLatestPackageVersion_1.getLatestPackageVersion)(packageJson.name);
+            if (latestPublishedVersion !== packageJson.version) {
+                logger.warn(`A newer version of AI Writer is available: ${latestPublishedVersion}`);
+            }
+        }
+        catch (error) {
+            logger.warn(`Failed to check for a newer version of AI Writer: ${error.message}`);
+        }
+    });
+}
 (() => __awaiter(void 0, void 0, void 0, function* () {
     (0, packageJson_1.validateNodeVersion)();
     // read .env file
@@ -65,10 +82,8 @@ const contextLogger_1 = require("./contextLogger");
     dotenv_1.default.config({ path: envPath });
     try {
         if (process.argv.length < 3) {
-            const packageJson = (0, packageJson_1.loadPackageJson)();
             logger.setDefaultLevel("info");
-            logger.info(packageJson.description);
-            logger.info(`Version: ${packageJson.version}, author: ${packageJson.author.name}, license: ${packageJson.license}\n`);
+            showAIWriterInfo();
             (0, recipes_1.showRecipes)();
         }
         else {
@@ -86,6 +101,7 @@ const contextLogger_1 = require("./contextLogger");
                     if (settings.debug) {
                         logger.setDefaultLevel("debug");
                     }
+                    showAIWriterInfo();
                     (0, contextLogger_1.logRecipe)(recipe);
                     (0, contextLogger_1.logOptions)(options);
                     (0, recipes_1.validateRecipe)(recipe);

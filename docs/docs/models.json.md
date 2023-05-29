@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # models.json
 
-The `models.json` file lives in the root of the project folder. This file contains OpenAI model configurations that can override fields of the default model configuration as defined in the[`aiconfig.json`](./recipes/aiconfig.json.md) file in the recipe folder. 
+The `models.json` file lives in the root of the project folder. This file contains OpenAI model configurations that can override fields of the default model configuration as defined in the[`aiconfig.json`](./recipe-ingredients/aiconfig.json) file in the recipe folder. 
 
 Override the default model configuration using the `--model-override` option of the `ai-writer` command.
 
