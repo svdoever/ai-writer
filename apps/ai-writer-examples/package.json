@@ -1,5 +1,5 @@
 {
-    "name": "ai-writer-samples",
+    "name": "ai-writer-examples",
     "version": "1.0.0",
     "description": "AI Writer project",
     "keywords": [
@@ -12,7 +12,7 @@
         "ai-writer": "ai-writer"
     },
     "dependencies": {
-        "ai-writer": "^1.0.0",
+        "ai-writer": "^1.0.40",
         "axios": "^1.4.0",
         "commander": "^10.0.1",
         "dotenv": "^16.0.3",
