@@ -1,1 +1,1 @@
-npm run ai-writer -- eli5 --topic divorce --language English --output "eli5/divorce"  --verbose
+npm run ai-writer -- eli5 --topic elephant --language English --output "eli5/elephant"  --verbose                                      

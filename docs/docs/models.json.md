@@ -27,8 +27,7 @@ The `models.json` file contains a JSON object with the following structure:
 ```
 
 All fields are optional, and the specified fields are merged with the default model configuration. The `stop` field is an array of strings that are used to stop the completion.
-
-By default the `models.json` file contains the following model overrides for easy switching between the OpenAI models:
+By default, the `models.json`` file contains the following model overrides for easy switching between the OpenAI models:
 
 ```json
 {
@@ -54,7 +53,7 @@ By default the `models.json` file contains the following model overrides for eas
 }
 ```
 
-On execution of a recipe, the default model configuration can be overridden using the `--model-override` option of the `ai-writer` command. For example, to use the `gpt-4` model, execute for example the following command:
+On execution of a recipe, the default model configuration can be overridden using the `--model-override` option of the `ai-writer` command. For example, to use the `gpt-4` model, execute the following command:
 
 ```bash
 npx ai-writer eli5 --topic elephant --model-override gpt-4 --output eli5/elephant

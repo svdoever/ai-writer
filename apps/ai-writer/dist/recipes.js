@@ -45,10 +45,10 @@ function showRecipes() {
 }
 exports.showRecipes = showRecipes;
 function validateRecipe(recipe) {
-    if (process.env.RECIPES_FOLDER === undefined) {
-        throw new Error("No 'RECIPES_FOLDER' environment variable found");
+    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
+        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
     }
-    const recipesFolder = process.env.RECIPES_FOLDER;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
     if (!fs_1.default.existsSync(recipesFolder)) {
         throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
     }
@@ -63,10 +63,10 @@ function validateRecipe(recipe) {
 }
 exports.validateRecipe = validateRecipe;
 function existsRecipe(recipe) {
-    if (process.env.RECIPES_FOLDER === undefined) {
-        throw new Error("No 'RECIPES_FOLDER' environment variable found");
+    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
+        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
     }
-    const recipesFolder = process.env.RECIPES_FOLDER;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
     if (!fs_1.default.existsSync(recipesFolder)) {
         throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
     }

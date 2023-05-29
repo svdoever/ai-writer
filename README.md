@@ -2,13 +2,13 @@ Welcome to the AI Writer project! The AI Writer project contains tooling, docume
 
 ## Getting Started
 
-To get started, head over to the documentation!
+To get started, head over to the [documentation](https://svdoever.github.io/ai-writer/)!
 
 ### Development
 
 If you check out this repository, you probably want to start development on ai-writer. This repository contains the source code for the ai-writer project.
 
 
-- install node version 18.16.0 (use nvm)
+- install node version 18.16.0 (use nvm if you depend on other versions)
 - run `npm install` in the root folder of the repository
 - run `npm run dev` to start development on the documentation and on the tooling

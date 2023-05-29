@@ -31,7 +31,7 @@ export function validateParameters(parameters: Parameters) {
 }
 
 export function readParameters(recipe: string): Parameters {
-    const recipesFolder = process.env.RECIPES_FOLDER!;
+    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER!;
     if (!fs.existsSync(recipesFolder)) {
         throw new Error(`No '${recipesFolder}' folder found`);
     }

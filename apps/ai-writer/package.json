@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -20,19 +20,19 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "bin": {
-    "ai-writer": "./dist/index.js"
+    "ai-writer": "node ./dist/index.js"
   },
   "engines": {
     "node": ">=18.0.0 <19.0.0",
     "npm": ">=9.0.0 <10.0.0"
   },
   "scripts": {
-    "prepare": "npm run build && chmod +x ./dist/index.js",
+    "_prepare": "npm run build && chmod +x ./dist/index.js",
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "jest",
     "publish-next": "npm run build && npm version patch && npm publish",
-    "ai-writer": "./dist/index.js"
+    "ai-writer": "node ./dist/index.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",

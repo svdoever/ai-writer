@@ -21,17 +21,7 @@ The `output-formats.json` file contains a JSON object with the following structu
 The `extension` field is the extension of the output file. The `wrappedExtension` field is the extension of the wrapped output file. The `wrapSize` field is the number of characters per line in the wrapped output file.
 
 The `wrappedExtension` and `wrapSize` fields are optional. A `wrappedExtension` is only relevant for text files. The `wrapSize` field is only relevant for text files and is used to wrap the output text file to a maximum number of characters per line.
-
-```json
-{
-    "txt": {
-        "extension": "txt",
-        "wrappedExtension": "wrapped.txt",
-        "wrapSize": 80
-    }
-}
-```
-By default the `output-formats.json` file contains the following output formats:
+By default, the `output-formats.json`` file contains the following output formats:
 
 ```json
 {
