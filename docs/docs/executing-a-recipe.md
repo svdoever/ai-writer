@@ -76,7 +76,7 @@ Dry-run completion on prompt:
 
 ## Overriding the model configuration
 
-Part of the ingredients of a recipe is the model configuration in the `aiconfig.json` file, as described in the [aiconfig.json](./aiconfig.json) section. The model configuration can be (partially) overridden using the `--model-config` option. For example, to override the model configuration of the `eli5` recipe, execute the following command:
+Part of the ingredients of a recipe is the model configuration in the `aiconfig.json` file, as described in the [aiconfig.json](./recipe-ingredients/aiconfig.json) section. The model configuration can be (partially) overridden using the `--model-config` option. For example, to override the model configuration of the `eli5` recipe, execute the following command:
 
 ```bash
 npx ai-writer eli5 --topic elephant --output eli5/elephant --model-config gpt-4

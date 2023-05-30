@@ -7,13 +7,13 @@ sidebar_position: 10
 When working with AI Writer, you will need to create a project. A project is a folder that contains the recipes that you want to use. You can create a project by executing the following command in a terminal window:
     
 ```bash
-npx create-ai-writer my-project
+npx create-ai-writer-project my-project
 ```
 
 This will create a new project in the folder `my-project`. You can also specify a path to create the project in a different folder:
 
 ```bash
-npx create-ai-writer ../../my-project
+npx create-ai-writer-project ../../my-project
 ```
 
 Now change into the new project folder by running `cd my-project` in your terminal. 
