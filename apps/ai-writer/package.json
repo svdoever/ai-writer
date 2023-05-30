@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",

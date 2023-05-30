@@ -6,13 +6,13 @@ This is a package to create a new ai-writer project.
 Use as follows:
 
 ```bash 
-npx create-ai-writer ai-writer-my-project
+npx create-ai-writer-project ai-writer-my-project
 ```
 
 or
 
 ```bash
-npx create-ai-writer ../../ai-writer-my-project
+npx create-ai-writer-project ../../ai-writer-my-project
 ```
 
 ## Publishing to npm

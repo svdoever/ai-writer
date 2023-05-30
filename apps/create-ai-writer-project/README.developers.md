@@ -6,7 +6,7 @@ To publish packages to npm you have to be logged in. To login execute the follow
 npm login
 ```
 
-To publish the package `create-ai-writer`execute the following command:
+To publish the package `create-ai-writer-project` execute the following command:
 
 ```bash
 npm publish
