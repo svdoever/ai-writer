@@ -1,8 +1,10 @@
 ---
-sidebar_position: 201
+sidebar_position: 60
 ---
 
 # The terminal window
+
+Executing AI Writer recipes.
 
 All recipes and scripts in AI Writer are executed in a terminal window.
 

@@ -1,0 +1,20 @@
+{
+  "description": "Create a description for a car",
+  "options": [
+    {
+      "option": "--name <name of car>",
+      "description": "The name of the car",
+      "required": true
+    },
+    {
+      "option": "--type <type of car, electric, gas>",
+      "description": "The type of car, electric, gas",
+      "required": true
+    },
+    {
+      "option": "--range <range in KM of the car>",
+      "description": "Range of car",
+      "required": true
+    }
+  ]
+}

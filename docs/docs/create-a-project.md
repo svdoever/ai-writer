@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Create a project
 
-When working with AI Writer, you will need to create a project. A project is a folder that contains the recipes that you want to use. You can create a project by executing the following command in a terminal window:
+When working with AI Writer, you will need to create a project. A project is a folder that contains the recipes that you want to use, and the configuration required for AI Writer. You can create a project by executing the following command in a [terminal window](./advanced/terminal-window):
     
 ```bash
 npx create-ai-writer-project my-project

@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Create a recipe
 
+Create your first recipe.
+
 To create a new recipe, create a new folder in the `recipes` folder. The folder name will be the name of the recipe.
 
 In this tutorial, we will create a recipe that explains a topic to a 5 years old in a given number of words, in a given language.

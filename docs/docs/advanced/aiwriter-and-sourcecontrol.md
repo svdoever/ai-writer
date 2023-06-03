@@ -1,8 +1,11 @@
 ---
-sidebar_position: 200
+sidebar_position: 70
 ---
 
-# AI Writer and source control
+# Source control
+
+Ensure your project is safe.
+
 
 When a new project is created with AI Writer, it is best to store the project in a source control system like Git. This allows you to track changes to your project and to collaborate with others.
 

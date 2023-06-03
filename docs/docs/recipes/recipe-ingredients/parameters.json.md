@@ -1,17 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Parameters file
+# parameters.json
 
-Recipe options.
+The options for a recipe.
 
-The parameters file defines the options for the recipe. The values specified for the options are used 
-to generate the prompt, based on the prompt template `prompt.ejs`.
+The power of a recipe is in the options. The `parameters.json` file contains the options that can be specified when using the recipe.
 
-The parameters file is a JSON file. The file name is `parameters.json`.
-
-For this recipe, we need a topic, amount of words, and a language. We will create the following parameters:
+For example, for the `eli5` recipe this are the options:
 
 ```json
 {
@@ -37,4 +34,3 @@ For this recipe, we need a topic, amount of words, and a language. We will creat
   ]
 }
 ```
-

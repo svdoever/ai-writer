@@ -1,8 +1,10 @@
 ---
-sidebar_position: 1000
+sidebar_position: 30
 ---
 
 # Contributing
+
+Contributions are appreciated!
 
 AI Writer is an open-source project under the simple and permissive MIT license. Any contribution to AI Writer is welcome. This can be contributions for the documentation, contributions for the code, or contributions to the set of examples.
 
