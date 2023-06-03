@@ -1,8 +1,10 @@
 ---
-sidebar_position: 9999
+sidebar_position: 10
 ---
 
 # Troubleshooting
+
+When you get into trouble...
 
 Every system has its quirks, and every user has their own way of doing things. This page is a collection of common issues and their solutions. If issues can't be solved by the solutions here, please [open an issue](https://github.com/svdoever/ai-writer/issues) on GitHub.
 

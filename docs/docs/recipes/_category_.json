@@ -1,0 +1,8 @@
+{
+  "label": "Recipes",
+  "position": 40,
+  "link": {
+    "type": "generated-index",
+    "description": "AI Writer is driven by recipes."
+  }
+}

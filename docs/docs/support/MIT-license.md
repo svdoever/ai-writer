@@ -1,8 +1,10 @@
 ---
-sidebar_position: 1100
+sidebar_position: 40
 ---
 
 # MIT license
+
+A license for you...
 
 AI Writer is an open-source project under the MIT license. This means that you can use it for free, even for commercial purposes. You can also modify the code and distribute it.
 

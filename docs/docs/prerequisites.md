@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Supported environments
 
-AI Writer is written in JavaScript (Node.js) and can be used on any platform that supports Node.js. It has been tested on Windows, Linux, and macOS.
+AI Writer is written in JavaScript and runs on Node.js. This means that AI Writer can be used on any platform that supports Node.js. It has been tested on Windows, Linux, and macOS.
 
 ## Prerequisite: Node.js
 

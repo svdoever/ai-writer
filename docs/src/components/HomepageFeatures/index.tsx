@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+
 import styles from './styles.module.css';
 
 type FeatureItem = {
@@ -56,6 +57,9 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center padding-horiz--md">
+          <img src={require('@site/static/img/writing-robot.png').default} width="100" alt="The writing robot" style={{borderRadius: "20pc"}}/>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

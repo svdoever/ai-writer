@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # AI config file
 
+Configuring the model.
+
 The AI config file contains the configuration for the AI model. The AI model is used to generate the completion text, given a prompt.
 
 The AI config file is a JSON file. The file name is `aiconfig.json`.

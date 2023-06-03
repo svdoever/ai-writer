@@ -1,8 +1,10 @@
 ---
-sidebar_position: 13
+sidebar_position: 30
 ---
 
 # output-formats.json
+
+Output configurations.
 
 The `output-format.json` file lives in the root of the project folder. This file contains definitions of output formats that can be used by the `ai-writer` command.
 

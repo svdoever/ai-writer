@@ -1,0 +1,11 @@
+<%
+const fullname = getFullName({ firstName: "Serge", lastName: "van den Oever"})
+%>
+
+Write a nice and professional marketing text of 500 words about the car <%= name %> 
+which is <%= type %> and has a range of <%= range %> KM.
+
+Also write a section on the history of the car, 
+when it was first produced, and when production stopped.
+
+Mention <%= fullname %> as the author of the article, and the article date <%= formatDate(new Date()) %>, in a seperate section.

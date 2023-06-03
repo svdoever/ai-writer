@@ -1,10 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Prompt template file
+# prompt.ejs
 
-Building a powerful prompt.
+The power is in the prompt. 
+
+The `prompt.ejs` file contains the prompt template that is used to generate the text.
 
 The `prompt.ejs` file is a special file that contains the template for the prompt text. It is written in EJS (Embedded JavaScript) format, which allows for dynamic content generation. This file serves as a blueprint or guide for creating the final prompt by combining the template with specific data.
 
