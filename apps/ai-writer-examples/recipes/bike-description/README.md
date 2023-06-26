@@ -51,3 +51,5 @@ bike stopped in 2020 due to the company’s focus on newer models.
 Article Author: Serge van den Oever
 Article Date: 6/4/2023
 ```
+
+By the way: always check the facts, because the text above is NOT correct. The VanMoof S3 Electric Bike was first produced in 2020, not in 2017. But that is not the point of this example. The point is that you can easily generate a text like this with AI Writer.

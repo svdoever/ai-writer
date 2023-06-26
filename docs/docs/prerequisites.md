@@ -14,6 +14,17 @@ AI Writer requires Node.js to run. Check if you have Node.js installed on your c
 
 > Note: if you have another version of Node.js, consider using [nvm](https://github.com/nvm-sh/nvm), the Node version manager, which allows you to easily switch between different versions of Node.js.
 
-## Prerequisite: OpenAI API key
+## Prerequisite: OpenAI API key or access to Azure OpenAI Service
 
-AI Writer uses the OpenAI API to generate text. You will need an OpenAI API key to use AI Writer. You can find your API key on the [OpenAI dashboard](https://platform.openai.com/account/api-keys).
+AI Writer can currently work with the following APIs:
+
+- OpenAI API
+- Azure OpenAI Service
+
+### OpenAI API
+
+To use AI Writer with the OpenAI API, you will need an OpenAI API key. You can find your API key on the [OpenAI dashboard](https://platform.openai.com/account/api-keys).
+
+### Azure OpenAI Service
+
+

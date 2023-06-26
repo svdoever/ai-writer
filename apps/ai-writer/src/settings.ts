@@ -7,14 +7,13 @@ import { findProjectRoot } from "./packageJson";
 let settings: Settings | null = null;
 
 export type Settings = {
-    openAiApiKey: string;
     recipesFolder: string;
     textsOutputFolder: string;
     dryRun: boolean;
     verbose: boolean;
     debug: boolean;
     showOutput: boolean;
-    modelOverwrite?: string;
+    modelOverride?: string;
     models: { [key: string]: unknown };
 }
 
@@ -23,7 +22,7 @@ export type OptionsForSettings = {
     verbose?: boolean;
     debug?: boolean;
     showOutput?: boolean;
-    modelOverwrite?: string;
+    modelOverride?: string;
 }
 
 export function getSettings() {
@@ -56,27 +55,26 @@ export function setSettings(optionsForSettings: OptionsForSettings): void {
     const verbose: boolean = !!optionsForSettings.verbose;
     const debug: boolean = !!optionsForSettings.debug;
     const showOutput: boolean = !!optionsForSettings.showOutput;
-    const modelOverwrite: string | undefined = optionsForSettings.modelOverwrite;
+    const modelOverride: string | undefined = optionsForSettings.modelOverride;
 
     let models: { [key: string]: unknown } = {};
-    const modelsOverwriteFile = path.join(projectRootFolder, "models.json");
-    logger.debug(`modelsOverwriteFile: ${modelsOverwriteFile}`);
-    if (fs.existsSync(modelsOverwriteFile)) {
-        const modelsJSON = fs.readFileSync(modelsOverwriteFile, "utf8");
+    const modelsFile = path.join(projectRootFolder, "models.json");
+    logger.debug(`models file: ${modelsFile}`);
+    if (fs.existsSync(modelsFile)) {
+        const modelsJSON = fs.readFileSync(modelsFile, "utf8");
         models = JSON.parse(modelsJSON);
     } else {
-        throw new Error(`Models file expected at '${modelsOverwriteFile}'`);
+        throw new Error(`Models file expected at '${modelsFile}'`);
     }
 
     settings = {
-        openAiApiKey,
         recipesFolder,
         textsOutputFolder,
         dryRun,
         verbose,
         debug,
         showOutput,
-        modelOverwrite,
+        modelOverride,
         models
     };
 }

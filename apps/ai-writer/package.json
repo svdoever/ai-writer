@@ -1,6 +1,6 @@
 {
   "name": "ai-writer",
-  "version": "1.0.41",
+  "version": "1.0.43",
   "description": "AI Writer - AI-assisted content creator with configurable recipes. Uses OpenAI's API.",
   "keywords": [
     "AI",
@@ -30,8 +30,8 @@
     "npm": ">=9.0.0 <10.0.0"
   },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
+    "build": "tsc && chmod +x ./dist/index.js",
+    "watch": "npm run build && tsc --watch",
     "test": "jest",
     "publish-next": "npm run build && npm version patch && npm publish"
   },
@@ -50,6 +50,7 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
+    "@kei-g/chmod": "^1.0.12",
     "@types/ejs": "^3.1.2",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "^29.5.1",

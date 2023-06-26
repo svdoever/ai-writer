@@ -60,26 +60,25 @@ function setSettings(optionsForSettings) {
     const verbose = !!optionsForSettings.verbose;
     const debug = !!optionsForSettings.debug;
     const showOutput = !!optionsForSettings.showOutput;
-    const modelOverwrite = optionsForSettings.modelOverwrite;
+    const modelOverride = optionsForSettings.modelOverride;
     let models = {};
-    const modelsOverwriteFile = path_1.default.join(projectRootFolder, "models.json");
-    logger.debug(`modelsOverwriteFile: ${modelsOverwriteFile}`);
-    if (fs_1.default.existsSync(modelsOverwriteFile)) {
-        const modelsJSON = fs_1.default.readFileSync(modelsOverwriteFile, "utf8");
+    const modelsFile = path_1.default.join(projectRootFolder, "models.json");
+    logger.debug(`models file: ${modelsFile}`);
+    if (fs_1.default.existsSync(modelsFile)) {
+        const modelsJSON = fs_1.default.readFileSync(modelsFile, "utf8");
         models = JSON.parse(modelsJSON);
     }
     else {
-        throw new Error(`Models file expected at '${modelsOverwriteFile}'`);
+        throw new Error(`Models file expected at '${modelsFile}'`);
     }
     settings = {
-        openAiApiKey,
         recipesFolder,
         textsOutputFolder,
         dryRun,
         verbose,
         debug,
         showOutput,
-        modelOverwrite,
+        modelOverride,
         models
     };
 }

@@ -27,7 +27,6 @@ In this folder we will create the following files:
 
 - `parameters.json` - this file contains the options for the recipe
 - `prompt.ejs` - this file contains the prompt template that will be used to generate the text
-- `aiconfig.json` - this file contains the configuration for the AI model
 
 This set of files in the minimal set that is needed to create a recipe.
 
