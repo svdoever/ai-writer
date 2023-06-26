@@ -35,85 +35,75 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAiConfiguration = exports.aiGeneratorChatCompletion = exports.aiGeneratorCompletion = exports.aiGenerator = void 0;
-const path_1 = __importDefault(require("path"));
-const fs_1 = __importDefault(require("fs"));
+exports.getModelConfiguration = exports.aiGenerator = void 0;
+const fs_extra_1 = __importDefault(require("fs-extra"));
 const logger = __importStar(require("loglevel"));
-const openai_1 = require("openai");
+const openai_1 = require("@azure/openai");
 const settings_1 = require("./settings");
+const OpenAiProvider_1 = require("./providers/OpenAiProvider");
 function aiGenerator(recipe, prompt) {
     return __awaiter(this, void 0, void 0, function* () {
         const settings = (0, settings_1.getSettings)();
-        const configuration = new openai_1.Configuration({
-            apiKey: settings.openAiApiKey,
-        });
-        const openai = new openai_1.OpenAIApi(configuration);
-        const aiConfiguration = getAiConfiguration(recipe);
-        switch (aiConfiguration.type) {
-            case "completion":
-                const completionConfiguration = aiConfiguration.completion;
-                return aiGeneratorCompletion(openai, aiConfiguration.completion, prompt);
-            case "chat.completion":
-                return aiGeneratorChatCompletion(openai, aiConfiguration.completion, prompt);
+        const modelConfiguration = getModelConfiguration(recipe, settings.modelOverride);
+        if (!modelConfiguration) {
+            throw new Error(`No model configuration found for recipe: ${recipe}`);
+        }
+        switch (modelConfiguration.provider) {
+            case "OpenAI": {
+                if (!process.env.OPENAI_API_KEY) {
+                    throw new Error(`OPENAI_API_KEY environment variable not set`);
+                }
+                const apiKey = process.env.AZURE_OPENAI_API_KEY;
+                const openAiClient = new openai_1.OpenAIClient(new openai_1.OpenAIKeyCredential(apiKey));
+                const result = yield (0, OpenAiProvider_1.openaiExecuteGeneration)(openAiClient, modelConfiguration, prompt);
+                return result;
+                break;
+            }
+            case "Azure": {
+                if (!process.env.AZURE_OPENAI_API_KEY) {
+                    throw new Error(`AZURE_OPENAI_API_KEY environment variable not set`);
+                }
+                if (!process.env.AZURE_OPENAI_ENDPOINT) {
+                    throw new Error(`AZURE_OPENAI_ENDPOINT environment variable not set`);
+                }
+                const apiKey = process.env.AZURE_OPENAI_API_KEY;
+                const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
+                const openAiClient = new openai_1.OpenAIClient(endpoint, new openai_1.AzureKeyCredential(apiKey));
+                const result = yield (0, OpenAiProvider_1.openaiExecuteGeneration)(openAiClient, modelConfiguration, prompt);
+                return result;
+                break;
+            }
             default:
-                throw new Error(`Unknown AI type: ${aiConfiguration.type}, please check your aiconfig.json file. Currently supported: completion, chat.completion`);
+                throw new Error(`Unknown AI provider: ${modelConfiguration.provider}`);
+                break;
         }
     });
 }
 exports.aiGenerator = aiGenerator;
-function aiGeneratorCompletion(openai, completionConfiguration, prompt) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const aiCompletionConfigurationWithPrompt = Object.assign(Object.assign({}, completionConfiguration), { prompt });
-        logger.debug(`Generating text for completion with the following configuration: ${JSON.stringify(aiCompletionConfigurationWithPrompt, null, 2)}`);
-        const response = yield openai.createCompletion(aiCompletionConfigurationWithPrompt);
-        try {
-            const generatedText = response.data.choices[0].text;
-            return generatedText;
-        }
-        catch (error) {
-            throw new Error(`OpenAI error while generating text for completion: ${aiCompletionConfigurationWithPrompt}`);
-        }
-    });
-}
-exports.aiGeneratorCompletion = aiGeneratorCompletion;
-function aiGeneratorChatCompletion(openai, completionConfiguration, prompt) {
-    var _a;
-    return __awaiter(this, void 0, void 0, function* () {
-        const aiChatCompletionConfigurationWithMessages = Object.assign(Object.assign({}, completionConfiguration), { messages: [
-                {
-                    role: "user",
-                    content: prompt
-                }
-            ] });
-        logger.debug(`Generating text for chat completion with the following configuration: ${JSON.stringify(aiChatCompletionConfigurationWithMessages, null, 2)}`);
-        const response = yield openai.createChatCompletion(aiChatCompletionConfigurationWithMessages);
-        try {
-            const generatedText = (_a = response.data.choices[0].message) === null || _a === void 0 ? void 0 : _a.content;
-            return generatedText;
-        }
-        catch (error) {
-            throw new Error(`OpenAI error while generating text for completion: ${aiChatCompletionConfigurationWithMessages}`);
-        }
-    });
-}
-exports.aiGeneratorChatCompletion = aiGeneratorChatCompletion;
-function getAiConfiguration(recipe) {
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
-    const recipeFolder = path_1.default.join(recipesFolder, recipe);
-    const aiConfigurationFile = path_1.default.join(recipeFolder, "aiconfig.json");
-    const aiConfigurationJSON = fs_1.default.readFileSync(aiConfigurationFile, "utf8");
-    let aiConfiguration = JSON.parse(aiConfigurationJSON);
-    const settings = (0, settings_1.getSettings)();
-    if (settings.modelOverwrite) {
-        const modelOverwrite = settings.models[settings.modelOverwrite];
-        if (!modelOverwrite) {
-            throw new Error(`Model overwrite '${settings.modelOverwrite}' not found in models.json`);
+function getModelConfiguration(recipe, modelOverride) {
+    const modelsConfiguration = fs_extra_1.default.readJSONSync("models.json", "utf8");
+    let recipeModel = modelOverride;
+    if (!recipeModel) {
+        recipeModel = modelsConfiguration.recipeDefaultModel[recipe];
+    }
+    if (!recipeModel) {
+        logger.info(`Models.json does not contain a default model for recipe ${recipe} - trying general default model`);
+        if (!modelsConfiguration.defaultModel) {
+            throw new Error(`Models.json does not contain a default model for recipe ${recipe}, and does not contain a general default model as fallback`);
         }
         else {
-            aiConfiguration = Object.assign(Object.assign({}, aiConfiguration), modelOverwrite);
+            logger.info(`Using general default model ${modelsConfiguration.defaultModel} for recipe ${recipe}`);
+            recipeModel = modelsConfiguration.defaultModel;
         }
     }
-    return aiConfiguration;
+    else {
+        logger.info(`Using recipe default model ${recipeModel} for recipe ${recipe}`);
+    }
+    const modelConfiguration = modelsConfiguration.modelConfigurations[recipeModel];
+    if (!modelConfiguration) {
+        throw new Error(`Models.json does not contain a model configuration for model ${recipeModel}`);
+    }
+    return modelConfiguration;
 }
-exports.getAiConfiguration = getAiConfiguration;
+exports.getModelConfiguration = getModelConfiguration;
 //# sourceMappingURL=aiGenerator.js.map

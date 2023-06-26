@@ -76,13 +76,13 @@ Dry-run completion on prompt:
 
 ## Overriding the model configuration
 
-Part of the ingredients of a recipe is the model configuration in the `aiconfig.json` file, as described in the [aiconfig.json](../recipes/recipe-ingredients/aiconfig.json) section. The model configuration can be (partially) overridden using the `--model-config` option. For example, to override the model configuration of the `eli5` recipe, execute the following command:
+A recipe has a default model configuration as defined in the file `models.json`. This model configuration can be overridden using the `--model-override` option. For example, to override the model configuration of the `eli5` recipe, execute the following command:
 
 ```bash
-npx ai-writer eli5 --topic elephant --output eli5/elephant --model-config gpt-4
+npx ai-writer eli5 --topic elephant --output eli5/elephant --model-override azure-gpt-35
 ```
 
-The available model overrides are defined in the `models.json` file. See the [models.json](../project/models.json) page for more information. This option is very useful for testing out the results of other models (e.g. `gpt-4` versus `gpt-3.5-turbo` versus `text-davinci-003`), but also because Azure OpenAI Service and OpenAI use different model names of the same model.
+The available models are defined in the `models.json` file. See the [models.json](../project/models.json.md) page for more information. This option is very useful for testing out the results of other models (e.g. `gpt-4` versus `gpt-3.5-turbo` versus `text-davinci-003`), but also because Azure OpenAI Service and OpenAI use different model names for the same model.
 
 ## Verbose and debug output
 
