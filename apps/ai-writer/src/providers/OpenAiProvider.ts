@@ -70,6 +70,6 @@ async function openaiChatCompletionGenerator(openai: OpenAIClient, completionCon
         logger.info("");
         return generatedText;
     } catch (error) {
-        throw new Error(`OpenAI error while generating text for completion: ${completionConfiguration}`);
+        throw new Error(`OpenAI error '${(error as Error).message}' while generating text for completion: ${JSON.stringify(completionConfiguration, null, 2)}`);
     }
 }
