@@ -8,7 +8,7 @@ The available models.
 
 The `models.json` file lives in the root of the project folder. This file contains model configurations, the default model to use, and configuration per recipe of the model to use.
 
-## The file structure
+## The structure of models.json
 
 The `models.json` file contains a JSON object with the following structure:
 
@@ -37,9 +37,25 @@ The `models.json` file contains a JSON object with the following structure:
 }
 ```
 
-There are two types of completions for the Azure and OpenAI providers: `completion` and `chat.completion`. The `completion` type is used for completion models like `text-davinci-003`, and the `chat.completion` type is used for chatbot models that are also really good at completion like `gtp-3.5-turbo` and `gpt-4`.
+The `defaultModel` specifies the model name that is used for a recipe when no explicit model name is specified for a recipe in the `recipeDefaultModel` element.
+
+The `recipeDefaultModel` element gives the opportunity to specify the default model to use for the specific recipe. So it possible to have each recipe to use its own model, e.g.:
+
+```json
+    "recipeDefaultModel": {
+        "eli5": "azure-gpt-35",
+        "starwars-story": "azure-davinci",
+        "bike-description": "openai-gpt-4"
+    },
+```
+
+The `modelConfigurations` element contains a configuration per model, where each model has a name, a `description`, a provider (`Azure` and `OpenAI` for now), and the `completion` configuration.
+
+There are two types of completions for the **Azure** and **OpenAI** providers: `completion` and `chat.completion`. The `completion` type is used for completion models like `text-davinci-003`, and the `chat.completion` type is used for chatbot models that are also really good at completion like `gtp-3.5-turbo` and `gpt-4`.
 
 See the [OpenAI API documentation](https://platform.openai.com/docs/api-reference/completions/create) for more information about the model configuration fields.
+
+Note that the `completion` section is passed to the **Azure** and **OpenAI** APIs "as"is".
 
 ## Override the default model for a recipe
 
@@ -90,7 +106,7 @@ The `models.json` configuration is as follows:
             "provider": "Azure",
             "type": "chat.completion",
             "completion": {
-                "model": "gpt35turbo",
+                "model": "gpt-35-turbo",
                 "max_tokens": 1000,
                 "temperature": 0.0,
                 "top_p": 1,

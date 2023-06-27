@@ -24,7 +24,7 @@
             "provider": "Azure",
             "type": "chat.completion",
             "completion": {
-                "model": "gpt35turbo",
+                "model": "gpt-35-turbo",
                 "max_tokens": 1000,
                 "temperature": 0.0,
                 "top_p": 1,
