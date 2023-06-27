@@ -36,6 +36,9 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    '@easyops-cn/docusaurus-search-local'
+  ],
   presets: [
     [
       'classic',
