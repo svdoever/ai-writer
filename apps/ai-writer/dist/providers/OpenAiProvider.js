@@ -118,7 +118,7 @@ function openaiChatCompletionGenerator(openai, completionConfiguration, prompt) 
             return generatedText;
         }
         catch (error) {
-            throw new Error(`OpenAI error while generating text for completion: ${completionConfiguration}`);
+            throw new Error(`OpenAI error '${error.message}' while generating text for completion: ${JSON.stringify(completionConfiguration, null, 2)}`);
         }
     });
 }
