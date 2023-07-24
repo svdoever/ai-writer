@@ -19,7 +19,10 @@ export async function aiGenerator(recipe: string, prompt: string): Promise<strin
             if (!process.env.OPENAI_API_KEY) {
                 throw new Error(`OPENAI_API_KEY environment variable not set`);
             }
-            const apiKey = process.env.AZURE_OPENAI_API_KEY as string;
+            const apiKey = process.env.OPENAI_API_KEY as string;
+            if (!apiKey.startsWith("sk-")) {
+                throw new Error(`OPENAI_API_KEY environment variable does not start with 'sk-'`);
+            }
             const openAiClient = new OpenAIClient(new OpenAIKeyCredential(apiKey));
             const result = await openaiExecuteGeneration(openAiClient, modelConfiguration, prompt);
             return result;
