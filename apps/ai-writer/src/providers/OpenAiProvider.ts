@@ -50,7 +50,7 @@ async function openaiChatCompletionGenerator(openai: OpenAIClient, completionCon
     logger.debug(`Generating text for chat completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`)
 
     const events = await openai.listChatCompletions(completionConfiguration.model, messages, completionConfiguration);
-    if (logger.getLevel() <= logger.levels.INFO) {
+    if (logger.getLevel() <= logger.levels.DEBUG) {
         process.stdout.write("Completion: ");
     }
     try {
@@ -59,7 +59,7 @@ async function openaiChatCompletionGenerator(openai: OpenAIClient, completionCon
             for (const choice of event.choices) {
                 const delta = choice.delta?.content;
                 if (delta !== undefined) {
-                    if (logger.getLevel() <= logger.levels.INFO) {
+                    if (logger.getLevel() <= logger.levels.DEBUG) {
                         process.stdout.write(delta);
                     }
                     generatedText += delta;
