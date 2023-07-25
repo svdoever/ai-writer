@@ -53,7 +53,10 @@ function aiGenerator(recipe, prompt) {
                 if (!process.env.OPENAI_API_KEY) {
                     throw new Error(`OPENAI_API_KEY environment variable not set`);
                 }
-                const apiKey = process.env.AZURE_OPENAI_API_KEY;
+                const apiKey = process.env.OPENAI_API_KEY;
+                if (!apiKey.startsWith("sk-")) {
+                    throw new Error(`OPENAI_API_KEY environment variable does not start with 'sk-'`);
+                }
                 const openAiClient = new openai_1.OpenAIClient(new openai_1.OpenAIKeyCredential(apiKey));
                 const result = yield (0, OpenAiProvider_1.openaiExecuteGeneration)(openAiClient, modelConfiguration, prompt);
                 return result;
