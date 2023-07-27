@@ -53,10 +53,10 @@ export async function aiGenerator(recipe: string, prompt: string): Promise<strin
 
 
 
-export function getModelConfiguration(recipe: string, modelOverride?: string): ModelConfiguration {
+export function getModelConfiguration(recipe: string, modelOverride: string = ""): ModelConfiguration {
     const modelsConfiguration: ModelsConfiguration = fs.readJSONSync("models.json", "utf8");
     let recipeModel = modelOverride;
-    if (!recipeModel) {
+    if (recipeModel = "") {
         recipeModel =  modelsConfiguration.recipeDefaultModel[recipe];
     }
     if (!recipeModel) {

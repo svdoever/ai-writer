@@ -36,6 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.executeRecipe = void 0;
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 const logger = __importStar(require("loglevel"));
@@ -69,8 +70,92 @@ function showAIWriterInfo() {
         }
     });
 }
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    (0, packageJson_1.validateNodeVersion)();
+function executeRecipe(recipe, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // validateNodeVersion();
+        loadEnv();
+        if ((0, recipes_1.existsRecipe)(recipe)) {
+            (0, recipes_1.validateRecipe)(recipe);
+            const parameters = (0, parameters_1.readParameters)(recipe);
+            const enhancedOptions = enhanceOptions(options, parameters);
+            // read global settings from environment variables and command line options
+            // use the original options, only general parameters used here
+            (0, settings_1.setSettings)(options);
+            const settings = (0, settings_1.getSettings)();
+            if (settings.verbose || settings.dryRun) {
+                logger.setDefaultLevel("info");
+            }
+            if (settings.debug) {
+                logger.setDefaultLevel("debug");
+            }
+            showAIWriterInfo();
+            (0, contextLogger_1.logRecipe)(recipe);
+            (0, contextLogger_1.logOptions)(enhancedOptions);
+            (0, recipes_1.validateRecipe)(recipe);
+            const promptTemplate = (0, prompt_1.getPromptTemplate)(recipe);
+            (0, contextLogger_1.logPromptTemplate)(promptTemplate);
+            const prompt = yield (0, prompt_1.getPromptForRecipe)(recipe, enhancedOptions);
+            (0, contextLogger_1.logConstructedPrompt)(prompt);
+            let generatedOutput;
+            if (settings.dryRun) {
+                logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'\n");
+                generatedOutput = `Dry-run completion on prompt: ${prompt}`;
+            }
+            else {
+                logger.debug("Sending the prompt to the language model");
+                generatedOutput = yield (0, aiGenerator_1.aiGenerator)(recipe, prompt);
+            }
+            const outputFormat = options.outputFormat ? options.outputFormat : "txt";
+            if (settings.showOutput || settings.verbose) {
+                displayOutput(generatedOutput, outputFormat);
+            }
+            if (options.output && options.output !== "") {
+                generateOutput(generatedOutput, path_1.default.join(settings.textsOutputFolder, options.output), outputFormat);
+            }
+            else {
+                logger.info("No output path specified, not writing output to file");
+            }
+            return generatedOutput;
+        }
+        else {
+            logger.error(`Recipe '${recipe}' does not exist`);
+            (0, recipes_1.showRecipes)();
+            throw new Error(`Recipe '${recipe}' does not exist`);
+        }
+    });
+}
+exports.executeRecipe = executeRecipe;
+// Check if this module is being run directly (as a CLI)
+if (require.main === module) {
+    (() => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            if (process.argv.length < 3) {
+                logger.setDefaultLevel("info");
+                showAIWriterInfo();
+                (0, recipes_1.showRecipes)();
+            }
+            else {
+                const recipe = process.argv[2];
+                let program;
+                loadEnv();
+                if ((0, recipes_1.existsRecipe)(recipe)) {
+                    (0, recipes_1.validateRecipe)(recipe);
+                    const parameters = (0, parameters_1.readParameters)(recipe);
+                    program = (0, commanderUtils_1.createRecipeProgram)(recipe, parameters, (options) => __awaiter(void 0, void 0, void 0, function* () { return executeRecipe(recipe, options); }));
+                    program.parse(process.argv);
+                }
+                else {
+                    logger.error(`Recipe '${recipe}' does not exist`);
+                    (0, recipes_1.showRecipes)();
+                }
+            }
+        }
+        catch (error) {
+            console.log(`${error}`);
+        }
+    }))();
+}
+function loadEnv() {
     // read .env file
     const envPath = (0, packageJson_1.findEnvFile)(process.cwd());
     if (envPath) {
@@ -80,67 +165,12 @@ function showAIWriterInfo() {
         logger.error('Did not find a .env file');
     }
     dotenv_1.default.config({ path: envPath });
-    try {
-        if (process.argv.length < 3) {
-            logger.setDefaultLevel("info");
-            showAIWriterInfo();
-            (0, recipes_1.showRecipes)();
-        }
-        else {
-            const recipe = process.argv[2];
-            let program;
-            if ((0, recipes_1.existsRecipe)(recipe)) {
-                (0, recipes_1.validateRecipe)(recipe);
-                const parameters = (0, parameters_1.readParameters)(recipe);
-                program = (0, commanderUtils_1.createRecipeProgram)(recipe, parameters, (options) => __awaiter(void 0, void 0, void 0, function* () {
-                    (0, settings_1.setSettings)(options); // read global settings from environment variables and command line options
-                    const settings = (0, settings_1.getSettings)();
-                    if (settings.verbose || settings.dryRun) {
-                        logger.setDefaultLevel("info");
-                    }
-                    if (settings.debug) {
-                        logger.setDefaultLevel("debug");
-                    }
-                    showAIWriterInfo();
-                    (0, contextLogger_1.logRecipe)(recipe);
-                    (0, contextLogger_1.logOptions)(options);
-                    (0, recipes_1.validateRecipe)(recipe);
-                    const promptTemplate = (0, prompt_1.getPromptTemplate)(recipe);
-                    (0, contextLogger_1.logPromptTemplate)(promptTemplate);
-                    const prompt = yield (0, prompt_1.getPromptForRecipe)(recipe, options);
-                    (0, contextLogger_1.logConstructedPrompt)(prompt);
-                    let generatedOutput;
-                    if (settings.dryRun) {
-                        logger.info("Dry run, not sending prompt to the language model, completion is 'Dry-run completion on prompt:\n<prompt>'\n");
-                        generatedOutput = `Dry-run completion on prompt: ${prompt}`;
-                    }
-                    else {
-                        logger.debug("Sending the prompt to the language model");
-                        generatedOutput = yield (0, aiGenerator_1.aiGenerator)(recipe, prompt);
-                    }
-                    const outputFormat = options.outputFormat ? options.outputFormat : "txt";
-                    if (settings.showOutput || settings.verbose) {
-                        displayOutput(generatedOutput, outputFormat);
-                    }
-                    generateOutput(generatedOutput, path_1.default.join(settings.textsOutputFolder, options.output), outputFormat);
-                }));
-                program.parse(process.argv);
-            }
-            else {
-                logger.error(`Recipe '${recipe}' does not exist`);
-                (0, recipes_1.showRecipes)();
-            }
-        }
-    }
-    catch (error) {
-        console.log(`${error}`);
-    }
-}))();
+}
 function generateOutput(output, outputPath, outputFormat) {
     if (!output) {
         throw new Error("No output");
     }
-    if (!outputPath) {
+    if (outputPath === "") {
         throw new Error("No output path");
     }
     const projectRootFolder = (0, packageJson_1.findProjectRoot)(process.cwd());
@@ -184,5 +214,37 @@ function displayOutput(output, outputFormat) {
             break;
     }
     (0, contextLogger_1.logCompletion)(outputToDisplay, true);
+}
+function enhanceOptions(options, parameters) {
+    const enhancedOptions = options;
+    if (parameters) {
+        parameters.options.forEach((parameter) => {
+            const option = parameter.option;
+            if (!option.startsWith("--")) {
+                throw new Error(`Invalid option '${option}'. Option must start with '--'`);
+            }
+            let optionName = option.substring(2).split(" ")[0];
+            // convert letter after "-" to uppercase next letter
+            if (optionName.indexOf("-") !== -1) {
+                optionName = nameWithDashesToCamelCase(optionName);
+            }
+            if (parameter.required) {
+                if (!enhancedOptions[optionName]) {
+                    throw new Error(`Missing required option '${optionName}'`);
+                }
+            }
+            else {
+                if (!enhancedOptions[optionName]) {
+                    if (parameter.default) {
+                        enhancedOptions[optionName] = parameter.default;
+                    }
+                }
+            }
+        });
+    }
+    return enhancedOptions;
+}
+function nameWithDashesToCamelCase(name) {
+    return name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
 }
 //# sourceMappingURL=index.js.map

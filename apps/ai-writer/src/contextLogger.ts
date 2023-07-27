@@ -5,7 +5,7 @@ export function logRecipe(recipe: string): void {
     logger.info(`${chalk.bold.blue('Recipe:')} ${chalk.blue(recipe)}`);
 }
 
-export function logOptions(options: unknown): void {
+export function logOptions(options: { [key: string]: string | boolean }): void {
     const optionsString = JSON.stringify(options, null, 2);
     logger.info(`${chalk.bold.blue('Options:')}\n${chalk.blue(optionsString)}\n`);
 }

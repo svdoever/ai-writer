@@ -1,14 +1,33 @@
 import fs from "fs";
 import path from "path";
-import * as logger from 'loglevel';
+import logger from 'loglevel';
+import { findProjectRoot } from "./packageJson";
 
-export function showRecipes() {
-    if (!fs.existsSync("./recipes")) {
-        throw new Error("No 'recipes' folder found");
+export function getRecipesFolder(): string {
+    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
+        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
     }
 
+    const projectRootFolder = findProjectRoot(process.cwd());
+    if (!projectRootFolder) {
+        throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
+    }
+
+    let recipesFolder = path.join(projectRootFolder, process.env.AIWRITER_RECIPES_FOLDER);
+    if (!fs.existsSync(recipesFolder)) {
+        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
+    }
+
+    recipesFolder = path.resolve(recipesFolder); // nice absolute path
+
+    return recipesFolder;
+}
+
+export function showRecipes() {
+    const recipeFolder = getRecipesFolder();
+
     // read all directories in folder
-    const files = fs.readdirSync("./recipes", { withFileTypes: true });
+    const files = fs.readdirSync(recipeFolder, { withFileTypes: true });
     const directories = files.filter((file) => file.isDirectory()).filter((file) => file.name !== "lib");
 
     logger.info("Available recipes:");
@@ -18,15 +37,8 @@ export function showRecipes() {
     });
 }
 export function validateRecipe(recipe: string): void {
-    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
-        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
-    }
 
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER!;
-
-    if (!fs.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
-    }   
+    const recipesFolder = getRecipesFolder();
     const recipeFolder = path.join(recipesFolder, recipe);
     if (!fs.existsSync(recipeFolder)) {
         throw new Error(`No recipe found for '${recipe}', expected folder at '${recipeFolder}'`);
@@ -38,14 +50,7 @@ export function validateRecipe(recipe: string): void {
 }
 
 export function existsRecipe(recipe: string): boolean {
-    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
-        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
-    }
-
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER!;
-    if (!fs.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
-    }
+    const recipesFolder = getRecipesFolder();
     const recipeFolder = path.join(recipesFolder, recipe);
     return fs.existsSync(recipeFolder);
 }

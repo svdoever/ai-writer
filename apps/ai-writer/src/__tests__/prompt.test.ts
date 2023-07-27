@@ -1,13 +1,13 @@
 import { renderPrompt } from "../prompt";
 
-test("prompt, no vars", () => {
+test("prompt, empty data", () => {
     const prompt = "my text";
     const result = renderPrompt(prompt, {});
     expect(result).toEqual(prompt);
 });
 
 
-test("prompt, no vars", () => {
+test("prompt, simple data with single var", () => {
     const data = {
         "var1": "test"
     }
