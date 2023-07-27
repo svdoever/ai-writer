@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,7 +16,7 @@ exports.enhancePromptDataWithFunctionsIfAvailable = exports.addDataIfAvailable =
 const ejs_1 = __importDefault(require("ejs"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const logger = __importStar(require("loglevel"));
+const loglevel_1 = __importDefault(require("loglevel"));
 const settings_1 = require("./settings");
 const module_from_string_1 = require("module-from-string");
 const npm_1 = require("./npm");
@@ -74,21 +51,21 @@ function addDataIfAvailable(recipe, data) {
     return __awaiter(this, void 0, void 0, function* () {
         const recipesFolder = (0, settings_1.getSettings)().recipesFolder;
         const recipeFolder = path_1.default.resolve(path_1.default.join(recipesFolder, recipe));
-        let getDataFile = path_1.default.join(recipeFolder, "getData.js");
+        const getDataFile = path_1.default.join(recipeFolder, "getData.js");
         if (!fs_1.default.existsSync(getDataFile)) {
             return data;
         }
         const getDataCode = fs_1.default.readFileSync(getDataFile, "utf8");
         const getDataModule = yield (0, module_from_string_1.importFromString)(getDataCode, {
             filename: getDataFile,
-            dirname: recipeFolder
+            dirname: recipeFolder,
         });
-        if (!getDataModule.getData || typeof getDataModule.getData !== "function") {
+        if (getDataModule.getData === undefined || typeof getDataModule.getData !== "function") {
             throw new Error(`getData function not found in ${getDataFile}`);
         }
-        logger.debug(`Found getData function in ${getDataFile}, retrieve data...`);
+        loglevel_1.default.debug(`Found getData function in ${getDataFile}, retrieve data...`);
         const newData = yield getDataModule.getData(data);
-        logger.debug(`New data: ${JSON.stringify(newData, null, 2)}`);
+        loglevel_1.default.debug(`New data: ${JSON.stringify(newData, null, 2)}`);
         return newData;
     });
 }
@@ -96,16 +73,16 @@ exports.addDataIfAvailable = addDataIfAvailable;
 function enhancePromptDataWithFunctionsIfAvailable(recipe, data) {
     const recipesFolder = (0, settings_1.getSettings)().recipesFolder;
     const recipeFolder = path_1.default.resolve(path_1.default.join(recipesFolder, recipe));
-    let recipeFunctionsFile = path_1.default.join(recipeFolder, "functions.js");
+    const recipeFunctionsFile = path_1.default.join(recipeFolder, "functions.js");
     if (!fs_1.default.existsSync(recipeFunctionsFile)) {
         return data;
     }
-    logger.debug(`recipe folder: ${recipeFolder}`);
-    logger.debug(`Found functions file: ${recipeFunctionsFile}`);
+    loglevel_1.default.debug(`recipe folder: ${recipeFolder}`);
+    loglevel_1.default.debug(`Found functions file: ${recipeFunctionsFile}`);
     const functionsCode = fs_1.default.readFileSync(recipeFunctionsFile, "utf8");
     const functions = (0, module_from_string_1.requireFromString)(functionsCode, {
         filename: recipeFunctionsFile,
-        dirname: recipeFolder
+        dirname: recipeFolder,
     });
     Object.assign(data, functions);
 }
@@ -113,7 +90,7 @@ exports.enhancePromptDataWithFunctionsIfAvailable = enhancePromptDataWithFunctio
 function getPackages(recipe) {
     const recipesFolder = (0, settings_1.getSettings)().recipesFolder;
     const recipeFolder = path_1.default.resolve(path_1.default.join(recipesFolder, recipe));
-    let recipeDependenciesFile = path_1.default.join(recipeFolder, "dependencies.json");
+    const recipeDependenciesFile = path_1.default.join(recipeFolder, "dependencies.json");
     if (!fs_1.default.existsSync(recipeDependenciesFile)) {
         return {};
     }

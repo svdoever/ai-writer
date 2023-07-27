@@ -3,7 +3,6 @@ import logger from "loglevel";
 import fs from "fs";
 import path from "path";
 
-
 export function findEnvFile(startPath: string): string | null {
     let currentPath = startPath;
 
@@ -30,13 +29,13 @@ export function findEnvFile(startPath: string): string | null {
     }
 }
 
-export function loadEnv() {
+export function loadEnv(): void {
     // read .env file
     const envPath = findEnvFile(process.cwd());
-    if (envPath) {
-        logger.debug('Found .env file at', envPath);
-        dotenv.config({ path: envPath! });
+    if (envPath != null) {
+        logger.debug("Found .env file at", envPath);
+        dotenv.config({ path: envPath });
     } else {
-        logger.debug('Did not find a .env file - depending on already configured environment variables');
+        logger.debug("Did not find a .env file - depending on already configured environment variables");
     }
 }

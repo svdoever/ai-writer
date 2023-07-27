@@ -1,17 +1,17 @@
 import fs from "fs";
 import path from "path";
-import logger from 'loglevel';
+import logger from "loglevel";
 import { findProjectRoot } from "./packageJson";
 
-export type Models = { [key: string]: unknown };
+export type Models = Record<string, unknown>;
 
 export function getModels(): Models {
     const projectRootFolder = findProjectRoot(process.cwd());
-    if (!projectRootFolder) {
+    if (projectRootFolder == null) {
         throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
     }
 
-    let models: { [key: string]: unknown } = {};
+    let models: Models = {};
     const modelsFile = path.join(projectRootFolder, "models.json");
     logger.debug(`models file: ${modelsFile}`);
     if (fs.existsSync(modelsFile)) {

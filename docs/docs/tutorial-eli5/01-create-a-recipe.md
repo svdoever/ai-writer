@@ -14,7 +14,7 @@ If we would ask this at ChatGPT, we would type in the following question:
 
 > **Act like a schoolteacher who is the best at explaining topics to young kids. Can you explain the topic <span style={{color: "blue"}}>elephant</span> in <span style={{color: "blue"}}>50</span> words to a 5 year old in the simplest way possible? Please explain the topic in the language <span style={{color: "blue"}}>English</span>.**
 
-And ChatGTP will respond with something like:
+And ChatGPT will respond with something like:
 
 > **An elephant is a big, grey animal with a long trunk. Elephants have big ears and four long legs. They use their trunk to pick up food and to drink water. Elephants live in Africa and Asia and they eat leaves, fruit, and grass. They are very strong and can carry heavy things. Elephants are very smart and they like to play.**
 

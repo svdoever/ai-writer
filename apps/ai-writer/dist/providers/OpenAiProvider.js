@@ -75,8 +75,8 @@ function openaiChatCompletionGenerator(openai, completionConfiguration, prompt) 
         const messages = [
             {
                 role: "user",
-                content: prompt
-            }
+                content: prompt,
+            },
         ];
         logger.debug(`Generating text for chat completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`);
         const events = yield openai.listChatCompletions(completionConfiguration.model, messages, completionConfiguration);

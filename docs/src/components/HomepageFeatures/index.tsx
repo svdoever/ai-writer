@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/execute.svg').default,
     description: (
       <>
-        Execute your recipes with a single command, and watch the magic happen.
+        Execute your recipes with a single command or function call, and watch the magic happen.
       </>
     ),
   },

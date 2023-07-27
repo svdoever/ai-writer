@@ -31,7 +31,7 @@ And execute this script with the following command:
 sample.bat
 ```
 
-Also PowerShell is a powerful scripting language for the execution of recipes, especially because PowerShell scripts can run on Windows, Linux, and macOS. For example, to execute the `eli5` recipe for a collection of topics, create the script `sample-multiple.ps1`:
+Also PowerShell is a powerful scripting language for the execution of recipes, especially because PowerShell scripts can run on Windows, Linux, and macOS. For example, to execute the `eli5` recipe for a collection of topics, create the script `eli5-multiple.ps1`:
 
 ```powershell
 #!/usr/bin/env pwsh
@@ -46,19 +46,19 @@ for ($i=0; $i -lt $topics.length; $i++) {
 To execute on Linux or macOS, either execute the following command:
 
 ```bash
-pwsh ./sample-multiple.ps1
+pwsh ./eli5-multiple.ps1
 ```
 
 Or make the script executable with the following command:
 
 ```bash
-chmod +x ./sample-multiple.ps1
+chmod +x ./eli5-multiple.ps1
 ```
 
 And execute the script with the following command:
 
 ```bash
-./sample-multiple.ps1
+./eli5-multiple.ps1
 ```
 
 See [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/overview)) for more information on PowerShell.

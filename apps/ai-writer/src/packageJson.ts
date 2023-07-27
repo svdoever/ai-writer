@@ -22,7 +22,7 @@ export interface PackageJson {
     dependencies: Record<string, string>;
     devDependencies: Record<string, string>;
     // You can add other properties as needed...
-};
+}
 
 function getPackageJsonFilePath(rootFolder?: string): string {
     let packageJsonPath: string;
@@ -89,9 +89,7 @@ export function validateNodeVersion(rootFolder?: string): void {
 
         // Use semver to check version
         if (!semver.satisfies(currentVersion, requiredVersion)) {
-            logger.error(
-                `Current node version ${currentVersion} does not satisfy the required version ${requiredVersion}`
-            );
+            logger.error(`Current node version ${currentVersion} does not satisfy the required version ${requiredVersion}`);
             process.exit(1);
         } else {
             logger.debug(`Current node version ${currentVersion} satisfies the required version ${requiredVersion}`);

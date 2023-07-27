@@ -1,4 +1,3 @@
-
 import * as logger from "loglevel";
 import { OpenAIClient } from "@azure/openai";
 
@@ -14,7 +13,11 @@ export type OpenAiCompletionConfiguration = {
 
 export type OpenAiChatCompletionConfiguration = OpenAiCompletionConfiguration;
 
-export async function openaiExecuteGeneration(openai: OpenAIClient, aiConfiguration: { type: string, completion: OpenAiCompletionConfiguration | OpenAiChatCompletionConfiguration }, prompt: string): Promise<string> {
+export async function openaiExecuteGeneration(
+    openai: OpenAIClient,
+    aiConfiguration: { type: string; completion: OpenAiCompletionConfiguration | OpenAiChatCompletionConfiguration },
+    prompt: string
+): Promise<string> {
     switch (aiConfiguration.type) {
         case "completion":
             const completionConfiguration: OpenAiCompletionConfiguration = aiConfiguration.completion;
@@ -27,8 +30,7 @@ export async function openaiExecuteGeneration(openai: OpenAIClient, aiConfigurat
 }
 
 async function openaiCompletionGenerator(openai: OpenAIClient, completionConfiguration: OpenAiCompletionConfiguration, prompt: string): Promise<string> {
-
-    logger.debug(`Generating text for completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`)
+    logger.debug(`Generating text for completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`);
 
     const result = await openai.getCompletions(completionConfiguration.model, [prompt], completionConfiguration);
     try {
@@ -43,11 +45,11 @@ async function openaiChatCompletionGenerator(openai: OpenAIClient, completionCon
     const messages = [
         {
             role: "user",
-            content: prompt
-        }
+            content: prompt,
+        },
     ];
 
-    logger.debug(`Generating text for chat completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`)
+    logger.debug(`Generating text for chat completion with the following configuration: ${JSON.stringify(completionConfiguration, null, 2)}`);
 
     const events = await openai.listChatCompletions(completionConfiguration.model, messages, completionConfiguration);
     if (logger.getLevel() <= logger.levels.DEBUG) {
