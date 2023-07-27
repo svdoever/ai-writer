@@ -1,47 +1,45 @@
 import fs from "fs";
 import path from "path";
+import { getRecipesFolder } from "./recipes";
 
-export type ParameterOption = {
+export interface ParameterOption {
     option: string;
     description?: string;
     default?: string; // only relevant if required is false
     required?: boolean; // false is the default value
 }
 
-export type Parameters = {
+export interface Parameters {
     description?: string;
     options: ParameterOption[];
 }
 
-export function validateParameters(parameters: Parameters) {
-    if (!parameters.description) {
+export function validateParameters(parameters: Parameters): void {
+    if (parameters.description == null) {
         throw new Error("No description found in parameters");
     }
-    if (!parameters.options) {
+    if (parameters.options === undefined || parameters.options.length === 0) {
         throw new Error("No options found in parameters");
     }
     parameters.options.forEach((option) => {
-        if (!option.option) {
+        if (option.option === undefined || option.option.length === 0) {
             throw new Error("No option found in parameters");
         }
-        if (!option.description) {
+        if (option.description === undefined || option.description.length === 0) {
             throw new Error("No description found in parameters");
         }
     });
 }
 
 export function readParameters(recipe: string): Parameters {
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER!;
-    if (!fs.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found`);
-    }
+    const recipesFolder = getRecipesFolder();
     const recipeFolder = path.join(recipesFolder, recipe);
     if (!fs.existsSync(recipeFolder)) {
         throw new Error(`No recipe found for '${recipe}'`);
     }
 
     const parametersFile = path.join(recipeFolder, "parameters.json");
-    
+
     const parameterJSON = fs.readFileSync(parametersFile, "utf8");
     const parameters = JSON.parse(parameterJSON);
     validateParameters(parameters);

@@ -1,12 +1,12 @@
-export type ParameterOption = {
+export interface ParameterOption {
     option: string;
-    description: string;
+    description?: string;
     default?: string;
     required?: boolean;
-};
-export type Parameters = {
-    description: string;
+}
+export interface Parameters {
+    description?: string;
     options: ParameterOption[];
-};
+}
 export declare function validateParameters(parameters: Parameters): void;
 export declare function readParameters(recipe: string): Parameters;

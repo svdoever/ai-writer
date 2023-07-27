@@ -8,7 +8,7 @@ export function getStorageFolder(): string {
     }
 
     const projectRootFolder = findProjectRoot(process.cwd());
-    if (!projectRootFolder) {
+    if (projectRootFolder === null) {
         throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
     }
 

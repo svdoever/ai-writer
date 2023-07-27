@@ -6,28 +6,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.readParameters = exports.validateParameters = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const recipes_1 = require("./recipes");
 function validateParameters(parameters) {
-    if (!parameters.description) {
+    if (parameters.description == null) {
         throw new Error("No description found in parameters");
     }
-    if (!parameters.options) {
+    if (parameters.options === undefined || parameters.options.length === 0) {
         throw new Error("No options found in parameters");
     }
     parameters.options.forEach((option) => {
-        if (!option.option) {
+        if (option.option === undefined || option.option.length === 0) {
             throw new Error("No option found in parameters");
         }
-        if (!option.description) {
+        if (option.description === undefined || option.description.length === 0) {
             throw new Error("No description found in parameters");
         }
     });
 }
 exports.validateParameters = validateParameters;
 function readParameters(recipe) {
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
-    if (!fs_1.default.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found`);
-    }
+    const recipesFolder = (0, recipes_1.getRecipesFolder)();
     const recipeFolder = path_1.default.join(recipesFolder, recipe);
     if (!fs_1.default.existsSync(recipeFolder)) {
         throw new Error(`No recipe found for '${recipe}'`);

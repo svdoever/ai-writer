@@ -7,7 +7,7 @@ sidebar_position: 1
 ## Introduction
 
 AI Writer is designed to generate content through the power of artificial intelligence, 
-much like utilizing ChatGTP for content creation. The quality of the content created by 
+much like utilizing ChatGPT for content creation. The quality of the content created by 
 AI relies heavily on the clarity and specificity of the questions you present. This question is 
 also called the "prompt". With AI Writer you have the tool to build powerful prompts.
 
@@ -17,6 +17,10 @@ AI Writer is a command line tool (a CLI) that can be used to generate powerful p
 A recipe is a set of instructions or guidelines that describe how to prepare or make something, 
 typically a dish of prepared food, but in our case: the prompt. This prompt is sent to an AI model and
 the result (the "completion") is written to a file.
+
+## The AI Writer library
+
+But the cool thing is that all recipes can not only be executed through the ai-writer CLI, but also through code. All recipes become available for execution through the `executeRecipe()` function for even more power at your fingertips.
 
 ## Recipe
 
@@ -44,3 +48,9 @@ This works as follows:
 ![AI Writer](./diagrams/AI%20Writer%20recipe%20simple%20execution.excalidraw.png)
 
 Note that the AI Writer command `ai-writer` is executed in a [terminal window]( ./advanced/terminal-window) and must always be executed from a folder within the project that we create when we start using AI Writer. Creating a project is explained in the [create a project](./create-a-project) section.
+
+And if you want to execute the `eli5` recipe from your code, it is as simple as:
+
+```javascript
+executeRecipe("eli5", { topic: "elephant", output: "eli5/elephant" })
+```

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import "source-map-support/register";
-import { RecipeOptionsBase } from "./RecipeOptionsBase";
-export { RecipeOptionsBase } from "./RecipeOptionsBase";
+import { type RecipeOptionsBase } from "./RecipeOptionsBase";
+export type { RecipeOptionsBase } from "./RecipeOptionsBase";
 export declare function executeRecipe<T extends RecipeOptionsBase>(recipe: string, options: T): Promise<string>;

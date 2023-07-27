@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import logger from 'loglevel';
+import logger from "loglevel";
 import { findProjectRoot } from "./packageJson";
 
 export function getRecipesFolder(): string {
@@ -9,7 +9,7 @@ export function getRecipesFolder(): string {
     }
 
     const projectRootFolder = findProjectRoot(process.cwd());
-    if (!projectRootFolder) {
+    if (projectRootFolder === null) {
         throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
     }
 
@@ -23,7 +23,7 @@ export function getRecipesFolder(): string {
     return recipesFolder;
 }
 
-export function showRecipes() {
+export function showRecipes(): void {
     const recipeFolder = getRecipesFolder();
 
     // read all directories in folder
@@ -36,8 +36,8 @@ export function showRecipes() {
         logger.info(`  - ${directory.name}`);
     });
 }
-export function validateRecipe(recipe: string): void {
 
+export function validateRecipe(recipe: string): void {
     const recipesFolder = getRecipesFolder();
     const recipeFolder = path.join(recipesFolder, recipe);
     if (!fs.existsSync(recipeFolder)) {

@@ -1,1 +1,5 @@
-An elephant is a big animal with a long nose called a trunk. It has big ears and is gray. It lives in Africa and Asia.
+Dry-run completion on prompt: Act like a schoolteacher who is the best at explaining topics to young kids.
+Can you explain the topic elephant in 25 words to 
+a 5 year old in the simplest way possible?
+
+Please explain the topic in the language English.

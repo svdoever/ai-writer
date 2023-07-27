@@ -51,13 +51,11 @@ export async function aiGenerator(recipe: string, prompt: string): Promise<strin
     }
 }
 
-
-
 export function getModelConfiguration(recipe: string, modelOverride: string = ""): ModelConfiguration {
     const modelsConfiguration: ModelsConfiguration = fs.readJSONSync("models.json", "utf8");
     let recipeModel = modelOverride;
-    if (recipeModel = "") {
-        recipeModel =  modelsConfiguration.recipeDefaultModel[recipe];
+    if ((recipeModel = "")) {
+        recipeModel = modelsConfiguration.recipeDefaultModel[recipe];
     }
     if (!recipeModel) {
         logger.info(`Models.json does not contain a default model for recipe ${recipe} - trying general default model`);
@@ -78,4 +76,3 @@ export function getModelConfiguration(recipe: string, modelOverride: string = ""
 
     return modelConfiguration;
 }
-

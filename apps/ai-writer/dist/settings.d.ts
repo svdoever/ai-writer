@@ -1,10 +1,9 @@
-import { RecipeOptionsBase } from "./RecipeOptionsBase";
+import { type RecipeOptionsBase } from "./RecipeOptionsBase";
+import { type Models } from "./models";
 export interface Settings extends Required<RecipeOptionsBase> {
-    models: {
-        [key: string]: unknown;
-    };
+    models: Models;
     recipesFolder: string;
-    textsOutputFolder: string;
+    storageFolder: string;
 }
 export declare function getSettings(): Settings;
 export declare function setSettings(recipeOptionsBase: RecipeOptionsBase): void;

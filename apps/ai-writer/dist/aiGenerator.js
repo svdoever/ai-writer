@@ -86,7 +86,7 @@ exports.aiGenerator = aiGenerator;
 function getModelConfiguration(recipe, modelOverride = "") {
     const modelsConfiguration = fs_extra_1.default.readJSONSync("models.json", "utf8");
     let recipeModel = modelOverride;
-    if (recipeModel = "") {
+    if ((recipeModel = "")) {
         recipeModel = modelsConfiguration.recipeDefaultModel[recipe];
     }
     if (!recipeModel) {

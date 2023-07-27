@@ -1,9 +1,9 @@
 import * as logger from "loglevel";
-import { exec } from 'child_process';
+import { exec } from "child_process";
 
-export type Packages= {
-    [key: string]: string
-}
+export type Packages = {
+    [key: string]: string;
+};
 
 export async function installPackages(packages: Packages): Promise<void> {
     Object.keys(packages).map(async (packageName) => {

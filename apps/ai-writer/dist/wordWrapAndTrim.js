@@ -12,7 +12,8 @@ function wordWrapAndTrim(text, maxWidth = 80) {
     lines.forEach((line) => {
         // Split the line into words
         const words = line.split(/\s+/);
-        if (words.length === 1 && words[0] === "") { // If the line is empty
+        if (words.length === 1 && words[0] === "") {
+            // If the line is empty
             wrappedLines.push(""); // push an empty line
         }
         else {

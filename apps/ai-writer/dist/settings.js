@@ -1,78 +1,29 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setSettings = exports.getSettings = void 0;
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
-const logger = __importStar(require("loglevel"));
-const packageJson_1 = require("./packageJson");
+const recipes_1 = require("./recipes");
+const storage_1 = require("./storage");
+const models_1 = require("./models");
 let settings = null;
 function getSettings() {
-    if (!settings) {
+    if (settings == null) {
         throw new Error("Settings not initialized");
     }
     return settings;
 }
 exports.getSettings = getSettings;
 function setSettings(recipeOptionsBase) {
-    const projectRootFolder = (0, packageJson_1.findProjectRoot)(process.cwd());
-    if (!projectRootFolder) {
-        throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
-    }
-    const openAiApiKey = process.env.OPENAI_API_KEY;
-    if (!openAiApiKey) {
-        throw new Error("No OPENAI_API_KEY environment variable found");
-    }
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
-    if (!recipesFolder) {
-        throw new Error("No AIWRITER_RECIPES_FOLDER environment variable found");
-    }
-    const textsOutputFolder = process.env.AIWRITER_STORAGE_FOLDER;
-    if (!textsOutputFolder) {
-        throw new Error("No AIWRITER_STORAGE_FOLDER environment variable found");
-    }
-    const verbose = !!recipeOptionsBase.verbose;
-    const debug = !!recipeOptionsBase.debug;
-    const dryRun = !!recipeOptionsBase.dryRun;
-    const showOutput = !!recipeOptionsBase.showOutput;
-    const output = recipeOptionsBase.output || "";
-    const outputFormat = recipeOptionsBase.outputFormat || "txt";
-    const modelOverride = recipeOptionsBase.modelOverride || "";
-    let models = {};
-    const modelsFile = path_1.default.join(projectRootFolder, "models.json");
-    logger.debug(`models file: ${modelsFile}`);
-    if (fs_1.default.existsSync(modelsFile)) {
-        const modelsJSON = fs_1.default.readFileSync(modelsFile, "utf8");
-        models = JSON.parse(modelsJSON);
-    }
-    else {
-        throw new Error(`Models file expected at '${modelsFile}'`);
-    }
+    var _a, _b, _c, _d, _e, _f, _g;
+    const recipesFolder = (0, recipes_1.getRecipesFolder)();
+    const storageFolder = (0, storage_1.getStorageFolder)();
+    const verbose = (_a = recipeOptionsBase.verbose) !== null && _a !== void 0 ? _a : false;
+    const debug = (_b = recipeOptionsBase.debug) !== null && _b !== void 0 ? _b : false;
+    const dryRun = (_c = recipeOptionsBase.dryRun) !== null && _c !== void 0 ? _c : false;
+    const showOutput = (_d = recipeOptionsBase.showOutput) !== null && _d !== void 0 ? _d : false;
+    const output = (_e = recipeOptionsBase.output) !== null && _e !== void 0 ? _e : "";
+    const outputFormat = (_f = recipeOptionsBase.outputFormat) !== null && _f !== void 0 ? _f : "txt";
+    const modelOverride = (_g = recipeOptionsBase.modelOverride) !== null && _g !== void 0 ? _g : "";
+    const models = (0, models_1.getModels)();
     settings = {
         verbose,
         debug,
@@ -83,7 +34,7 @@ function setSettings(recipeOptionsBase) {
         modelOverride,
         models,
         recipesFolder,
-        textsOutputFolder
+        storageFolder,
     };
 }
 exports.setSettings = setSettings;

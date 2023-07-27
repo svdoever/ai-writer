@@ -1,57 +1,43 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.existsRecipe = exports.validateRecipe = exports.showRecipes = void 0;
+exports.existsRecipe = exports.validateRecipe = exports.showRecipes = exports.getRecipesFolder = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const logger = __importStar(require("loglevel"));
-function showRecipes() {
-    if (!fs_1.default.existsSync("./recipes")) {
-        throw new Error("No 'recipes' folder found");
+const loglevel_1 = __importDefault(require("loglevel"));
+const packageJson_1 = require("./packageJson");
+function getRecipesFolder() {
+    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
+        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
     }
+    const projectRootFolder = (0, packageJson_1.findProjectRoot)(process.cwd());
+    if (projectRootFolder === null) {
+        throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
+    }
+    let recipesFolder = path_1.default.join(projectRootFolder, process.env.AIWRITER_RECIPES_FOLDER);
+    if (!fs_1.default.existsSync(recipesFolder)) {
+        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
+    }
+    recipesFolder = path_1.default.resolve(recipesFolder); // nice absolute path
+    return recipesFolder;
+}
+exports.getRecipesFolder = getRecipesFolder;
+function showRecipes() {
+    const recipeFolder = getRecipesFolder();
     // read all directories in folder
-    const files = fs_1.default.readdirSync("./recipes", { withFileTypes: true });
+    const files = fs_1.default.readdirSync(recipeFolder, { withFileTypes: true });
     const directories = files.filter((file) => file.isDirectory()).filter((file) => file.name !== "lib");
-    logger.info("Available recipes:");
-    logger.info("===================");
+    loglevel_1.default.info("Available recipes:");
+    loglevel_1.default.info("===================");
     directories.forEach((directory) => {
-        logger.info(`  - ${directory.name}`);
+        loglevel_1.default.info(`  - ${directory.name}`);
     });
 }
 exports.showRecipes = showRecipes;
 function validateRecipe(recipe) {
-    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
-        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
-    }
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
-    if (!fs_1.default.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
-    }
+    const recipesFolder = getRecipesFolder();
     const recipeFolder = path_1.default.join(recipesFolder, recipe);
     if (!fs_1.default.existsSync(recipeFolder)) {
         throw new Error(`No recipe found for '${recipe}', expected folder at '${recipeFolder}'`);
@@ -63,13 +49,7 @@ function validateRecipe(recipe) {
 }
 exports.validateRecipe = validateRecipe;
 function existsRecipe(recipe) {
-    if (process.env.AIWRITER_RECIPES_FOLDER === undefined) {
-        throw new Error("No 'AIWRITER_RECIPES_FOLDER' environment variable found");
-    }
-    const recipesFolder = process.env.AIWRITER_RECIPES_FOLDER;
-    if (!fs_1.default.existsSync(recipesFolder)) {
-        throw new Error(`No '${recipesFolder}' folder found, expected folder at '${recipesFolder}'`);
-    }
+    const recipesFolder = getRecipesFolder();
     const recipeFolder = path_1.default.join(recipesFolder, recipe);
     return fs_1.default.existsSync(recipeFolder);
 }

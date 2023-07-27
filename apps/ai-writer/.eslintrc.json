@@ -7,7 +7,7 @@
   "extends": ["standard-with-typescript", "plugin:prettier/recommended"],
   "overrides": [],
   "parserOptions": {
-    "project": "./tsconfig.json",
+    "project": "./apps/ai-writer/tsconfig.json",
     "ecmaVersion": "latest",
     "sourceType": "module"
   },

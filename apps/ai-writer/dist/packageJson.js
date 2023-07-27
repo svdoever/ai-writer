@@ -26,12 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateNodeVersion = exports.findProjectRoot = exports.findEnvFile = exports.isValidNpmFolderName = exports.fixPackageJson = exports.savePackageJson = exports.loadPackageJson = void 0;
+exports.validateNodeVersion = exports.findProjectRoot = exports.isValidNpmFolderName = exports.fixPackageJson = exports.savePackageJson = exports.loadPackageJson = void 0;
 const fs = __importStar(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 const semver = __importStar(require("semver"));
 const logger = __importStar(require("loglevel"));
-;
 function getPackageJsonFilePath(rootFolder) {
     let packageJsonPath;
     if (rootFolder == null) {
@@ -66,27 +65,6 @@ function isValidNpmFolderName(str) {
     return regex.test(str);
 }
 exports.isValidNpmFolderName = isValidNpmFolderName;
-function findEnvFile(startPath) {
-    let currentPath = startPath;
-    while (true) {
-        // Check if .env exists in the current directory
-        if (fs.existsSync(path_1.default.join(currentPath, ".env"))) {
-            return path_1.default.join(currentPath, ".env");
-        }
-        // Check if package.json exists in the current directory
-        if (fs.existsSync(path_1.default.join(currentPath, "package.json"))) {
-            return null;
-        }
-        // Go up to the parent directory
-        const parentPath = path_1.default.dirname(currentPath);
-        // If we've reached the root directory, stop
-        if (parentPath === currentPath) {
-            return null;
-        }
-        currentPath = parentPath;
-    }
-}
-exports.findEnvFile = findEnvFile;
 function findProjectRoot(startPath) {
     let currentPath = startPath;
     while (true) {

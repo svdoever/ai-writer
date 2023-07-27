@@ -10,14 +10,17 @@ function createRecipeProgram(recipe, parameters, func) {
     program.description(packageJson.description);
     const recipeCommand = program.command(recipe);
     parameters.options.forEach((option) => {
-        if (option.required) {
+        var _a;
+        if ((_a = option.required) !== null && _a !== void 0 ? _a : false) {
             recipeCommand.requiredOption(option.option, option.description);
         }
         else {
             recipeCommand.option(option.option, option.description, option.default);
         }
     });
-    recipeCommand.description(parameters.description);
+    if (parameters.description != null) {
+        recipeCommand.description(parameters.description);
+    }
     recipeCommand.requiredOption("--output <output>", "output file");
     recipeCommand.option("--output-format <output-format>", "overwrite the default output format 'txt', use an output format as defined in the 'output-formats.json' file");
     recipeCommand.option("--model-override <model>", "override the recipe default model settings with settings from a model defined in the 'models.json' file");

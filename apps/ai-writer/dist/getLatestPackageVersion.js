@@ -17,29 +17,29 @@ const https_1 = __importDefault(require("https"));
 function getLatestPackageVersion(packageName) {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {
-            hostname: 'registry.npmjs.org',
+            hostname: "registry.npmjs.org",
             port: 443,
             path: `/${packageName}`,
-            method: 'GET',
+            method: "GET",
         };
         return new Promise((resolve, reject) => {
-            const req = https_1.default.request(options, res => {
-                res.setEncoding('utf8');
-                let rawData = '';
-                res.on('data', chunk => {
+            const req = https_1.default.request(options, (res) => {
+                res.setEncoding("utf8");
+                let rawData = "";
+                res.on("data", (chunk) => {
                     rawData += chunk;
                 });
-                res.on('end', () => {
+                res.on("end", () => {
                     try {
                         const parsedData = JSON.parse(rawData);
-                        resolve(parsedData['dist-tags'].latest);
+                        resolve(parsedData["dist-tags"].latest);
                     }
                     catch (error) {
                         reject(error.message);
                     }
                 });
             });
-            req.on('error', reject);
+            req.on("error", reject);
             req.end();
         });
     });
