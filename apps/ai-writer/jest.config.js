@@ -6,7 +6,12 @@ const config = {
     transform: {
         "^.+\\.tsx?$": "ts-jest",
     },
-    "testMatch": ["**/__tests__/**/*.ts"]
+    "testMatch": [
+      "**/__tests__/**/*.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "!*.d.ts"
+    ],
   };
   
 module.exports = config;
