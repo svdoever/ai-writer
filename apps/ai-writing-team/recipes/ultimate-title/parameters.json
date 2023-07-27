@@ -1,0 +1,21 @@
+{
+  "description": "Create the ultimate title for the article",
+  "options": [
+    {
+      "option": "--title <title>",
+      "description": "The raw title of the article",
+      "required": true
+    },
+    {
+      "option": "--language <language>",
+      "description": "The language to write it in",
+      "required": false,
+      "default": "English"
+    },
+    {
+      "option": "--keywords <keywords, comma separated>",
+      "description": "Relevant keywords or phrases",
+      "required": false
+    }
+  ]
+}

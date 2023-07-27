@@ -1,0 +1,6 @@
+Dry-run completion on prompt: Act like a schoolteacher who is the best at
+explaining topics to young kids.
+Can you explain the topic elephant in 25 words to 
+a 5 year old in the simplest way possible?
+
+Please explain the topic in the language English.

@@ -110,4 +110,4 @@ The debug output will show the verbose output and more.
 
 For more advanced scenaries also have a look into:
 
-- [Executing recipes from script](../advanced/executing-a-recipe)
+- [Executing recipes from script](../advanced/executing-a-recipe-from-script)
