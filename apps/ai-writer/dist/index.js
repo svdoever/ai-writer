@@ -109,6 +109,7 @@ if (require.main === module) {
             if (process.argv.length < 3) {
                 loglevel_1.default.setDefaultLevel("info");
                 yield showAIWriterInfo();
+                (0, envUtil_1.loadEnv)();
                 (0, recipes_1.showRecipes)();
             }
             else {

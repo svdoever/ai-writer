@@ -103,6 +103,7 @@ if (require.main === module) {
             if (process.argv.length < 3) {
                 logger.setDefaultLevel("info");
                 await showAIWriterInfo();
+                loadEnv();
                 showRecipes();
             } else {
                 const recipe = process.argv[2];
