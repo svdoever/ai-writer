@@ -1,0 +1,14 @@
+<%
+const fullName = getFullName({ firstName: authorFirstname, lastName: authorLastname})
+%>
+
+<%= storyLine %>
+The main person in the story is <%= person.name %>.
+Mention the following facts about <%= person.name %>.
+<% if (person.gender !== "n/a") { %>
+  The gender of <%= person.name %> is <%= person.gender %>.
+<% } %>
+The person is born in the year <%= person.birth_year %>
+
+Include <%= fullName %> as author of the story, 
+and mention the publication date which is <%= formatDate(new Date()) %>.
