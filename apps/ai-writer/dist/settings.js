@@ -39,7 +39,7 @@ function getSettings() {
     return settings;
 }
 exports.getSettings = getSettings;
-function setSettings(optionsForSettings) {
+function setSettings(recipeOptionsBase) {
     const projectRootFolder = (0, packageJson_1.findProjectRoot)(process.cwd());
     if (!projectRootFolder) {
         throw new Error(`Could not find project root, folder ${process.cwd()} is not part of a project`);
@@ -56,11 +56,13 @@ function setSettings(optionsForSettings) {
     if (!textsOutputFolder) {
         throw new Error("No AIWRITER_STORAGE_FOLDER environment variable found");
     }
-    const dryRun = !!optionsForSettings.dryRun;
-    const verbose = !!optionsForSettings.verbose;
-    const debug = !!optionsForSettings.debug;
-    const showOutput = !!optionsForSettings.showOutput;
-    const modelOverride = optionsForSettings.modelOverride;
+    const verbose = !!recipeOptionsBase.verbose;
+    const debug = !!recipeOptionsBase.debug;
+    const dryRun = !!recipeOptionsBase.dryRun;
+    const showOutput = !!recipeOptionsBase.showOutput;
+    const output = recipeOptionsBase.output || "";
+    const outputFormat = recipeOptionsBase.outputFormat || "txt";
+    const modelOverride = recipeOptionsBase.modelOverride || "";
     let models = {};
     const modelsFile = path_1.default.join(projectRootFolder, "models.json");
     logger.debug(`models file: ${modelsFile}`);
@@ -72,14 +74,16 @@ function setSettings(optionsForSettings) {
         throw new Error(`Models file expected at '${modelsFile}'`);
     }
     settings = {
-        recipesFolder,
-        textsOutputFolder,
-        dryRun,
         verbose,
         debug,
+        dryRun,
         showOutput,
+        output,
+        outputFormat,
         modelOverride,
-        models
+        models,
+        recipesFolder,
+        textsOutputFolder
     };
 }
 exports.setSettings = setSettings;

@@ -3,13 +3,13 @@ import path from "path";
 
 export type ParameterOption = {
     option: string;
-    description: string;
+    description?: string;
     default?: string; // only relevant if required is false
     required?: boolean; // false is the default value
 }
 
 export type Parameters = {
-    description: string;
+    description?: string;
     options: ParameterOption[];
 }
 

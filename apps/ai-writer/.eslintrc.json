@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": false,
+    "es2021": true
+  },
+
+  "extends": ["standard-with-typescript", "plugin:prettier/recommended"],
+  "overrides": [],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "indent": ["error", 4]
+  }
+}

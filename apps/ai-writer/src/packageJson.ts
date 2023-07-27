@@ -58,32 +58,6 @@ export function isValidNpmFolderName(str: string): boolean {
     return regex.test(str);
 }
 
-export function findEnvFile(startPath: string): string | null {
-    let currentPath = startPath;
-
-    while (true) {
-        // Check if .env exists in the current directory
-        if (fs.existsSync(path.join(currentPath, ".env"))) {
-            return path.join(currentPath, ".env");
-        }
-
-        // Check if package.json exists in the current directory
-        if (fs.existsSync(path.join(currentPath, "package.json"))) {
-            return null;
-        }
-
-        // Go up to the parent directory
-        const parentPath = path.dirname(currentPath);
-
-        // If we've reached the root directory, stop
-        if (parentPath === currentPath) {
-            return null;
-        }
-
-        currentPath = parentPath;
-    }
-}
-
 export function findProjectRoot(startPath: string): string | null {
     let currentPath = startPath;
 
