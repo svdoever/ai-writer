@@ -27,19 +27,26 @@ async function writeArticle(options: WriteOptions): Promise<void> {
         output: options.output,
     };
 
-    const title = await executeRecipe("ultimate-title", { 
+    const title = await executeRecipe("10-ultimate-title", { 
         ...baseOptions, 
         title: options.title,
         keywords: options.keywords,
         language: options.language,
         output: path.join(options.output, "title")
      });
-     const draft = await executeRecipe("freelancer-draft", {
+     const draft = await executeRecipe("20-freelancer-draft", {
         ...baseOptions, 
         title: title,
         keywords: options.keywords,
         language: options.language,
         output: path.join(options.output, "draft")
+     });
+     const comments = await executeRecipe("30-editor-review", {
+        ...baseOptions, 
+        title: title,
+        text: draft,
+        language: options.language,
+        output: path.join(options.output, "review")
      });
 }
 
