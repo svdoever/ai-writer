@@ -1,7 +1,7 @@
 import * as logger from "loglevel";
-import { OpenAIClient } from "@azure/openai";
+import { type OpenAIClient } from "@azure/openai";
 
-export type OpenAiCompletionConfiguration = {
+export interface OpenAiCompletionConfiguration {
     model: string;
     temperature: number;
     max_tokens: number;
@@ -9,7 +9,7 @@ export type OpenAiCompletionConfiguration = {
     frequency_penalty: number;
     presence_penalty: number;
     stop_sequences: string[];
-};
+}
 
 export type OpenAiChatCompletionConfiguration = OpenAiCompletionConfiguration;
 
@@ -20,7 +20,6 @@ export async function openaiExecuteGeneration(
 ): Promise<string> {
     switch (aiConfiguration.type) {
         case "completion":
-            const completionConfiguration: OpenAiCompletionConfiguration = aiConfiguration.completion;
             return await openaiCompletionGenerator(openai, aiConfiguration.completion, prompt);
         case "chat.completion":
             return await openaiChatCompletionGenerator(openai, aiConfiguration.completion, prompt);
@@ -34,10 +33,10 @@ async function openaiCompletionGenerator(openai: OpenAIClient, completionConfigu
 
     const result = await openai.getCompletions(completionConfiguration.model, [prompt], completionConfiguration);
     try {
-        const generatedText = result.choices[0].text!;
+        const generatedText = result.choices[0].text;
         return generatedText;
     } catch (error) {
-        throw new Error(`OpenAI error while generating text for completion: ${completionConfiguration}`);
+        throw new Error(`OpenAI error while generating text for completion:\n${JSON.stringify(completionConfiguration, null, 2)}`);
     }
 }
 

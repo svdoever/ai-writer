@@ -1,6 +1,8 @@
 // Examples:
 // "option" -> "option"
 
+import path from "path";
+import fs from "fs";
 import { type Parameters, type ParameterOption } from "./parameters";
 
 // "option-name" -> "optionName"
@@ -59,3 +61,42 @@ export function enhanceOptions(options: Record<string, string | boolean>, parame
 
     return enhancedOptions;
 }
+
+// Given the options, if an option is of type string, and starts with the moniker "st://" (for storage),
+// read the file and replace the option value with the file content
+export function expandOptions(options: Record<string, string | boolean>, parameters: Parameters, storageFolder: string): Record<string, string | boolean> {
+    const expandedOptions: Record<string, string | boolean> = {};
+    for (const [key, value] of Object.entries(options)) {
+        const optionName = key;
+        let optionValue = value;
+        if (typeof optionValue === "string") {
+            if (optionValue.startsWith("st://")) {
+                const filePath = optionValue.substring(5);
+                const storageFilePath = path.join(storageFolder, filePath);
+                if (!fs.existsSync(storageFilePath)) {
+                    throw new Error(`No file found for option '${optionName}' (${optionValue}), expected file at '${storageFilePath}'`);
+                }
+                if (fs.lstatSync(storageFilePath).isDirectory()) {
+                    throw new Error(`No file found for option '${optionName}' (${optionValue}), expected file at '${storageFilePath}' but found directory`);
+                }
+                optionValue = fs.readFileSync(storageFilePath, "utf8");
+            }
+            // if option is parameter, option is a string and of type json, parse the json
+            const parameter = parameters.options.find((parameter) => optionToObjectFieldName(parameter.option) === optionName);
+            if (parameter?.json ?? false) {
+                try {
+                    expandedOptions[optionName] = JSON.parse(optionValue);
+                } catch (error) {
+                    throw new Error(`Invalid json for option '${optionName}' (${optionValue})`);
+                }
+            } else {
+                expandedOptions[optionName] = optionValue;
+            }
+        } else {
+            expandedOptions[optionName] = optionValue;
+        }
+    }
+
+    return expandedOptions;
+}
+

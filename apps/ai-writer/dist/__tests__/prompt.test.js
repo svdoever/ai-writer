@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_1 = require("../prompt");
 test("prompt, empty data", () => {
     const prompt = "my text";
-    const result = (0, prompt_1.renderPrompt)(prompt, {});
+    const result = (0, prompt_1.renderPrompt)("test-recipe", prompt, {});
     expect(result).toEqual(prompt);
 });
 test("prompt, simple data with single var", () => {
@@ -11,7 +11,7 @@ test("prompt, simple data with single var", () => {
         var1: "test",
     };
     const prompt = "my text <%= var1 %>";
-    const result = (0, prompt_1.renderPrompt)(prompt, data);
+    const result = (0, prompt_1.renderPrompt)("test-recipe", prompt, data);
     expect(result).toEqual("my text test");
 });
 //# sourceMappingURL=prompt.test.js.map

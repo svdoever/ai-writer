@@ -29,8 +29,14 @@ function getPromptTemplate(recipe) {
     return prompt;
 }
 exports.getPromptTemplate = getPromptTemplate;
-function renderPrompt(promptTemplate, data) {
-    const prompt = ejs_1.default.render(promptTemplate, data);
+function renderPrompt(recipe, promptTemplate, data) {
+    let prompt;
+    try {
+        prompt = ejs_1.default.render(promptTemplate, data);
+    }
+    catch (error) {
+        throw new Error(`Error: recipe '${recipe}', failed to render prompt: ${error.message}`);
+    }
     return prompt.trim();
 }
 exports.renderPrompt = renderPrompt;
@@ -42,7 +48,7 @@ function getPromptForRecipe(recipe, data) {
         data = yield addDataIfAvailable(recipe, data);
         enhancePromptDataWithFunctionsIfAvailable(recipe, data);
         (0, contextLogger_1.logPromptData)(data);
-        const prompt = renderPrompt(promptTemplate, data);
+        const prompt = renderPrompt(recipe, promptTemplate, data);
         return prompt;
     });
 }

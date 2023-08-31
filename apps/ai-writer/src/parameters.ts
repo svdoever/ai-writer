@@ -6,6 +6,7 @@ export interface ParameterOption {
     option: string;
     description?: string;
     default?: string; // only relevant if required is false
+    json?: boolean; // false is the default value
     required?: boolean; // false is the default value
 }
 

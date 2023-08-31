@@ -23,6 +23,37 @@ export function getRecipesFolder(): string {
     return recipesFolder;
 }
 
+function getRecipeFolder(recipe: string): string {
+    const recipesFolder = getRecipesFolder();
+    const recipeFolder = path.join(recipesFolder, recipe);
+    return recipeFolder;
+}
+
+function validateRecipeFolder(recipe: string, recipeFolder: string): void {
+    if (!fs.existsSync(recipeFolder)) {
+        throw new Error(`No recipe found for '${recipe}', expected folder at '${recipeFolder}'`);
+    }
+}
+
+function validateRecipeParameters(recipe: string, recipeFolder: string): void {
+    const parametersFile = path.join(recipeFolder, "parameters.json");
+    if (!fs.existsSync(parametersFile)) {
+        throw new Error(`No parameters.json file found for '${recipe}', expected file at '${parametersFile}'`);
+    }
+}
+
+async function validateRecipePrompt(recipe: string, recipeFolder: string): Promise<void> {
+    const promptFile = path.join(recipeFolder, "prompt.ejs");
+    if (!fs.existsSync(promptFile)) {
+        throw new Error(`No prompt.ejs file found for '${recipe}', expected file at '${promptFile}'`);
+    }
+
+    const prompt = fs.readFileSync(promptFile, "utf8");
+    if (prompt.trim().length === 0) {
+        throw new Error(`Prompt file '${promptFile}' of recipe '${recipe}' is empty`);
+    }
+}
+
 export function showRecipes(): void {
     const recipeFolder = getRecipesFolder();
 
@@ -37,16 +68,11 @@ export function showRecipes(): void {
     });
 }
 
-export function validateRecipe(recipe: string): void {
-    const recipesFolder = getRecipesFolder();
-    const recipeFolder = path.join(recipesFolder, recipe);
-    if (!fs.existsSync(recipeFolder)) {
-        throw new Error(`No recipe found for '${recipe}', expected folder at '${recipeFolder}'`);
-    }
-    const parametersFile = path.join(recipeFolder, "parameters.json");
-    if (!fs.existsSync(parametersFile)) {
-        throw new Error(`No parameters.json file found for '${recipe}', expected file at '${parametersFile}'`);
-    }
+export async function validateRecipe(recipe: string): Promise<void> {
+    const recipeFolder = getRecipeFolder(recipe);
+    validateRecipeFolder(recipe, recipeFolder);
+    validateRecipeParameters(recipe, recipeFolder);
+    await validateRecipePrompt(recipe, recipeFolder);
 }
 
 export function existsRecipe(recipe: string): boolean {

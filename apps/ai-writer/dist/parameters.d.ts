@@ -2,6 +2,7 @@ export interface ParameterOption {
     option: string;
     description?: string;
     default?: string;
+    json?: boolean;
     required?: boolean;
 }
 export interface Parameters {

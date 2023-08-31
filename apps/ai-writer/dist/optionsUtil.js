@@ -1,8 +1,13 @@
 "use strict";
 // Examples:
 // "option" -> "option"
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.enhanceOptions = exports.optionToObjectFieldName = exports.nameWithDashesToCamelCase = void 0;
+exports.expandOptions = exports.enhanceOptions = exports.optionToObjectFieldName = exports.nameWithDashesToCamelCase = void 0;
+const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
 // "option-name" -> "optionName"
 function nameWithDashesToCamelCase(name) {
     if (name.includes("--")) {
@@ -57,4 +62,45 @@ function enhanceOptions(options, parameters) {
     return enhancedOptions;
 }
 exports.enhanceOptions = enhanceOptions;
+// Given the options, if an option is of type string, and starts with the moniker "st://" (for storage),
+// read the file and replace the option value with the file content
+function expandOptions(options, parameters, storageFolder) {
+    var _a;
+    const expandedOptions = {};
+    for (const [key, value] of Object.entries(options)) {
+        const optionName = key;
+        let optionValue = value;
+        if (typeof optionValue === "string") {
+            if (optionValue.startsWith("st://")) {
+                const filePath = optionValue.substring(5);
+                const storageFilePath = path_1.default.join(storageFolder, filePath);
+                if (!fs_1.default.existsSync(storageFilePath)) {
+                    throw new Error(`No file found for option '${optionName}' (${optionValue}), expected file at '${storageFilePath}'`);
+                }
+                if (fs_1.default.lstatSync(storageFilePath).isDirectory()) {
+                    throw new Error(`No file found for option '${optionName}' (${optionValue}), expected file at '${storageFilePath}' but found directory`);
+                }
+                optionValue = fs_1.default.readFileSync(storageFilePath, "utf8");
+            }
+            // if option is parameter, option is a string and of type json, parse the json
+            const parameter = parameters.options.find((parameter) => optionToObjectFieldName(parameter.option) === optionName);
+            if ((_a = parameter === null || parameter === void 0 ? void 0 : parameter.json) !== null && _a !== void 0 ? _a : false) {
+                try {
+                    expandedOptions[optionName] = JSON.parse(optionValue);
+                }
+                catch (error) {
+                    throw new Error(`Invalid json for option '${optionName}' (${optionValue})`);
+                }
+            }
+            else {
+                expandedOptions[optionName] = optionValue;
+            }
+        }
+        else {
+            expandedOptions[optionName] = optionValue;
+        }
+    }
+    return expandedOptions;
+}
+exports.expandOptions = expandOptions;
 //# sourceMappingURL=optionsUtil.js.map
