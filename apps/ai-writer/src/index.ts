@@ -14,10 +14,10 @@ import { getSettings, setSettings } from "./settings";
 import { aiGenerator } from "./aiGenerator";
 import { getPromptForRecipe, getPromptTemplate } from "./prompt";
 import { loadPackageJson, validateNodeVersion } from "./packageJson";
-import { logConstructedPrompt, logOptions, logPromptTemplate, logRecipe } from "./contextLogger";
+import { logConstructedPrompt, logExpandedOptions, logOptions, logPromptTemplate, logRecipe } from "./contextLogger";
 import { getLatestPackageVersion } from "./getLatestPackageVersion";
 import { type RecipeOptionsBase } from "./RecipeOptionsBase";
-import { enhanceOptions } from "./optionsUtil";
+import { enhanceOptions, expandOptions } from "./optionsUtil";
 import { loadEnv } from "./envUtil";
 import { displayOutput, generateOutput } from "./output";
 
@@ -43,7 +43,7 @@ export async function executeRecipe<T extends RecipeOptionsBase>(recipe: string,
     loadEnv();
 
     if (existsRecipe(recipe)) {
-        validateRecipe(recipe);
+        await validateRecipe(recipe);
         const parameters = readParameters(recipe);
         const enhancedOptions: Record<string, string | boolean> = enhanceOptions(options as unknown as Record<string, string | boolean>, parameters);
 
@@ -60,10 +60,11 @@ export async function executeRecipe<T extends RecipeOptionsBase>(recipe: string,
         await showAIWriterInfo();
         logRecipe(recipe);
         logOptions(enhancedOptions);
-        validateRecipe(recipe);
+        const expandedOptions = expandOptions(enhancedOptions, parameters, settings.storageFolder);
+        logExpandedOptions(expandedOptions);
         const promptTemplate = getPromptTemplate(recipe);
         logPromptTemplate(promptTemplate);
-        const prompt = await getPromptForRecipe(recipe, enhancedOptions);
+        const prompt = await getPromptForRecipe(recipe, expandedOptions);
         logConstructedPrompt(prompt);
         let generatedOutput: string;
 
@@ -112,7 +113,7 @@ if (require.main === module) {
                 loadEnv();
 
                 if (existsRecipe(recipe)) {
-                    validateRecipe(recipe);
+                    await validateRecipe(recipe);
                     const parameters = readParameters(recipe);
                     program = createRecipeProgram(recipe, parameters, async (options) => {
                         await executeRecipe(recipe, options);

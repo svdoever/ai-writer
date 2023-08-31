@@ -51,7 +51,7 @@ function executeRecipe(recipe, options) {
         (0, packageJson_1.validateNodeVersion)();
         (0, envUtil_1.loadEnv)();
         if ((0, recipes_1.existsRecipe)(recipe)) {
-            (0, recipes_1.validateRecipe)(recipe);
+            yield (0, recipes_1.validateRecipe)(recipe);
             const parameters = (0, parameters_1.readParameters)(recipe);
             const enhancedOptions = (0, optionsUtil_1.enhanceOptions)(options, parameters);
             // read global settings from environment variables and command line options
@@ -67,10 +67,11 @@ function executeRecipe(recipe, options) {
             yield showAIWriterInfo();
             (0, contextLogger_1.logRecipe)(recipe);
             (0, contextLogger_1.logOptions)(enhancedOptions);
-            (0, recipes_1.validateRecipe)(recipe);
+            const expandedOptions = (0, optionsUtil_1.expandOptions)(enhancedOptions, parameters, settings.storageFolder);
+            (0, contextLogger_1.logExpandedOptions)(expandedOptions);
             const promptTemplate = (0, prompt_1.getPromptTemplate)(recipe);
             (0, contextLogger_1.logPromptTemplate)(promptTemplate);
-            const prompt = yield (0, prompt_1.getPromptForRecipe)(recipe, enhancedOptions);
+            const prompt = yield (0, prompt_1.getPromptForRecipe)(recipe, expandedOptions);
             (0, contextLogger_1.logConstructedPrompt)(prompt);
             let generatedOutput;
             if (settings.dryRun) {
@@ -117,7 +118,7 @@ if (require.main === module) {
                 let program;
                 (0, envUtil_1.loadEnv)();
                 if ((0, recipes_1.existsRecipe)(recipe)) {
-                    (0, recipes_1.validateRecipe)(recipe);
+                    yield (0, recipes_1.validateRecipe)(recipe);
                     const parameters = (0, parameters_1.readParameters)(recipe);
                     program = (0, commanderUtils_1.createRecipeProgram)(recipe, parameters, (options) => __awaiter(void 0, void 0, void 0, function* () {
                         yield executeRecipe(recipe, options);

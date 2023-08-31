@@ -5,9 +5,14 @@ export function logRecipe(recipe: string): void {
     logger.info(`${chalk.bold.blue("Recipe:")} ${chalk.blue(recipe)}`);
 }
 
-export function logOptions(options: { [key: string]: string | boolean }): void {
+export function logOptions(options: Record<string, string | boolean>): void {
     const optionsString = JSON.stringify(options, null, 2);
     logger.info(`${chalk.bold.blue("Options:")}\n${chalk.blue(optionsString)}\n`);
+}
+
+export function logExpandedOptions(options: Record<string, string | boolean>): void {
+    const optionsString = JSON.stringify(options, null, 2);
+    logger.debug(`${chalk.bold.blue("Expanded options (st://... resolved):")}\n${chalk.blue(optionsString)}\n`);
 }
 
 export function logPromptData(promptData: unknown): void {
@@ -15,7 +20,7 @@ export function logPromptData(promptData: unknown): void {
     logger.info(`${chalk.bold.blue("Prompt data:")}\n${chalk.blue(promptDataString)}\n`);
 }
 
-export function logPromptTemplate(prompt: string) {
+export function logPromptTemplate(prompt: string): void {
     logger.info(`${chalk.bold.gray("Prompt template:")}\n-------------------\n${chalk.gray(prompt.trim())}\n-------------------\n`);
 }
 

@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logCompletion = exports.logConstructedPrompt = exports.logPromptTemplate = exports.logPromptData = exports.logOptions = exports.logRecipe = void 0;
+exports.logCompletion = exports.logConstructedPrompt = exports.logPromptTemplate = exports.logPromptData = exports.logExpandedOptions = exports.logOptions = exports.logRecipe = void 0;
 const logger = __importStar(require("loglevel"));
 const chalk_1 = __importDefault(require("chalk"));
 function logRecipe(recipe) {
@@ -38,6 +38,11 @@ function logOptions(options) {
     logger.info(`${chalk_1.default.bold.blue("Options:")}\n${chalk_1.default.blue(optionsString)}\n`);
 }
 exports.logOptions = logOptions;
+function logExpandedOptions(options) {
+    const optionsString = JSON.stringify(options, null, 2);
+    logger.debug(`${chalk_1.default.bold.blue("Expanded options (st://... resolved):")}\n${chalk_1.default.blue(optionsString)}\n`);
+}
+exports.logExpandedOptions = logExpandedOptions;
 function logPromptData(promptData) {
     const promptDataString = JSON.stringify(promptData, null, 2);
     logger.info(`${chalk_1.default.bold.blue("Prompt data:")}\n${chalk_1.default.blue(promptDataString)}\n`);

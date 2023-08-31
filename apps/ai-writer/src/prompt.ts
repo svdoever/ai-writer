@@ -15,8 +15,13 @@ export function getPromptTemplate(recipe: string): string {
     return prompt;
 }
 
-export function renderPrompt(promptTemplate: string, data: any): string {
-    const prompt = ejs.render(promptTemplate, data);
+export function renderPrompt(recipe: string, promptTemplate: string, data: any): string {
+    let prompt: string;
+    try {
+        prompt = ejs.render(promptTemplate, data);
+    } catch (error) {
+        throw new Error(`Error: recipe '${recipe}', failed to render prompt: ${(error as Error).message}`);
+    }
     return prompt.trim();
 }
 
@@ -28,7 +33,7 @@ export async function getPromptForRecipe(recipe: string, data: any): Promise<str
     data = await addDataIfAvailable(recipe, data);
     enhancePromptDataWithFunctionsIfAvailable(recipe, data);
     logPromptData(data);
-    const prompt = renderPrompt(promptTemplate, data);
+    const prompt = renderPrompt(recipe, promptTemplate, data);
     return prompt;
 }
 

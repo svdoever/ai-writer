@@ -1,0 +1,21 @@
+{
+  "description": "Write the article draft as a freelancer",
+  "options": [
+    {
+      "option": "--title <title>",
+      "description": "The title of the article",
+      "required": true
+    },
+    {
+      "option": "--text <text>",
+      "description": "The text of the article",
+      "required": true
+    },
+    {
+      "option": "--language <language>",
+      "description": "The language to write it in",
+      "required": false,
+      "default": "English"
+    }
+  ]
+}

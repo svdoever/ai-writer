@@ -45,7 +45,6 @@ function openaiExecuteGeneration(openai, aiConfiguration, prompt) {
     return __awaiter(this, void 0, void 0, function* () {
         switch (aiConfiguration.type) {
             case "completion":
-                const completionConfiguration = aiConfiguration.completion;
                 return yield openaiCompletionGenerator(openai, aiConfiguration.completion, prompt);
             case "chat.completion":
                 return yield openaiChatCompletionGenerator(openai, aiConfiguration.completion, prompt);
@@ -64,7 +63,7 @@ function openaiCompletionGenerator(openai, completionConfiguration, prompt) {
             return generatedText;
         }
         catch (error) {
-            throw new Error(`OpenAI error while generating text for completion: ${completionConfiguration}`);
+            throw new Error(`OpenAI error while generating text for completion:\n${JSON.stringify(completionConfiguration, null, 2)}`);
         }
     });
 }
