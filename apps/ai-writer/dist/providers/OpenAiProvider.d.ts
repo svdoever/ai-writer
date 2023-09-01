@@ -1,5 +1,5 @@
-import { OpenAIClient } from "@azure/openai";
-export type OpenAiCompletionConfiguration = {
+import { type OpenAIClient } from "@azure/openai";
+export interface OpenAiCompletionConfiguration {
     model: string;
     temperature: number;
     max_tokens: number;
@@ -7,7 +7,7 @@ export type OpenAiCompletionConfiguration = {
     frequency_penalty: number;
     presence_penalty: number;
     stop_sequences: string[];
-};
+}
 export type OpenAiChatCompletionConfiguration = OpenAiCompletionConfiguration;
 export declare function openaiExecuteGeneration(openai: OpenAIClient, aiConfiguration: {
     type: string;
