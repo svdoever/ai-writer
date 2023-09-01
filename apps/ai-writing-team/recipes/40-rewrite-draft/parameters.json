@@ -1,5 +1,5 @@
 {
-  "description": "Review text",
+  "description": "Rewrite text",
   "options": [
     {
       "option": "--title <title>",
@@ -10,7 +10,12 @@
       "option": "--text <text>",
       "description": "The text of the article",
       "required": false
-    }
+    },
+    {
+      "option": "--feedback <feedback>",
+      "description": "The feedback on the text of the article",
+      "required": false
+    },
     {
       "option": "--language <language>",
       "description": "The language to text is written in",
