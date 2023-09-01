@@ -1,0 +1,1 @@
+The lib folder is for utility code that can be reused by multiple recipes.

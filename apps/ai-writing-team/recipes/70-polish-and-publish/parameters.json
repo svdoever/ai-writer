@@ -1,5 +1,5 @@
 {
-  "description": "Review text",
+  "description": "Write the article draft as a freelancer",
   "options": [
     {
       "option": "--title <title>",
@@ -9,14 +9,13 @@
     {
       "option": "--text <text>",
       "description": "The text of the article",
-      "required": false
-    }
+      "required": true
+    },
     {
       "option": "--language <language>",
-      "description": "The language to text is written in",
+      "description": "The language to write it in",
       "required": false,
       "default": "English"
-    },
-    
+    }
   ]
 }
